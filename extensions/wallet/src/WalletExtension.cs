@@ -3,7 +3,7 @@ using Exoforge.Plugin.SDK;
 
 namespace Exoforge.Extensions;
 
-[ExoExtension("wallet", Version = "0.1.0", Category = "Game", Title = "Wallet", Icon = "🪙", Resources = [typeof(WalletBalance)])]
+[ExoExtension("wallet", Version = "0.1.0", Category = "Game", Title = "Wallet", Icon = "🪙", Resources = [typeof(WalletBalance), typeof(WalletCreditKey)])]
 public class WalletExtension
 {
     [ExoAction(Scope = "player")]
@@ -20,6 +20,19 @@ public class WalletExtension
         catch (OverflowException) { throw new ExoActionException("balance_overflow", "The balance cannot hold that many coins."); }
 
         return Save(balance with { Coins = total });
+    }
+
+    [ExoAction(Scope = "server")]
+    public WalletBalance CreditOnce(string playerId, int amount, string reason, string key)
+    {
+        if (string.IsNullOrEmpty(key)) throw new ExoActionException("invalid_key", "Key is required.");
+        if (amount <= 0) throw new ExoActionException("invalid_amount", "Amount must be positive.");
+
+        if (Exo.Database.Get<WalletCreditKey>(key) != null) return Read(playerId);
+
+        var balance = Credit(playerId, amount, reason);
+        Exo.Database.Put(new WalletCreditKey(key, playerId, amount, DateTimeOffset.UtcNow.ToUnixTimeSeconds()));
+        return balance;
     }
 
     [ExoAction(Scope = "server")]
@@ -59,3 +72,6 @@ public record WalletBalance(
     [property: ExoColumn(Sortable = true)] int Coins,
     DateTime UpdatedAt
 );
+
+[ExoResource("wallet_credit_keys", PrimaryKey = nameof(Key))]
+public record WalletCreditKey(string Key, string PlayerId, int Amount, long At);
