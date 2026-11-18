@@ -22,3 +22,16 @@ Exoforge/extensions/*.Tests/nuget.config
 
 # Local environment: holds an admin session token. Copy exoforge.example.json to exoforge.json.
 Exoforge/exoforge.json
+
+# >>> EXOFORGE-CLI:START
+exo
+exo.cmd
+exo.ps1
+# <<< EXOFORGE-CLI:END
+
+# >>> EXOFORGE-AGENT-TOOLING:START
+.agents/
+.claude/
+.gemini/
+AGENTS.md
+# <<< EXOFORGE-AGENT-TOOLING:END
