@@ -1,0 +1,24 @@
+Library/
+Temp/
+Logs/
+obj/
+bin/
+UserSettings/
+*.csproj
+*.sln
+!Exoforge/extensions/**/*.csproj
+!Exoforge/extensions/*.sln
+.vs/
+.idea/
+*.tgz
+Exoforge/extensions/*/manifest.json
+._*
+Exoforge/mock-game-server.token
+Temp-unity.lock/
+Exoforge/.feed/
+!Exoforge/nuget.config
+Exoforge/extensions/*/nuget.config
+Exoforge/extensions/*.Tests/nuget.config
+
+# Local environment: holds an admin session token. Copy exoforge.example.json to exoforge.json.
+Exoforge/exoforge.json

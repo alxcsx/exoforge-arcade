@@ -1,0 +1,20 @@
+{
+    "name": "Samples.BrainrotExchange.Editor",
+    "rootNamespace": "Arcade.BrainrotExchange.Editor",
+    "references": [
+        "Exoforge.SDK",
+        "Exoforge.SDK.Editor",
+        "Samples.BrainrotExchange"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

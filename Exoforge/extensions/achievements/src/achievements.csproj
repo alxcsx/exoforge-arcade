@@ -1,0 +1,24 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <OutputType>Exe</OutputType>
+
+    <!--
+      An Exoforge extension. The package below brings the SDK, the generator and the manifest plumbing
+      together, which is why nothing else is here: no path into a checkout, and nothing to adjust
+      for where the extension happens to be built.
+    -->
+    <ExoforgeExtension>true</ExoforgeExtension>
+
+    <!-- A native extension is a process. Building it through the CLI overrides the build stamp. -->
+    <ExoforgePluginType>native</ExoforgePluginType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Exoforge.Plugin.SDK" Version="0.1.50" />
+  </ItemGroup>
+</Project>

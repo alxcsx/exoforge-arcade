@@ -1,0 +1,19 @@
+{
+    "name": "Samples.BrainrotExchange",
+    "rootNamespace": "Arcade.BrainrotExchange",
+    "references": [
+        "Exoforge.SDK",
+        "Exoforge.Generated",
+        "Samples.Common",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,21 @@
+{
+    "name": "Samples.DoodleDash.Editor",
+    "rootNamespace": "Arcade.DoodleDash.Editor",
+    "references": [
+        "Samples.DoodleDash",
+        "Samples.Common",
+        "Exoforge.SDK",
+        "Exoforge.Generated"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

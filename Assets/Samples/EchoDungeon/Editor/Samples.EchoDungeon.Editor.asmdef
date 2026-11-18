@@ -1,0 +1,18 @@
+{
+    "name": "Samples.EchoDungeon.Editor",
+    "rootNamespace": "Arcade.EchoDungeon.Editor",
+    "references": [
+        "Samples.EchoDungeon"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
