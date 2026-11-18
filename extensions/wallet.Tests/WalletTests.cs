@@ -100,4 +100,38 @@ public class WalletTests
         using (host)
             Assert.Equal("unauthorized", Assert.Throws<ExoActionException>(() => wallet.GetBalance()).Code);
     }
+
+    [Fact]
+    public void CreditOnce_same_key_credits_once()
+    {
+        var (host, wallet) = Start();
+        using (host)
+        {
+            wallet.CreditOnce("p1", 25, "t", "k1");
+            var balance = wallet.CreditOnce("p1", 25, "t", "k1");
+
+            Assert.Equal(25, balance.Coins);
+            Assert.Equal(25, wallet.GetBalance().Coins);
+            wallet.CreditOnce("p1", 5, "t", "k2");
+            Assert.Equal(30, wallet.GetBalance().Coins);
+        }
+    }
+
+    [Fact]
+    public void CreditOnce_empty_key_is_rejected()
+    {
+        var (host, wallet) = Start();
+        using (host)
+            Assert.Equal("invalid_key", Assert.Throws<ExoActionException>(() => wallet.CreditOnce("p1", 5, "t", "")).Code);
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-5)]
+    public void CreditOnce_non_positive_amounts_are_rejected(int amount)
+    {
+        var (host, wallet) = Start();
+        using (host)
+            Assert.Equal("invalid_amount", Assert.Throws<ExoActionException>(() => wallet.CreditOnce("p1", amount, "t", "k")).Code);
+    }
 }
