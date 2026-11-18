@@ -58,10 +58,10 @@ if status != "401" or code != "unauthenticated":
     sys.exit("smoke failed: a forged token got " + status + " " + body[:300])
 ' "$forged"
 
-  server_token="$(cat "$root/Exoforge/mock-game-server.token" 2>/dev/null || true)"
+  server_token="$(cat "$root/${SMOKE_PROJECT:-2d-hub}/Exoforge/mock-game-server.token" 2>/dev/null || true)"
   if [ -z "$server_token" ]; then
     cat >&2 <<'MSG'
-smoke failed: no Exoforge/mock-game-server.token, so the game server cannot report.
+smoke failed: no <project>/Exoforge/mock-game-server.token, so the game server cannot report.
 Create a service account once (needs admin approval), then save the token it issues in that file (it is git-ignored):
   ./exo user create mock-game-server@example.com --password '<secret>' --name 'Mock Game Server' --role service
   ./exo user token <user_id>

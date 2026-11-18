@@ -11,7 +11,7 @@ tag="menu-smoke-$RANDOM$RANDOM"
 token=""
 fail=0
 
-exo() { (cd "$root" && ./exo "$@"); }
+exo() { (cd "$root/${SMOKE_PROJECT:-2d-hub}" && ./exo "$@" --dir Exoforge); }
 
 login() {
   local body

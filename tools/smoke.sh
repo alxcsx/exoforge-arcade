@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Runs every sample's demo script against the cluster in Exoforge/exoforge.json.
+# Runs every sample's demo script against the running cluster. The ./exo wrapper and the game-server
+# token come from one workspace project (SMOKE_PROJECT, default 2d-hub: <project>/Exoforge).
 #   tools/smoke.sh            all samples
 #   tools/smoke.sh economy    one sample
 set -uo pipefail

@@ -9,7 +9,7 @@ achievements() {
   root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
   http="${EXO_HTTP:-http://localhost:4001}"
 
-  exo() { (cd "$root" && ./exo "$@"); }
+  exo() { (cd "$root/${SMOKE_PROJECT:-2d-hub}" && ./exo "$@" --dir Exoforge); }
   fail() { echo "FAIL: $*" >&2; return 1; }
   post() { curl -fsS -X POST "$http/api/$1" -H "authorization: Bearer $2" -H 'content-type: application/json' -d "$3"; }
   login() { curl -fsS -X POST "$http/api/auth/anonymous" -H 'content-type: application/json' -d "{\"name\":\"$1\",\"disposable\":true}" | python3 -I -c 'import json,sys; d=json.load(sys.stdin)["data"]; print(d["token"], d.get("player_id",""))'; }
@@ -51,10 +51,10 @@ print(sum(r["count"] for r in rows if r["id"] == sys.argv[1] + ":" + sys.argv[2]
     fail "$what: expected '$want', got '$got'"
   }
 
-  server_token="$(cat "$root/Exoforge/mock-game-server.token" 2>/dev/null || true)"
+  server_token="$(cat "$root/${SMOKE_PROJECT:-2d-hub}/Exoforge/mock-game-server.token" 2>/dev/null || true)"
   if [ -z "$server_token" ]; then
     cat >&2 <<'MSG'
-FAIL: Exoforge/mock-game-server.token is missing; the game server is what reports the kills.
+FAIL: <project>/Exoforge/mock-game-server.token is missing; the game server is what reports the kills.
 Create it once (needs admin approval), then save the returned token in that file (git-ignored):
   ./exo call auth issue_token --data '{"user_id":"mock-game-server","scopes":["service"]}' --json
 Then: ./exo extension push adventure_world && ./exo extension push achievements
