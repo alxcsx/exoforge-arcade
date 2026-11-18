@@ -1,17 +1,17 @@
 # Exoforge Arcade — samples
 
 Each sample is a tiny game whose design gives one set of Exoforge capabilities a reason to exist.
-The server half is plain C# extensions; the client half is one Unity scene. All samples share one
+The server half is plain C# extensions (shared, in `extensions/`); the client half is one Unity scene in its own Unity project. All samples share one
 cluster, so they also show extensions reacting to each other: coins from one game show up in
 another, and achievements unlock from all of them.
 
-| # | Game | Scene | Extensions | Capabilities it shows |
+| # | Game | Project / scene | Extensions | Capabilities it shows |
 | :- | :--- | :--- | :--- | :--- |
-| 0 | **Main Menu** of a mock game | `MainMenu` | `game_menu` | Hub for every sample · player-readable config · per-player settings · **debugging walkthrough** (rid → timeline → capture → replay) |
-| 1 | **Brainrot Exchange** — idle meme stock market | `BrainrotExchange` | `wallet`, `daily_rewards`, `brainrot_market` | Extension → extension calls through generated stubs · server-computed idle income · `[ExoCron]` price ticks broadcast to everyone · Studio-edited live-ops tables · `OnExtensionStart` seeding · `[ExoWebhook]` storefront purchase |
-| 2 | **Echo Dungeon** — top-down PvE MMO adventure | `EchoDungeon` | `adventure_world`, `achievements` | A trusted game server reporting through a `service`-scoped action · world events broadcast to all players · `OnEvent` listeners with no client calls · achievements unlocked by events from *every* sample |
+| 0 | **Main Menu** of a mock game | `2d-hub` / `MainMenu` | `game_menu` | Hub for every sample · player-readable config · per-player settings · **debugging walkthrough** (rid → timeline → capture → replay) |
+| 1 | **Brainrot Exchange** — idle meme stock market | `2d-hub` / `BrainrotExchange` | `wallet`, `daily_rewards`, `brainrot_market` | Extension → extension calls through generated stubs · server-computed idle income · `[ExoCron]` price ticks broadcast to everyone · Studio-edited live-ops tables · `OnExtensionStart` seeding · `[ExoWebhook]` storefront purchase |
+| 2 | **Echo Dungeon** — top-down PvE MMO adventure | `2d-echo-dungeon` / `EchoDungeon` | `adventure_world`, `achievements` | A trusted game server reporting through a `service`-scoped action · world events broadcast to all players · `OnEvent` listeners with no client calls · achievements unlocked by events from *every* sample |
 | 3 | **Snowball Siege** — 3D world-boss FPS | *separate Unity project* | `world_boss` (pays through `wallet`) | Shared state many players change at once · trusted hit reports · cron respawn · exactly-once payouts across services |
-| 4 | **Doodle Dash** — draw-your-level platformer | `DoodleDash` | `level_share` | File bucket uploads with metadata · browse, play and rate player-made content · the same catalog over plain HTTP |
+| 4 | **Doodle Dash** — draw-your-level platformer | `2d-doodle-dash` / `DoodleDash` | `level_share` | File bucket uploads with metadata · browse, play and rate player-made content · the same catalog over plain HTTP |
 
 **Rules every sample follows**
 
@@ -83,7 +83,7 @@ and achievement toasts pop up for you.
 - **Trust boundary:** the client never reports its own kills. The **mock game server** — an
   Editor-only component labelled as standing in for the dedicated server — holds a `service`-role
   token, reports the local player's kills, and simulates a few bot adventurers so the feed feels
-  populated. Its token is read from `Exoforge/` and never ships in a build.
+  populated. Its token is read from the project's `Exoforge/` and never ships in a build.
 - **`achievements` has no client-facing writes.** It only listens through `OnEvent`: to
   `adventure_world`, to `brainrot_market` ("first trade"), to `level_share` ("published a level") and
   to `world_boss`. Adding an achievement is a Studio row, not code.
@@ -129,7 +129,7 @@ best-practices test suite: where Exoforge is broken, a sample fails instead of h
 script asserts its results and exits non-zero on a wrong one.
 
 On SDK 0.1.48 everything is green: `tools/smoke.sh` (all five samples), `dotnet test
-Exoforge/extensions/Exoforge.Extensions.sln` (79 tests) and `tools/unity.sh ArcadeSetup.SetUpAll`.
+extensions/Exoforge.Extensions.sln` (79 tests) and `tools/unity.sh <project> ArcadeSetup.SetUpAll` for each project.
 These failed on 0.1.42 and are the regressions to watch for:
 
 | Would fail | Exoforge bug |
@@ -145,34 +145,67 @@ These failed on 0.1.42 and are the regressions to watch for:
 | Extensions stop building after an SDK upgrade | `nuget.config` kept the old package-cache path (F13) |
 
 Unity's profile has no `IsExternalInit`, so an assembly that declares a `record` carries its own
-one-line internal copy - `Assets/Samples/BrainrotExchange/IsExternalInit.cs` and
-`Assets/Samples/DoodleDash/IsExternalInit.cs`, the file **Exoforge ▸ Studio ▸ Settings ▸ C# Records
+one-line internal copy - `2d-hub/Assets/Samples/BrainrotExchange/IsExternalInit.cs` and
+`2d-doodle-dash/Assets/Samples/DoodleDash/IsExternalInit.cs`, the file **Exoforge ▸ Studio ▸ Settings ▸ C# Records
 Support** writes. A copy is per assembly: add one to any asmdef of yours that uses records.
+
+## Layout
+
+```
+extensions/            shared server extensions, their tests, Exoforge.Extensions.sln, nuget.config
+packages/exoforge.arcade.common/   local UPM package shared by the 2D projects (Samples.Common)
+2d-hub/                Unity project: MainMenu + BrainrotExchange
+2d-echo-dungeon/       Unity project: EchoDungeon
+2d-doodle-dash/        Unity project: DoodleDash
+tools/                 smoke.sh + smoke/*, unity.sh <project>, sync-sdk.sh
+```
+
+Each Unity project has its own `Assets/`, `Packages/`, `ProjectSettings/` and `Exoforge/`
+(`exoforge.json.example` points `extensions_dir` at `../../extensions`). All projects talk to one
+shared cluster; the extensions are built and pushed once.
 
 ## Running them
 
 You need only the Exoforge SDK tarball (`com.exoforge.sdk-<version>.tgz`), a running Exoforge
-cluster, the .NET SDK 10 (the extensions target `net10.0`, which `exo extension new` picks), and Unity 6000.6.
+cluster, the .NET SDK 10 (the extensions target `net10.0`) and Unity 6000.6.
 
-1. Put the tarball in `Packages/` (the manifest refers to it as `file:com.exoforge.sdk-<version>.tgz`).
-2. Open the project in Unity. The extensions restore the SDK from `Exoforge/.feed/` (copied from the
-   package on the first build; git-ignored) through the committed `Exoforge/nuget.config`. Then, in **Exoforge ▸ Studio**:
-   - **Settings:** point the `local` environment at your cluster and sign in.
-   - **Extensions:** **Build & Deploy** every extension.
-   - Click **Repair & Regenerate Client**.
-3. Open `Assets/Scenes/MainMenu.unity` and press Play.
+1. Place the tarball in every project (git-ignored). Build it in the exoforge checkout with
+   `just pack-unity`, then:
 
-Prefer a terminal? `./exo` is installed at the project root by the SDK:
+   ```bash
+   tools/sync-sdk.sh /path/to/exoforge/dist/com.exoforge.sdk-0.1.52.tgz
+   ```
+
+   It copies the tarball into each `<project>/Packages/`, rewrites the manifests, and stages the
+   extension SDK package in `extensions/.feed/` (git-ignored) for the extensions' `nuget.config`.
+2. In the project you want, copy `Exoforge/exoforge.json.example` to `Exoforge/exoforge.json`
+   (git-ignored), then open it in Unity. In **Exoforge ▸ Studio**: point the `local` environment at
+   your cluster and sign in, **Build & Deploy** the extensions, **Repair & Regenerate Client**.
+3. Generate the scene(s), headless or from the **Arcade ▸ Set Up All Scenes** menu:
+
+   ```bash
+   tools/unity.sh 2d-hub ArcadeSetup.SetUpAll           # MainMenu, BrainrotExchange
+   tools/unity.sh 2d-echo-dungeon ArcadeSetup.SetUpAll  # EchoDungeon
+   tools/unity.sh 2d-doodle-dash ArcadeSetup.SetUpAll   # DoodleDash
+   ```
+
+   Unity runs are slow: run one project at a time. Then open `Assets/Scenes/<Scene>.unity` and press Play.
+
+Prefer a terminal? `./exo` is installed at each project root by the SDK (use `--dir Exoforge`
+from the project root, or run it in `<project>/Exoforge`):
 
 ```bash
-./exo connect --email <admin email> --password <password> --save
+cd 2d-hub
+./exo connect --email <admin email> --password <password> --save --dir Exoforge
 for e in wallet daily_rewards brainrot_market adventure_world level_share achievements game_menu; do
-  ./exo extension push $e
+  ./exo extension push $e --dir Exoforge
 done
-./exo sync
+./exo sync --dir Exoforge
 ```
 
-`tools/smoke.sh` runs every demo script above against the cluster through `./exo call`.
+`tools/smoke.sh` runs every demo script above against the cluster through `./exo call`, using
+`2d-hub` as the workspace (`SMOKE_PROJECT=<project>` picks another). The game-server token
+(`<project>/Exoforge/mock-game-server.token`) is local and never committed.
 
 The storefront webhook in Brainrot Exchange checks receipts against `arcade-demo-secret`. It is a
 sample value everyone can read here — a real game keeps its signing secret out of the repository.
