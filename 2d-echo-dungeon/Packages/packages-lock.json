@@ -1,7 +1,15 @@
 {
   "dependencies": {
+    "com.exoforge.arcade.common": {
+      "version": "file:../../packages/exoforge.arcade.common",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.unity.inputsystem": "1.20.0"
+      }
+    },
     "com.exoforge.sdk": {
-      "version": "file:com.exoforge.sdk-0.1.50.tgz",
+      "version": "file:com.exoforge.sdk-0.1.52.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}
