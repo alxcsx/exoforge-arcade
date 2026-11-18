@@ -10,7 +10,7 @@ namespace Arcade.SnowballSiege
         {
             var target = collision.collider.GetComponent<BossTarget>();
             if (target == null) return;
-            var game = FindObjectOfType<BossGame>();
+            var game = FindFirstObjectByType<BossGame>();
             if (game == null || !game.BossAlive) return;
             game.NotifyHit(target.DamageForPart(), target.Part);
             Destroy(gameObject);

@@ -10,13 +10,16 @@ namespace Arcade.SnowballSiege
         public GameObject? SnowballPrefab;
         public Material? SnowballMaterial;
 
+        private const float ArenaRadius = 18f;
+
         private Camera? _cam;
         private float _nextFire;
+        private float _pitch;
         private bool _locked = true;
 
         private void Awake()
         {
-            _cam = Camera.main;
+            _cam = GetComponentInChildren<Camera>() ?? Camera.main;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
@@ -39,14 +42,33 @@ namespace Arcade.SnowballSiege
             if (kb.dKey.isPressed) move += Vector3.right;
             transform.position += transform.TransformDirection(move.normalized) * Speed * Time.deltaTime;
 
+            var p = transform.position;
+            var flat = new Vector2(p.x, p.z);
+            if (flat.magnitude > ArenaRadius)
+            {
+                flat = flat.normalized * ArenaRadius;
+                transform.position = new Vector3(flat.x, p.y, flat.y);
+            }
+
             var mouse = Mouse.current;
             if (mouse != null && _locked)
             {
                 var d = mouse.delta.ReadValue();
                 transform.Rotate(0f, d.x * 0.1f, 0f);
+                _pitch = Mathf.Clamp(_pitch - d.y * 0.1f, -80f, 80f);
+                if (_cam != null) _cam.transform.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
             }
 
-            if (mouse != null && mouse.leftButton.wasPressedThisFrame && Time.time >= _nextFire)
+            if (mouse == null || !mouse.leftButton.wasPressedThisFrame) return;
+
+            if (!_locked)
+            {
+                // The click that re-locks the cursor must not also throw a snowball.
+                _locked = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else if (Time.time >= _nextFire)
             {
                 _nextFire = Time.time + Cooldown;
                 Fire();
@@ -55,13 +77,15 @@ namespace Arcade.SnowballSiege
 
         private void Fire()
         {
+            // Aim along the camera so the pitch decides whether a throw reaches the head.
+            var aim = _cam != null ? _cam.transform : transform;
             var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             go.transform.localScale = Vector3.one * 0.3f;
-            go.transform.position = transform.position + transform.forward;
+            go.transform.position = aim.position + aim.forward;
             var rb = go.AddComponent<Rigidbody>();
             rb.mass = 0.2f;
             rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.linearVelocity = transform.forward * 24f;
+            rb.linearVelocity = aim.forward * 24f;
             if (SnowballMaterial != null)
             {
                 var r = go.GetComponent<Renderer>();
