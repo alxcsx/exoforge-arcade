@@ -152,19 +152,39 @@ public class AuthAuthenticateRequest
 /// <summary>Response model for auth.authenticate action.</summary>
 public class AuthAuthenticateResponse
 {
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
+}
+
+/// <summary>Request payload for auth.refresh action.</summary>
+public class AuthRefreshRequest
+{
+    [JsonPropertyName("token")]
+    public string Token { get; set; } = default!;
+}
+
+/// <summary>Response model for auth.refresh action.</summary>
+public class AuthRefreshResponse
+{
+    [JsonPropertyName("token")]
+    public string Token { get; set; } = default!;
+    [JsonPropertyName("refresh_token")]
+    public string RefreshToken { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("expires_in")]
+    public long ExpiresIn { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.login action.</summary>
 public class AuthLoginRequest
 {
-    [JsonPropertyName("email")]
-    public string Email { get; set; } = default!;
     [JsonPropertyName("password")]
     public string Password { get; set; } = default!;
+    [JsonPropertyName("email")]
+    public string Email { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.login action.</summary>
@@ -172,10 +192,10 @@ public class AuthLoginResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.verify_scope action.</summary>
@@ -207,18 +227,18 @@ public class AuthRegisterRequest
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("email")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Email { get; set; } = default!;
     [JsonPropertyName("password")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("email")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Email { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.register action.</summary>
@@ -230,10 +250,10 @@ public class AuthRegisterResponse
     public string UserId { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.create_player action.</summary>
@@ -245,18 +265,18 @@ public class AuthCreatePlayerRequest
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("email")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Email { get; set; } = default!;
     [JsonPropertyName("password")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("email")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Email { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.create_player action.</summary>
@@ -268,10 +288,10 @@ public class AuthCreatePlayerResponse
     public string UserId { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.anonymous action.</summary>
@@ -290,10 +310,10 @@ public class AuthAnonymousResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.set_display_name action.</summary>
@@ -820,12 +840,12 @@ public class ResourceStoreListRequest
     [JsonPropertyName("sort")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Sort { get; set; } = default!;
-    [JsonPropertyName("filter")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Filter { get; set; } = default!;
     [JsonPropertyName("search")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Search { get; set; } = default!;
+    [JsonPropertyName("filter")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Filter { get; set; } = default!;
     [JsonPropertyName("limit")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Limit { get; set; } = default!;
@@ -912,13 +932,13 @@ public class WalletBalance
 /// <summary>Request payload for ws.broadcast action.</summary>
 public class WsBroadcastRequest
 {
-    [JsonPropertyName("event")]
-    public string Event { get; set; } = default!;
     [JsonPropertyName("payload")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Payload { get; set; } = default!;
     [JsonPropertyName("topic")]
     public string Topic { get; set; } = default!;
+    [JsonPropertyName("event")]
+    public string Event { get; set; } = default!;
 }
 
 /// <summary>Response model for ws.broadcast action.</summary>
@@ -1522,15 +1542,67 @@ public class AuthServiceClient
         });
     }
 
+    /// <summary>Exchanges a refresh token for a fresh access/refresh pair.</summary>
+    public Task<AuthRefreshResponse> RefreshAsync(string token, CancellationToken cancellationToken = default)
+    {
+        var req = new AuthRefreshRequest
+        {
+            Token = token,
+        };
+        return RefreshAsync(req, cancellationToken);
+    }
+
+    /// <summary>Exchanges a refresh token for a fresh access/refresh pair.</summary>
+    public void Refresh(string token, Action<AuthRefreshResponse> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RefreshAsync(token).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.refresh] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Exchanges a refresh token for a fresh access/refresh pair.</summary>
+    public Task<AuthRefreshResponse> RefreshAsync(AuthRefreshRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<AuthRefreshResponse>("auth", "refresh", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Exchanges a refresh token for a fresh access/refresh pair.</summary>
+    public void Refresh(AuthRefreshRequest request, Action<AuthRefreshResponse> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RefreshAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.refresh] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthLoginResponse> LoginAsync(string email, string password, CancellationToken cancellationToken = default)
+    public Task<AuthLoginResponse> LoginAsync(string password, string email, CancellationToken cancellationToken = default)
     {
         var req = new AuthLoginRequest
         {
-            Email = email,
             Password = password,
+            Email = email,
         };
         return LoginAsync(req, cancellationToken);
     }
@@ -1538,9 +1610,9 @@ public class AuthServiceClient
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Login(string email, string password, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Login(string password, string email, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = LoginAsync(email, password).ContinueWith(t =>
+        _ = LoginAsync(password, email).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -1640,16 +1712,16 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
+    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, CancellationToken cancellationToken = default)
     {
         var req = new AuthRegisterRequest
         {
             Name = name,
             UserId = userId,
-            Email = email,
             Password = password,
-            Scopes = scopes,
             PlayerId = playerId,
+            Scopes = scopes,
+            Email = email,
         };
         return RegisterAsync(req, cancellationToken);
     }
@@ -1657,9 +1729,9 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Register(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Register(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = RegisterAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
+        _ = RegisterAsync(name, userId, password, playerId, scopes, email).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -1703,24 +1775,24 @@ public class AuthServiceClient
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
+    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, CancellationToken cancellationToken = default)
     {
         var req = new AuthCreatePlayerRequest
         {
             Name = name,
             UserId = userId,
-            Email = email,
             Password = password,
-            Scopes = scopes,
             PlayerId = playerId,
+            Scopes = scopes,
+            Email = email,
         };
         return CreatePlayerAsync(req, cancellationToken);
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public void CreatePlayer(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void CreatePlayer(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = CreatePlayerAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
+        _ = CreatePlayerAsync(name, userId, password, playerId, scopes, email).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3379,14 +3451,14 @@ public class ResourceStoreServiceClient
     }
 
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, CancellationToken cancellationToken = default)
+    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement search, JsonElement filter, JsonElement limit, string resource, CancellationToken cancellationToken = default)
     {
         var req = new ResourceStoreListRequest
         {
             Offset = offset,
             Sort = sort,
-            Filter = filter,
             Search = search,
+            Filter = filter,
             Limit = limit,
             Resource = resource,
         };
@@ -3394,9 +3466,9 @@ public class ResourceStoreServiceClient
     }
 
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public void List(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void List(JsonElement offset, JsonElement sort, JsonElement search, JsonElement filter, JsonElement limit, string resource, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ListAsync(offset, sort, filter, search, limit, resource).ContinueWith(t =>
+        _ = ListAsync(offset, sort, search, filter, limit, resource).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3756,21 +3828,21 @@ public class WsServiceClient
     }
 
     /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public Task<WsBroadcastResponse> BroadcastAsync(string @event, JsonElement payload, string topic, CancellationToken cancellationToken = default)
+    public Task<WsBroadcastResponse> BroadcastAsync(JsonElement payload, string topic, string @event, CancellationToken cancellationToken = default)
     {
         var req = new WsBroadcastRequest
         {
-            Event = @event,
             Payload = payload,
             Topic = topic,
+            Event = @event,
         };
         return BroadcastAsync(req, cancellationToken);
     }
 
     /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public void Broadcast(string @event, JsonElement payload, string topic, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Broadcast(JsonElement payload, string topic, string @event, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = BroadcastAsync(@event, payload, topic).ContinueWith(t =>
+        _ = BroadcastAsync(payload, topic, @event).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3839,7 +3911,7 @@ public class WsServiceClient
 
 // @exoforge-contract: {"Name":"achievements","Doc":null,"Actions":[{"Name":"list","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"description","Type":"string","Optional":false},{"Name":"needed","Type":"integer","Optional":false},{"Name":"progress","Type":"integer","Optional":false},{"Name":"unlocked","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.AchievementStatus"}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"achievement_unlocked","Topic":"achievements:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"achievement_id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false}]}],"Resources":[{"Name":"achievement_defs","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"title","Type":"string"},{"Name":"description","Type":"string"},{"Name":"trigger","Type":"string"},{"Name":"count","Type":"integer"}]},{"Name":"achievement_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"trigger","Type":"string"},{"Name":"count","Type":"integer"}]},{"Name":"unlocks","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"achievement_id","Type":"string"},{"Name":"unlocked_at","Type":"datetime"}]}],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"adventure_world","Doc":null,"Actions":[{"Name":"get_progress","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"kills","Type":"integer","Optional":false},{"Name":"chests","Type":"integer","Optional":false},{"Name":"zones","Type":"integer","Optional":false},{"Name":"gold","Type":"integer","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"updated_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.AdventurerProgress"}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"enemy","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"gold","Type":"integer","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[{"Name":"adventurer_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"name","Type":"string"},{"Name":"kills","Type":"integer"},{"Name":"chests","Type":"integer"},{"Name":"zones","Type":"integer"},{"Name":"gold","Type":"integer"},{"Name":"zone","Type":"string"},{"Name":"updated_at","Type":"integer"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false}],"ReturnFields":[{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"email","Type":"string","Optional":false},{"Name":"password","Type":"string","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"required_scope","Type":"string","Optional":false}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false},{"Name":"dry_run","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
+// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"refresh","Doc":"Exchanges a refresh token for a fresh access/refresh pair.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"refresh_token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"expires_in","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"password","Type":"string","Optional":false},{"Name":"email","Type":"string","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"required_scope","Type":"string","Optional":false}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false},{"Name":"dry_run","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"brainrot_market","Doc":null,"Actions":[{"Name":"get_portfolio","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"map","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false},{"Name":"pending_idle_coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio"},{"Name":"collect_idle","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.IdleCollected"},{"Name":"buy_farm","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"map","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false},{"Name":"pending_idle_coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio"},{"Name":"buy_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false},{"Name":"price","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade"},{"Name":"sell_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false},{"Name":"price","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade"}],"Events":[{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}]},{"Name":"prices_ticked","Topic":"market:ticker","Doc":null,"PayloadFields":[{"Name":"quotes","Type":"map","Optional":false}]}],"Resources":[{"Name":"meme_stocks","PrimaryKey":"symbol","Columns":[{"Name":"symbol","Type":"string"},{"Name":"name","Type":"string"},{"Name":"price","Type":"integer"},{"Name":"base_price","Type":"integer"},{"Name":"min_price","Type":"integer"},{"Name":"max_price","Type":"integer"},{"Name":"volatility_percent","Type":"integer"}]},{"Name":"portfolios","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"symbol","Type":"string"},{"Name":"shares","Type":"integer"}]},{"Name":"farms","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"level","Type":"integer"},{"Name":"last_collected_at","Type":"datetime"}]},{"Name":"storefront_config","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"secret","Type":"string"}]},{"Name":"storefront_receipts","PrimaryKey":"receipt_id","Columns":[{"Name":"receipt_id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"coins","Type":"integer"}]}],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"cron","Doc":null,"Actions":[{"Name":"status","Doc":"Returns status and count of active cron jobs.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"active_jobs","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"daily_rewards","Doc":null,"Actions":[{"Name":"get_status","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"streak","Type":"integer","Optional":false},{"Name":"next_day","Type":"integer","Optional":false},{"Name":"can_claim","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyStatus"},{"Name":"claim","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"day","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false},{"Name":"balance","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyClaimResult"}],"Events":[],"Resources":[{"Name":"daily_reward_table","PrimaryKey":"day","Columns":[{"Name":"day","Type":"integer"},{"Name":"coins","Type":"integer"}]},{"Name":"daily_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"streak","Type":"integer"},{"Name":"last_claimed_on","Type":"datetime"}]}],"CustomInputs":[]}
@@ -3850,8 +3922,8 @@ public class WsServiceClient
 // @exoforge-contract: {"Name":"level_share","Doc":null,"Actions":[{"Name":"upload_level","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"png_base64","Type":"string","Optional":false}],"ReturnFields":[{"Name":"file_id","Type":"string","Optional":false},{"Name":"sha256","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUploadResult"},{"Name":"publish","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"title","Type":"string","Optional":false},{"Name":"difficulty","Type":"string","Optional":false},{"Name":"file_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"level_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelPublishResult"},{"Name":"get_level_url","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"url","Type":"string","Optional":false},{"Name":"expires_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUrlResult"},{"Name":"browse","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"tag","Type":"string","Optional":false},{"Name":"sort","Type":"string","Optional":false},{"Name":"limit","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"author_id","Type":"string","Optional":false},{"Name":"author","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"tag","Type":"string","Optional":false},{"Name":"plays","Type":"integer","Optional":false},{"Name":"rating","Type":"float","Optional":false},{"Name":"rating_count","Type":"integer","Optional":false},{"Name":"published_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LevelSummary"},{"Name":"rate","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false},{"Name":"stars","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"rating","Type":"float","Optional":false},{"Name":"rating_count","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelRateResult"},{"Name":"record_clear","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false}],"ReturnFields":[{"Name":"counted","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelClearResult"}],"Events":[{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"level_id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"tag","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[{"Name":"levels","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"author_id","Type":"string"},{"Name":"author","Type":"string"},{"Name":"title","Type":"string"},{"Name":"tag","Type":"string"},{"Name":"file_id","Type":"string"},{"Name":"file_sha","Type":"string"},{"Name":"plays","Type":"integer"},{"Name":"rating_sum","Type":"integer"},{"Name":"rating_count","Type":"integer"},{"Name":"published_at","Type":"integer"}]},{"Name":"ratings","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"level_id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"stars","Type":"integer"}]},{"Name":"level_uploads","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"sha256","Type":"string"},{"Name":"size","Type":"integer"},{"Name":"uploaded_at","Type":"integer"}]},{"Name":"level_clears","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"key","Type":"string"},{"Name":"cleared_at","Type":"integer"}]}],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"lldb","Doc":null,"Actions":[{"Name":"health_check","Doc":"Performs a low-level ping to verify the database is reachable.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"connection_lost","Topic":null,"Doc":"Fired when the underlying database pool drops connection.","PayloadFields":[{"Name":"reason","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"player_data","Doc":null,"Actions":[{"Name":"get_player","Doc":"Retrieves player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a player profile record, optionally linked to a user account.","Scope":"global","Transport":"auto","Params":[{"Name":"profile","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_player","Doc":"Updates player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"data","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_data","Doc":"Retrieves a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_data","Doc":"Sets a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_data","Doc":"Deletes a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_all_data","Doc":"Retrieves all key-value state entries for a player as a map.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"player_created","Topic":null,"Doc":"Emitted when a new player account is created.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false},{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"player_deleted","Topic":null,"Doc":"Emitted when a player account is deleted.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false},{"Name":"player_id","Type":"string","Optional":false}]}],"Resources":[{"Name":"players","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"user_id","Type":"string"},{"Name":"name","Type":"string"},{"Name":"level","Type":"integer"},{"Name":"status","Type":"string"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false},{"Name":"sort","Type":"term","Optional":false},{"Name":"filter","Type":"term","Optional":false},{"Name":"search","Type":"term","Optional":false},{"Name":"limit","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false},{"Name":"rows","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false},{"Name":"optional","Type":"term","Optional":false}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
+// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false},{"Name":"sort","Type":"term","Optional":false},{"Name":"search","Type":"term","Optional":false},{"Name":"filter","Type":"term","Optional":false},{"Name":"limit","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false},{"Name":"rows","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false},{"Name":"optional","Type":"term","Optional":false}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"sample_plugin","Doc":null,"Actions":[{"Name":"ping","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null},{"Name":"increment","Doc":null,"Scope":"global","Transport":"auto","Params":[{"Name":"amount","Type":"integer","Optional":false},{"Name":"counter_id","Type":"integer","Optional":false}],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null},{"Name":"injected","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"string","ReturnsList":false,"ReturnTypeName":null},{"Name":"echo","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"value","Type":"integer","Optional":false}],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"value_changed","Topic":"sample:events","Doc":null,"PayloadFields":[{"Name":"new_value","Type":"integer","Optional":false},{"Name":"delta","Type":"integer","Optional":false},{"Name":"counter_id","Type":"integer","Optional":false}]}],"Resources":[{"Name":"counters","PrimaryKey":"counter_id","Columns":[{"Name":"counter_id","Type":"integer"},{"Name":"value","Type":"integer"},{"Name":"status","Type":"string"}]}],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"transport","Doc":null,"Actions":[{"Name":"status","Doc":"Returns transport layer status.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"layer","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
 // @exoforge-contract: {"Name":"wallet","Doc":null,"Actions":[{"Name":"get_balance","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"coins","Type":"integer","Optional":false},{"Name":"updated_at","Type":"datetime","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.WalletBalance"}],"Events":[],"Resources":[{"Name":"wallet_balances","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"coins","Type":"integer"},{"Name":"updated_at","Type":"datetime"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"ws","Doc":null,"Actions":[{"Name":"broadcast","Doc":"Broadcasts a frame to an active WebSocket topic.","Scope":"global","Transport":"auto","Params":[{"Name":"event","Type":"string","Optional":false},{"Name":"payload","Type":"map","Optional":false},{"Name":"topic","Type":"string","Optional":false}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"connection_count","Doc":"Retrieves current active WebSocket connection count.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
+// @exoforge-contract: {"Name":"ws","Doc":null,"Actions":[{"Name":"broadcast","Doc":"Broadcasts a frame to an active WebSocket topic.","Scope":"global","Transport":"auto","Params":[{"Name":"payload","Type":"map","Optional":false},{"Name":"topic","Type":"string","Optional":false},{"Name":"event","Type":"string","Optional":false}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"connection_count","Doc":"Retrieves current active WebSocket connection count.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
