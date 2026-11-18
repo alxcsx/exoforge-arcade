@@ -10,7 +10,7 @@ another, and achievements unlock from all of them.
 | 0 | **Main Menu** of a mock game | `2d-hub` / `MainMenu` | `game_menu` | Hub for every sample · player-readable config · per-player settings · **debugging walkthrough** (rid → timeline → capture → replay) |
 | 1 | **Brainrot Exchange** — idle meme stock market | `2d-hub` / `BrainrotExchange` | `wallet`, `daily_rewards`, `brainrot_market` | Extension → extension calls through generated stubs · server-computed idle income · `[ExoCron]` price ticks broadcast to everyone · Studio-edited live-ops tables · `OnExtensionStart` seeding · `[ExoWebhook]` storefront purchase |
 | 2 | **Echo Dungeon** — top-down PvE MMO adventure | `2d-echo-dungeon` / `EchoDungeon` | `adventure_world`, `achievements` | A trusted game server reporting through a `service`-scoped action · world events broadcast to all players · `OnEvent` listeners with no client calls · achievements unlocked by events from *every* sample |
-| 3 | **Snowball Siege** — 3D world-boss FPS | *separate Unity project* | `world_boss` (pays through `wallet`) | Shared state many players change at once · trusted hit reports · cron respawn · exactly-once payouts across services |
+| 3 | **Snowball Siege** — 3D world-boss FPS | `3d-snowball-siege` *(separate Unity project)* | `world_boss` (pays through `wallet`; `wallet.credit_once`) | Shared state many players change at once · trusted hit reports with `spawn_boss` (**service**) · `boss_spawned` events · cron respawn · exactly-once payouts across services |
 | 4 | **Doodle Dash** — draw-your-level platformer | `2d-doodle-dash` / `DoodleDash` | `level_share` | File bucket uploads with metadata · browse, play and rate player-made content · the same catalog over plain HTTP |
 
 **Rules every sample follows**
@@ -53,7 +53,7 @@ Logistics*).
 
 | Extension | Actions | Resources | Events | Cron |
 | :--- | :--- | :--- | :--- | :--- |
-| `wallet` | `get_balance` (player), `credit`, `debit` (extensions only) | `wallet_balances` | — | — |
+| `wallet` | `get_balance` (player), `credit`, `debit`, `credit_once` (extensions only) | `wallet_balances` | — | — |
 | `daily_rewards` | `get_status`, `claim` (player) | `daily_reward_table` (Studio), `daily_claims` | — | — |
 | `brainrot_market` | `get_portfolio`, `collect_idle`, `buy_farm`, `buy_shares`, `sell_shares` (player); `storefront_purchase` (webhook) | `meme_stocks` (player-readable, Studio), `portfolios`, `farms` | `prices_ticked` on `market:ticker` | `tick_prices` every minute |
 
@@ -100,7 +100,7 @@ proportion to their damage, and a new boss spawns on a schedule.
 
 | Extension | Actions | Resources | Events | Cron |
 | :--- | :--- | :--- | :--- | :--- |
-| `world_boss` | `report_hit` (**service**); `get_state` (player) | `boss_state` singleton, `boss_damage` | `boss_damaged`, `boss_defeated` on `world_boss:live` | respawn every 10 min, also on startup |
+| `world_boss` | `report_hit`, `spawn_boss` (**service**); `get_state` (player) | `boss_state` singleton, `boss_damage` | `boss_spawned`, `boss_damaged`, `boss_defeated` on `world_boss:live` | respawn every 10 min, also on startup |
 
 HP never goes below zero and a boss pays out exactly once, even under concurrent hits. Payouts go
 through `wallet.credit`, so the coins show up in Brainrot Exchange. It's a separate project because
@@ -128,8 +128,8 @@ The samples call the SDK the way its docs prescribe, with no workarounds, so the
 best-practices test suite: where Exoforge is broken, a sample fails instead of hiding it. Every smoke
 script asserts its results and exits non-zero on a wrong one.
 
-On SDK 0.1.48 everything is green: `tools/smoke.sh` (all five samples), `dotnet test
-extensions/Exoforge.Extensions.sln` (79 tests) and `tools/unity.sh <project> ArcadeSetup.SetUpAll` for each project.
+On SDK 0.1.48 everything is green: `tools/smoke.sh` (all six samples), `dotnet test
+extensions/Exoforge.Extensions.sln` (79 tests) <!-- TODO real count after WP4 --> and `tools/unity.sh <project> ArcadeSetup.SetUpAll` for each project.
 These failed on 0.1.42 and are the regressions to watch for:
 
 | Would fail | Exoforge bug |
@@ -157,6 +157,7 @@ packages/exoforge.arcade.common/   local UPM package shared by the 2D projects (
 2d-hub/                Unity project: MainMenu + BrainrotExchange
 2d-echo-dungeon/       Unity project: EchoDungeon
 2d-doodle-dash/        Unity project: DoodleDash
+3d-snowball-siege/     Unity project: Snowball Siege
 tools/                 smoke.sh + smoke/*, unity.sh <project>, sync-sdk.sh
 ```
 
@@ -187,6 +188,7 @@ cluster, the .NET SDK 10 (the extensions target `net10.0`) and Unity 6000.6.
    tools/unity.sh 2d-hub ArcadeSetup.SetUpAll           # MainMenu, BrainrotExchange
    tools/unity.sh 2d-echo-dungeon ArcadeSetup.SetUpAll  # EchoDungeon
    tools/unity.sh 2d-doodle-dash ArcadeSetup.SetUpAll   # DoodleDash
+   tools/unity.sh 3d-snowball-siege ArcadeSetup.SetUpAll # SnowballSiege
    ```
 
    Unity runs are slow: run one project at a time. Then open `Assets/Scenes/<Scene>.unity` and press Play.
