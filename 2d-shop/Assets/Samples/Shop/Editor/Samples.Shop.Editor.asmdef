@@ -1,0 +1,21 @@
+{
+    "name": "Samples.Shop.Editor",
+    "rootNamespace": "Arcade.Shop.Editor",
+    "references": [
+        "Samples.Shop",
+        "Samples.Common",
+        "Exoforge.SDK",
+        "Exoforge.Generated"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

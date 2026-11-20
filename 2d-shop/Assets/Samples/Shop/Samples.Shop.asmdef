@@ -1,0 +1,20 @@
+{
+    "name": "Samples.Shop",
+    "rootNamespace": "Arcade.Shop",
+    "references": [
+        "Exoforge.SDK",
+        "Exoforge.Generated",
+        "Samples.Common",
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

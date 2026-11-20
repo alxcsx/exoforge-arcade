@@ -12,6 +12,7 @@ another, and achievements unlock from all of them.
 | 2 | **Echo Dungeon** — top-down PvE MMO adventure | `2d-echo-dungeon` / `EchoDungeon` | `adventure_world`, `achievements` | A trusted game server reporting through a `service`-scoped action · world events broadcast to all players · `OnEvent` listeners with no client calls · achievements unlocked by events from *every* sample |
 | 3 | **Snowball Siege** — 3D world-boss FPS | *separate Unity project* | `world_boss` (pays through `wallet`) | Shared state many players change at once · trusted hit reports · cron respawn · exactly-once payouts across services |
 | 4 | **Doodle Dash** — draw-your-level platformer | `2d-doodle-dash` / `DoodleDash` | `level_share` | File bucket uploads with metadata · browse, play and rate player-made content · the same catalog over plain HTTP |
+| 5 | **Item Shop** — 2D shop and inventory | `2d-shop` / `Shop` | `items`, `inventario`, `loja_itens` | Three extensions with one job each · `loja_itens` orchestrates a purchase through `items` and `inventario` · foreign-key resources (`inventario_itens.item_id` → `itens.id`) · Studio-seeded catalog and offers · server-owned gold |
 
 **Rules every sample follows**
 
@@ -120,6 +121,26 @@ The PNG goes to the file bucket with metadata (author, width, height). The bucke
 the difficulty tag (`difficulty:hard`) is a column on the `levels` row; `level_share` stores the reference, play count and rating. You can only publish a level after
 clearing it yourself. The same catalog is reachable over plain HTTP, shown with `curl`.
 
+## 5. Item Shop — shop and inventory
+
+**The game.** A 2D shop window: a two-column grid of item cards, a gold counter, an inventory
+panel beside it, and a confirmation popup before each purchase. The UI text is in Portuguese.
+
+| Extension | Actions | Resources |
+| :--- | :--- | :--- |
+| `items` | `listar_catalogo`, `obter_item` (player); `seed_itens` (studio) | `itens` (player-readable, Studio) |
+| `inventario` | `obter_inventario` (player); `add_item`, `add_gold` (extensions only) | `inventario` (gold), `inventario_itens` |
+| `loja_itens` | `listar_itens`, `comprar_item` (player); `seed_loja` (studio) | `loja_ofertas` (player-readable, Studio) |
+
+- **The client never sends a price.** `comprar_item` reads the offer and the catalog price on the
+  server, then calls `inventario.add_item`, which refuses with `sem_ouro` when the gold is short.
+- **Gold lives in `inventario`** and a new player starts with 1000. Only extensions can add gold or items.
+- **Studio is the live-ops console:** run `seed_itens` and `seed_loja` once, then edit prices and
+  offers as rows; the shop picks them up without a build.
+
+**Demo:** seed → open the shop → buy two potions (stacked) → try the legendary sword twice, the
+second is refused → change a price in Studio → it changes in the shop.
+
 ---
 
 ## What red means
@@ -128,7 +149,7 @@ The samples call the SDK the way its docs prescribe, with no workarounds, so the
 best-practices test suite: where Exoforge is broken, a sample fails instead of hiding it. Every smoke
 script asserts its results and exits non-zero on a wrong one.
 
-On SDK 0.1.48 everything is green: `tools/smoke.sh` (all five samples), `dotnet test
+On SDK 0.1.48 everything is green: `tools/smoke.sh` (all six samples), `dotnet test
 extensions/Exoforge.Extensions.sln` (79 tests) and `tools/unity.sh <project> ArcadeSetup.SetUpAll` for each project.
 These failed on 0.1.42 and are the regressions to watch for:
 
@@ -157,6 +178,7 @@ packages/exoforge.arcade.common/   local UPM package shared by the 2D projects (
 2d-hub/                Unity project: MainMenu + BrainrotExchange
 2d-echo-dungeon/       Unity project: EchoDungeon
 2d-doodle-dash/        Unity project: DoodleDash
+2d-shop/               Unity project: Shop
 tools/                 smoke.sh + smoke/*, unity.sh <project>, sync-sdk.sh
 ```
 
@@ -187,6 +209,7 @@ cluster, the .NET SDK 10 (the extensions target `net10.0`) and Unity 6000.6.
    tools/unity.sh 2d-hub ArcadeSetup.SetUpAll           # MainMenu, BrainrotExchange
    tools/unity.sh 2d-echo-dungeon ArcadeSetup.SetUpAll  # EchoDungeon
    tools/unity.sh 2d-doodle-dash ArcadeSetup.SetUpAll   # DoodleDash
+   tools/unity.sh 2d-shop ArcadeSetup.SetUpAll          # Shop
    ```
 
    Unity runs are slow: run one project at a time. Then open `Assets/Scenes/<Scene>.unity` and press Play.
@@ -197,7 +220,7 @@ from the project root, or run it in `<project>/Exoforge`):
 ```bash
 cd 2d-hub
 ./exo connect --email <admin email> --password <password> --save --dir Exoforge
-for e in wallet daily_rewards brainrot_market adventure_world level_share achievements game_menu; do
+for e in wallet daily_rewards brainrot_market adventure_world level_share achievements game_menu items inventario loja_itens; do
   ./exo extension push $e --dir Exoforge
 done
 ./exo sync --dir Exoforge
