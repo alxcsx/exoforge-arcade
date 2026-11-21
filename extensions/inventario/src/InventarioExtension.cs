@@ -1,14 +1,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using Exoforge.Plugin.SDK;
+using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
-[ExoExtension("inventario", Version = "0.2.0", Resources = [typeof(Inventario), typeof(InventarioItem)])]
+[ExoExtension("inventario", Version = "0.2.1", Resources = [typeof(Inventario), typeof(InventarioItem)])]
 [ExoDependency("database")]
 [ExoDependency("items")]
 public class InventarioExtension
 {
+    private static IDatabaseTable<Inventario> Carteiras => ExoServices.Database.Table<Inventario>();
+    private static IDatabaseTable<InventarioItem> Linhas => ExoServices.Database.Table<InventarioItem>();
+
     [ExoAction(Scope = "player")]
     public InventarioDetalhado ObterInventario()
     {
@@ -27,10 +31,10 @@ public class InventarioExtension
             throw new ExoActionException("sem_ouro", "Sem ouro!");
 
         carteira.Ouro -= cost;
-        ExoServices.Database.Put(carteira.Id, carteira);
+        Carteiras.Put(carteira);
 
         string entryId = $"{playerId}:{itemId}";
-        var existente = ExoServices.Database.Get<InventarioItem>(entryId);
+        var existente = Linhas.Get(entryId);
         if (existente == null)
         {
             existente = new InventarioItem
@@ -46,7 +50,7 @@ public class InventarioExtension
             existente.Quantidade += 1;
         }
 
-        ExoServices.Database.Put(existente.Id, existente);
+        Linhas.Put(existente);
 
         return MontarInventarioDetalhado(playerId);
     }
@@ -56,7 +60,7 @@ public class InventarioExtension
     {
         var carteira = ObterOuCriarCarteira(playerId);
         carteira.Ouro += amount;
-        ExoServices.Database.Put(carteira.Id, carteira);
+        Carteiras.Put(carteira);
 
         return MontarInventarioDetalhado(playerId);
     }
@@ -64,26 +68,19 @@ public class InventarioExtension
     private InventarioDetalhado MontarInventarioDetalhado(string playerId)
     {
         var carteira = ObterOuCriarCarteira(playerId);
-        var linhas = ExoServices.Database.Query<InventarioItem>(
-            "SELECT id, player_id, item_id, quantidade FROM inventario_itens WHERE player_id = $1",
-            playerId
-        );
-
-        var catalogo = ExoServices.Actions.CallAction<List<ItemCatalogo>>("items", "listar_catalogo", null)
-            .ToDictionary(i => i.Id, i => i);
+        var linhas = Linhas.Include(l => l.Item).Where(l => l.PlayerId == playerId).ToList();
 
         var detalhados = new List<InventarioItemDetalhado>(linhas.Count);
         foreach (var linha in linhas)
         {
-            catalogo.TryGetValue(linha.ItemId, out var info);
             detalhados.Add(new InventarioItemDetalhado
             {
                 Id = linha.Id,
                 ItemId = linha.ItemId,
                 Quantidade = linha.Quantidade,
-                Nome = info?.Nome ?? linha.ItemId,
-                Tipo = info?.Tipo ?? "",
-                Preco = info?.Preco ?? 0
+                Nome = linha.Item?.Nome ?? linha.ItemId,
+                Tipo = linha.Item?.Tipo ?? "",
+                Preco = linha.Item?.Preco ?? 0
             });
         }
 
@@ -97,22 +94,14 @@ public class InventarioExtension
 
     private static Inventario ObterOuCriarCarteira(string playerId)
     {
-        var inv = ExoServices.Database.Get<Inventario>(playerId);
+        var inv = Carteiras.Get(playerId);
         if (inv == null)
         {
             inv = new Inventario { Id = playerId, Ouro = 1000 };
-            ExoServices.Database.Put(inv.Id, inv);
+            Carteiras.Put(inv);
         }
         return inv;
     }
-}
-
-public class ItemCatalogo
-{
-    public string Id { get; set; } = "";
-    public string Nome { get; set; } = "";
-    public string Tipo { get; set; } = "";
-    public int Preco { get; set; }
 }
 
 public class InventarioDetalhado
@@ -153,6 +142,10 @@ public class InventarioItem
 
     [ExoColumn(Label = "Item ID", ForeignKey = true, References = "itens.id")]
     public string ItemId { get; set; } = "";
+
+    // Filled by Include; not a column.
+    [ExoNavigation(nameof(ItemId))]
+    public Item? Item { get; set; }
 
     [ExoColumn(Label = "Quantidade")]
     public int Quantidade { get; set; }

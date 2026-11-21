@@ -15,6 +15,393 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Exoforge.Client
 {
+/// <summary>Record used by the achievements service.</summary>
+public class AchievementStatus
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+    [JsonPropertyName("description")]
+    public string Description { get; set; } = default!;
+    [JsonPropertyName("needed")]
+    public int Needed { get; set; } = default!;
+    [JsonPropertyName("progress")]
+    public int Progress { get; set; } = default!;
+    [JsonPropertyName("unlocked")]
+    public bool Unlocked { get; set; } = default!;
+}
+
+/// <summary>Record used by the adventure_world service.</summary>
+public class AdventurerProgress
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = default!;
+    [JsonPropertyName("kills")]
+    public int Kills { get; set; } = default!;
+    [JsonPropertyName("chests")]
+    public int Chests { get; set; } = default!;
+    [JsonPropertyName("zones")]
+    public int Zones { get; set; } = default!;
+    [JsonPropertyName("gold")]
+    public int Gold { get; set; } = default!;
+    [JsonPropertyName("zone")]
+    public string Zone { get; set; } = default!;
+    [JsonPropertyName("updated_at")]
+    public long UpdatedAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the daily_rewards service.</summary>
+public class DailyClaimResult
+{
+    [JsonPropertyName("day")]
+    public int Day { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("balance")]
+    public long Balance { get; set; } = default!;
+}
+
+/// <summary>Record used by the daily_rewards service.</summary>
+public class DailyStatus
+{
+    [JsonPropertyName("streak")]
+    public int Streak { get; set; } = default!;
+    [JsonPropertyName("next_day")]
+    public int NextDay { get; set; } = default!;
+    [JsonPropertyName("can_claim")]
+    public bool CanClaim { get; set; } = default!;
+}
+
+/// <summary>Record used by the game_menu service.</summary>
+public class GiftReceipt
+{
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("balance")]
+    public int Balance { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Holding
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public int Shares { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class IdleCollected
+{
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("farm_level")]
+    public int FarmLevel { get; set; } = default!;
+}
+
+/// <summary>Record used by the inventario service.</summary>
+public class InventarioDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("ouro")]
+    public int Ouro { get; set; } = default!;
+    [JsonPropertyName("itens")]
+    public List<InventarioItemDetalhado> Itens { get; set; } = default!;
+}
+
+/// <summary>Record used by the inventario service.</summary>
+public class InventarioItemDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("quantidade")]
+    public int Quantidade { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class InventarioItemResumo
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("quantidade")]
+    public int Quantidade { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class InventarioResumo
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("ouro")]
+    public int Ouro { get; set; } = default!;
+    [JsonPropertyName("itens")]
+    public List<InventarioItemResumo> Itens { get; set; } = default!;
+}
+
+/// <summary>Record used by the items service.</summary>
+public class Item
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelClearResult
+{
+    [JsonPropertyName("counted")]
+    public bool Counted { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelPublishResult
+{
+    [JsonPropertyName("level_id")]
+    public string LevelId { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelRateResult
+{
+    [JsonPropertyName("rating")]
+    public double Rating { get; set; } = default!;
+    [JsonPropertyName("rating_count")]
+    public int RatingCount { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelSummary
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("author_id")]
+    public string AuthorId { get; set; } = default!;
+    [JsonPropertyName("author")]
+    public string Author { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+    [JsonPropertyName("tag")]
+    public string Tag { get; set; } = default!;
+    [JsonPropertyName("plays")]
+    public int Plays { get; set; } = default!;
+    [JsonPropertyName("rating")]
+    public double Rating { get; set; } = default!;
+    [JsonPropertyName("rating_count")]
+    public int RatingCount { get; set; } = default!;
+    [JsonPropertyName("published_at")]
+    public long PublishedAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelUploadResult
+{
+    [JsonPropertyName("file_id")]
+    public string FileId { get; set; } = default!;
+    [JsonPropertyName("sha256")]
+    public string Sha256 { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelUrlResult
+{
+    [JsonPropertyName("url")]
+    public string Url { get; set; } = default!;
+    [JsonPropertyName("expires_at")]
+    public long ExpiresAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class LojaItemDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the game_menu service.</summary>
+public class PlayerSettings
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("volume")]
+    public int Volume { get; set; } = default!;
+    [JsonPropertyName("color_blind")]
+    public bool ColorBlind { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Portfolio
+{
+    [JsonPropertyName("holdings")]
+    public List<Holding> Holdings { get; set; } = default!;
+    [JsonPropertyName("farm_level")]
+    public int FarmLevel { get; set; } = default!;
+    [JsonPropertyName("pending_idle_coins")]
+    public int PendingIdleCoins { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Quote
+{
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("price")]
+    public int Price { get; set; } = default!;
+    [JsonPropertyName("previous")]
+    public int Previous { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Trade
+{
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("side")]
+    public string Side { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public int Shares { get; set; } = default!;
+    [JsonPropertyName("price")]
+    public int Price { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+}
+
+/// <summary>Record used by the wallet service.</summary>
+public class WalletBalance
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("updated_at")]
+    public DateTimeOffset UpdatedAt { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> enemy_slain.</summary>
+public class AchievementsEnemySlainEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> chest_opened.</summary>
+public class AchievementsChestOpenedEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> zone_entered.</summary>
+public class AchievementsZoneEnteredEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+}
+
+/// <summary>Event payload for market:trades -> trade_made.</summary>
+public class AchievementsTradeMadeEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+}
+
+/// <summary>Event payload for level_share:feed -> level_published.</summary>
+public class AchievementsLevelPublishedEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+}
+
+/// <summary>Event payload for achievements:feed -> achievement_unlocked.</summary>
+public class AchievementsAchievementUnlockedEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("achievement_id")]
+    public string AchievementId { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> enemy_slain.</summary>
+public class AdventureWorldEnemySlainEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = default!;
+    [JsonPropertyName("enemy")]
+    public string Enemy { get; set; } = default!;
+    [JsonPropertyName("zone")]
+    public string Zone { get; set; } = default!;
+    [JsonPropertyName("timestamp")]
+    public long Timestamp { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> chest_opened.</summary>
+public class AdventureWorldChestOpenedEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = default!;
+    [JsonPropertyName("zone")]
+    public string Zone { get; set; } = default!;
+    [JsonPropertyName("gold")]
+    public long Gold { get; set; } = default!;
+    [JsonPropertyName("timestamp")]
+    public long Timestamp { get; set; } = default!;
+}
+
+/// <summary>Event payload for world:feed -> zone_entered.</summary>
+public class AdventureWorldZoneEnteredEvent
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = default!;
+    [JsonPropertyName("zone")]
+    public string Zone { get; set; } = default!;
+    [JsonPropertyName("timestamp")]
+    public long Timestamp { get; set; } = default!;
+}
+
 /// <summary>Request payload for auth.authenticate action.</summary>
 public class AuthAuthenticateRequest
 {
@@ -43,21 +430,21 @@ public class AuthRefreshResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
+    [JsonPropertyName("refresh_token")]
+    public string RefreshToken { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
     [JsonPropertyName("expires_in")]
     public long ExpiresIn { get; set; } = default!;
-    [JsonPropertyName("refresh_token")]
-    public string RefreshToken { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.login action.</summary>
 public class AuthLoginRequest
 {
-    [JsonPropertyName("password")]
-    public string Password { get; set; } = default!;
     [JsonPropertyName("email")]
     public string Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    public string Password { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.login action.</summary>
@@ -97,18 +484,18 @@ public class AuthRegisterRequest
     [JsonPropertyName("name")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Name { get; set; } = default!;
-    [JsonPropertyName("password")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("email")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Email { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
+    [JsonPropertyName("email")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Password { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement PlayerId { get; set; } = default!;
@@ -119,12 +506,12 @@ public class AuthRegisterResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
+    [JsonPropertyName("user_id")]
+    public string UserId { get; set; } = default!;
     [JsonPropertyName("scopes")]
     public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
 }
@@ -135,18 +522,18 @@ public class AuthCreatePlayerRequest
     [JsonPropertyName("name")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Name { get; set; } = default!;
-    [JsonPropertyName("password")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("email")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Email { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
+    [JsonPropertyName("email")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Password { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement PlayerId { get; set; } = default!;
@@ -157,12 +544,12 @@ public class AuthCreatePlayerResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
+    [JsonPropertyName("user_id")]
+    public string UserId { get; set; } = default!;
     [JsonPropertyName("scopes")]
     public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
 }
@@ -208,206 +595,6 @@ public class AuthSetDisplayNameResponse
     public string PlayerId { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.issue_token action.</summary>
-public class AuthIssueTokenRequest
-{
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("expires_in")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ExpiresIn { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.issue_token action.</summary>
-public class AuthIssueTokenResponse
-{
-    [JsonPropertyName("token")]
-    public string Token { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("token_id")]
-    public string TokenId { get; set; } = default!;
-    [JsonPropertyName("expires_in")]
-    public long ExpiresIn { get; set; } = default!;
-    [JsonPropertyName("expires_at")]
-    public string ExpiresAt { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.list_tokens action.</summary>
-public class AuthListTokensRequest
-{
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.list_tokens action.</summary>
-public class AuthListTokensResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("tokens")]
-    public JsonElement Tokens { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.revoke_token action.</summary>
-public class AuthRevokeTokenRequest
-{
-    [JsonPropertyName("token_id")]
-    public string TokenId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.revoke_token action.</summary>
-public class AuthRevokeTokenResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("token_id")]
-    public string TokenId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.purge_tokens action.</summary>
-public class AuthPurgeTokensResponse
-{
-    [JsonPropertyName("purged")]
-    public long Purged { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.list_users action.</summary>
-public class AuthListUsersRequest
-{
-    [JsonPropertyName("query")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Query { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.list_users action.</summary>
-public class AuthListUsersResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("users")]
-    public JsonElement Users { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.reset_password action.</summary>
-public class AuthResetPasswordRequest
-{
-    [JsonPropertyName("password")]
-    public string Password { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.reset_password action.</summary>
-public class AuthResetPasswordResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.update_user_roles action.</summary>
-public class AuthUpdateUserRolesRequest
-{
-    [JsonPropertyName("role")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Role { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.update_user_roles action.</summary>
-public class AuthUpdateUserRolesResponse
-{
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for auth.delete_user action.</summary>
-public class AuthDeleteUserRequest
-{
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for auth.delete_user action.</summary>
-public class AuthDeleteUserResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    public string UserId { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
 /// <summary>Request payload for auth.purge_disposable action.</summary>
 public class AuthPurgeDisposableRequest
 {
@@ -425,700 +612,52 @@ public class AuthPurgeDisposableResponse
     public bool DryRun { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Response model for cron.status action.</summary>
-public class CronStatusResponse
+/// <summary>Request payload for brainrot_market.buy_shares action.</summary>
+public class BrainrotMarketBuySharesRequest
 {
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("active_jobs")]
-    public long ActiveJobs { get; set; } = default!;
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public long Shares { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Response model for cron.list_jobs action.</summary>
-public class CronListJobsResponse
+/// <summary>Request payload for brainrot_market.sell_shares action.</summary>
+public class BrainrotMarketSellSharesRequest
 {
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("jobs")]
-    public JsonElement Jobs { get; set; } = default!;
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public long Shares { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Request payload for cron.trigger_job action.</summary>
-public class CronTriggerJobRequest
+/// <summary>Event payload for market:trades -> trade_made.</summary>
+public class BrainrotMarketTradeMadeEvent
 {
-    [JsonPropertyName("job_id")]
-    public string JobId { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("side")]
+    public string Side { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public long Shares { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Response model for cron.trigger_job action.</summary>
-public class CronTriggerJobResponse
+/// <summary>Event payload for market:ticker -> prices_ticked.</summary>
+public class BrainrotMarketPricesTickedEvent
 {
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
+    [JsonPropertyName("quotes")]
+    public List<Quote> Quotes { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard.get_dashboard_mount action.</summary>
-public class DashboardGetDashboardMountRequest
+/// <summary>Request payload for game_menu.save_settings action.</summary>
+public class GameMenuSaveSettingsRequest
 {
-    [JsonPropertyName("view_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ViewId { get; set; } = default!;
+    [JsonPropertyName("volume")]
+    public long Volume { get; set; } = default!;
+    [JsonPropertyName("color_blind")]
+    public bool ColorBlind { get; set; } = default!;
 }
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard.get_dashboard_mount action.</summary>
-public class DashboardGetDashboardMountResponse
-{
-    [JsonPropertyName("mount")]
-    public JsonElement Mount { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard.get_dashboard_data action.</summary>
-public class DashboardGetDashboardDataRequest
-{
-    [JsonPropertyName("view_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ViewId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard.get_dashboard_data action.</summary>
-public class DashboardGetDashboardDataResponse
-{
-    [JsonPropertyName("data")]
-    public JsonElement Data { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard.get_project_metadata action.</summary>
-public class DashboardGetProjectMetadataResponse
-{
-    [JsonPropertyName("description")]
-    public string Description { get; set; } = default!;
-    [JsonPropertyName("custom")]
-    public JsonElement Custom { get; set; } = default!;
-    [JsonPropertyName("project_name")]
-    public string ProjectName { get; set; } = default!;
-    [JsonPropertyName("studio_name")]
-    public string StudioName { get; set; } = default!;
-    [JsonPropertyName("website_url")]
-    public string WebsiteUrl { get; set; } = default!;
-    [JsonPropertyName("updated_at")]
-    public long UpdatedAt { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard.update_project_metadata action.</summary>
-public class DashboardUpdateProjectMetadataRequest
-{
-    [JsonPropertyName("description")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Description { get; set; } = default!;
-    [JsonPropertyName("custom")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Custom { get; set; } = default!;
-    [JsonPropertyName("project_name")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ProjectName { get; set; } = default!;
-    [JsonPropertyName("studio_name")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement StudioName { get; set; } = default!;
-    [JsonPropertyName("website_url")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement WebsiteUrl { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard.update_project_metadata action.</summary>
-public class DashboardUpdateProjectMetadataResponse
-{
-    [JsonPropertyName("metadata")]
-    public JsonElement Metadata { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Event payload for dashboard -> project_metadata_updated.</summary>
-public class DashboardProjectMetadataUpdatedEvent
-{
-    [JsonPropertyName("metadata")]
-    public JsonElement Metadata { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard_view.resolve_view action.</summary>
-public class DashboardViewResolveViewRequest
-{
-    [JsonPropertyName("id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard_view.resolve_view action.</summary>
-public class DashboardViewResolveViewResponse
-{
-    [JsonPropertyName("module")]
-    public JsonElement Module { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard_view.list_views action.</summary>
-public class DashboardViewListViewsResponse
-{
-    [JsonPropertyName("views")]
-    public JsonElement Views { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard_view.get_dashboard_mount action.</summary>
-public class DashboardViewGetDashboardMountRequest
-{
-    [JsonPropertyName("view_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ViewId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard_view.get_dashboard_mount action.</summary>
-public class DashboardViewGetDashboardMountResponse
-{
-    [JsonPropertyName("mount")]
-    public JsonElement Mount { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for dashboard_view.get_dashboard_data action.</summary>
-public class DashboardViewGetDashboardDataRequest
-{
-    [JsonPropertyName("view_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ViewId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for dashboard_view.get_dashboard_data action.</summary>
-public class DashboardViewGetDashboardDataResponse
-{
-    [JsonPropertyName("data")]
-    public JsonElement Data { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for database.execute action.</summary>
-public class DatabaseExecuteRequest
-{
-    [JsonPropertyName("arguments")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Arguments { get; set; } = default!;
-    [JsonPropertyName("operation")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Operation { get; set; } = default!;
-    [JsonPropertyName("plugin")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Plugin { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for database.execute action.</summary>
-public class DatabaseExecuteResponse
-{
-    [JsonPropertyName("rows")]
-    public JsonElement Rows { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for database.table_columns action.</summary>
-public class DatabaseTableColumnsRequest
-{
-    [JsonPropertyName("table")]
-    public string Table { get; set; } = default!;
-    [JsonPropertyName("plugin")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Plugin { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for database.table_columns action.</summary>
-public class DatabaseTableColumnsResponse
-{
-    [JsonPropertyName("columns")]
-    public JsonElement Columns { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for docs.list_chapters action.</summary>
-public class DocsListChaptersResponse
-{
-    [JsonPropertyName("chapters")]
-    public JsonElement Chapters { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for docs.get_chapter action.</summary>
-public class DocsGetChapterRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for docs.get_chapter action.</summary>
-public class DocsGetChapterResponse
-{
-    [JsonPropertyName("chapter")]
-    public JsonElement Chapter { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for docs.export_docs action.</summary>
-public class DocsExportDocsRequest
-{
-    [JsonPropertyName("format")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Format { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for docs.export_docs action.</summary>
-public class DocsExportDocsResponse
-{
-    [JsonPropertyName("format")]
-    public string Format { get; set; } = default!;
-    [JsonPropertyName("title")]
-    public string Title { get; set; } = default!;
-    [JsonPropertyName("content")]
-    public string Content { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.list_extensions action.</summary>
-public class ExtensionManagerListExtensionsResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("extensions")]
-    public JsonElement Extensions { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for extension_manager.get_extension action.</summary>
-public class ExtensionManagerGetExtensionRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.get_extension action.</summary>
-public class ExtensionManagerGetExtensionResponse
-{
-    [JsonPropertyName("extension")]
-    public JsonElement Extension { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.get_system_info action.</summary>
-public class ExtensionManagerGetSystemInfoResponse
-{
-    [JsonPropertyName("system")]
-    public JsonElement System { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for extension_manager.upload_extension action.</summary>
-public class ExtensionManagerUploadExtensionRequest
-{
-    [JsonPropertyName("binary")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Binary { get; set; } = default!;
-    [JsonPropertyName("name")]
-    public string Name { get; set; } = default!;
-    [JsonPropertyName("manifest")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Manifest { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.upload_extension action.</summary>
-public class ExtensionManagerUploadExtensionResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("extension_id")]
-    public string ExtensionId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for extension_manager.remove_extension action.</summary>
-public class ExtensionManagerRemoveExtensionRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.remove_extension action.</summary>
-public class ExtensionManagerRemoveExtensionResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.restart_system action.</summary>
-public class ExtensionManagerRestartSystemResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("extensions_count")]
-    public long ExtensionsCount { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for extension_manager.logs action.</summary>
-public class ExtensionManagerLogsRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.logs action.</summary>
-public class ExtensionManagerLogsResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("lines")]
-    public JsonElement Lines { get; set; } = default!;
-    [JsonPropertyName("extension_id")]
-    public string ExtensionId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for extension_manager.reload_extension action.</summary>
-public class ExtensionManagerReloadExtensionRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.reload_extension action.</summary>
-public class ExtensionManagerReloadExtensionResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("extension_id")]
-    public string ExtensionId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.export_extension_info action.</summary>
-public class ExtensionManagerExportExtensionInfoResponse
-{
-    [JsonPropertyName("export")]
-    public JsonElement Export { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for extension_manager.csharp_attributes action.</summary>
-public class ExtensionManagerCsharpAttributesResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("files")]
-    public JsonElement Files { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.upload_file action.</summary>
-public class FileBucketUploadFileRequest
-{
-    [JsonPropertyName("filename")]
-    public string Filename { get; set; } = default!;
-    [JsonPropertyName("metadata")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Metadata { get; set; } = default!;
-    [JsonPropertyName("content")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Content { get; set; } = default!;
-    [JsonPropertyName("content_type")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ContentType { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.upload_file action.</summary>
-public class FileBucketUploadFileResponse
-{
-    [JsonPropertyName("file")]
-    public JsonElement File { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.get_file_info action.</summary>
-public class FileBucketGetFileInfoRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.get_file_info action.</summary>
-public class FileBucketGetFileInfoResponse
-{
-    [JsonPropertyName("file")]
-    public JsonElement File { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.read_file action.</summary>
-public class FileBucketReadFileRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.read_file action.</summary>
-public class FileBucketReadFileResponse
-{
-    [JsonPropertyName("file")]
-    public JsonElement File { get; set; } = default!;
-    [JsonPropertyName("content")]
-    public JsonElement Content { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.list_files action.</summary>
-public class FileBucketListFilesRequest
-{
-    [JsonPropertyName("offset")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Offset { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.list_files action.</summary>
-public class FileBucketListFilesResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("files")]
-    public JsonElement Files { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.list_buckets action.</summary>
-public class FileBucketListBucketsResponse
-{
-    [JsonPropertyName("buckets")]
-    public JsonElement Buckets { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.set_bucket_visibility action.</summary>
-public class FileBucketSetBucketVisibilityRequest
-{
-    [JsonPropertyName("bucket")]
-    public string Bucket { get; set; } = default!;
-    [JsonPropertyName("visibility")]
-    public string Visibility { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.set_bucket_visibility action.</summary>
-public class FileBucketSetBucketVisibilityResponse
-{
-    [JsonPropertyName("bucket")]
-    public string Bucket { get; set; } = default!;
-    [JsonPropertyName("visibility")]
-    public string Visibility { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.update_file action.</summary>
-public class FileBucketUpdateFileRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("filename")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Filename { get; set; } = default!;
-    [JsonPropertyName("metadata")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Metadata { get; set; } = default!;
-    [JsonPropertyName("content")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Content { get; set; } = default!;
-    [JsonPropertyName("content_type")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement ContentType { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.update_file action.</summary>
-public class FileBucketUpdateFileResponse
-{
-    [JsonPropertyName("file")]
-    public JsonElement File { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.signed_url action.</summary>
-public class FileBucketSignedUrlRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-    [JsonPropertyName("ttl_seconds")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement TtlSeconds { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.signed_url action.</summary>
-public class FileBucketSignedUrlResponse
-{
-    [JsonPropertyName("url")]
-    public string Url { get; set; } = default!;
-    [JsonPropertyName("expires_at")]
-    public long ExpiresAt { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.authorize_download action.</summary>
-public class FileBucketAuthorizeDownloadRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("exp")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Exp { get; set; } = default!;
-    [JsonPropertyName("sig")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Sig { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    public string Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.authorize_download action.</summary>
-public class FileBucketAuthorizeDownloadResponse
-{
-    [JsonPropertyName("allowed")]
-    public bool Allowed { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for file_bucket.delete_file action.</summary>
-public class FileBucketDeleteFileRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("bucket")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Bucket { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for file_bucket.delete_file action.</summary>
-public class FileBucketDeleteFileResponse
-{
-    [JsonPropertyName("deleted")]
-    public bool Deleted { get; set; } = default!;
-}
-#endif
 
 /// <summary>Response model for http.status action.</summary>
 public class HttpStatusResponse
@@ -1129,54 +668,6 @@ public class HttpStatusResponse
     public string Status { get; set; } = default!;
 }
 
-/// <summary>Response model for inventario.obter_inventario action.</summary>
-public class InventarioDetalhado
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("ouro")]
-    public long Ouro { get; set; } = default!;
-    [JsonPropertyName("itens")]
-    public JsonElement Itens { get; set; } = default!;
-}
-
-#if UNITY_EDITOR
-/// <summary>Request payload for inventario.add_item action.</summary>
-public class InventarioAddItemRequest
-{
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("item_id")]
-    public string ItemId { get; set; } = default!;
-    [JsonPropertyName("cost")]
-    public long Cost { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for inventario.add_gold action.</summary>
-public class InventarioAddGoldRequest
-{
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("amount")]
-    public long Amount { get; set; } = default!;
-}
-#endif
-
-/// <summary>Response model for items.listar_catalogo action.</summary>
-public class Item
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("nome")]
-    public string Nome { get; set; } = default!;
-    [JsonPropertyName("tipo")]
-    public string Tipo { get; set; } = default!;
-    [JsonPropertyName("preco")]
-    public long Preco { get; set; } = default!;
-}
-
 /// <summary>Request payload for items.obter_item action.</summary>
 public class ItemsObterItemRequest
 {
@@ -1184,235 +675,72 @@ public class ItemsObterItemRequest
     public string ItemId { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.exec action.</summary>
-public class LldbExecRequest
+/// <summary>Request payload for level_share.upload_level action.</summary>
+public class LevelShareUploadLevelRequest
 {
-    [JsonPropertyName("arguments")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Arguments { get; set; } = default!;
-    [JsonPropertyName("operation")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Operation { get; set; } = default!;
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
+    [JsonPropertyName("png_base64")]
+    public string PngBase64 { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.exec action.</summary>
-public class LldbExecResponse
+/// <summary>Request payload for level_share.publish action.</summary>
+public class LevelSharePublishRequest
 {
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+    [JsonPropertyName("difficulty")]
+    public string Difficulty { get; set; } = default!;
+    [JsonPropertyName("file_id")]
+    public string FileId { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.provision_namespace action.</summary>
-public class LldbProvisionNamespaceRequest
+/// <summary>Request payload for level_share.get_level_url action.</summary>
+public class LevelShareGetLevelUrlRequest
 {
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
+    [JsonPropertyName("level_id")]
+    public string LevelId { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.provision_namespace action.</summary>
-public class LldbProvisionNamespaceResponse
+/// <summary>Request payload for level_share.browse action.</summary>
+public class LevelShareBrowseRequest
 {
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
+    [JsonPropertyName("tag")]
+    public string Tag { get; set; } = default!;
+    [JsonPropertyName("sort")]
+    public string Sort { get; set; } = default!;
+    [JsonPropertyName("limit")]
+    public long Limit { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.drop_namespace action.</summary>
-public class LldbDropNamespaceRequest
+/// <summary>Request payload for level_share.rate action.</summary>
+public class LevelShareRateRequest
 {
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
+    [JsonPropertyName("level_id")]
+    public string LevelId { get; set; } = default!;
+    [JsonPropertyName("stars")]
+    public long Stars { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.drop_namespace action.</summary>
-public class LldbDropNamespaceResponse
+/// <summary>Request payload for level_share.record_clear action.</summary>
+public class LevelShareRecordClearRequest
 {
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
+    [JsonPropertyName("key")]
+    public string Key { get; set; } = default!;
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.transaction action.</summary>
-public class LldbTransactionRequest
+/// <summary>Event payload for level_share:feed -> level_published.</summary>
+public class LevelShareLevelPublishedEvent
 {
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-    [JsonPropertyName("statements")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Statements { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("level_id")]
+    public string LevelId { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+    [JsonPropertyName("tag")]
+    public string Tag { get; set; } = default!;
+    [JsonPropertyName("timestamp")]
+    public long Timestamp { get; set; } = default!;
 }
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.transaction action.</summary>
-public class LldbTransactionResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.introspect action.</summary>
-public class LldbIntrospectRequest
-{
-    [JsonPropertyName("table")]
-    public string Table { get; set; } = default!;
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.introspect action.</summary>
-public class LldbIntrospectResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.dialect action.</summary>
-public class LldbDialectResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.apply_schema action.</summary>
-public class LldbApplySchemaRequest
-{
-    [JsonPropertyName("version")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Version { get; set; } = default!;
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-    [JsonPropertyName("migrations")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Migrations { get; set; } = default!;
-    [JsonPropertyName("resources")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Resources { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.apply_schema action.</summary>
-public class LldbApplySchemaResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.run_migrations action.</summary>
-public class LldbRunMigrationsRequest
-{
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-    [JsonPropertyName("migrations")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Migrations { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.run_migrations action.</summary>
-public class LldbRunMigrationsResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.reset_table action.</summary>
-public class LldbResetTableRequest
-{
-    [JsonPropertyName("table")]
-    public string Table { get; set; } = default!;
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.reset_table action.</summary>
-public class LldbResetTableResponse
-{
-    [JsonPropertyName("result")]
-    public JsonElement Result { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.table_columns action.</summary>
-public class LldbTableColumnsRequest
-{
-    [JsonPropertyName("table")]
-    public string Table { get; set; } = default!;
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.table_columns action.</summary>
-public class LldbTableColumnsResponse
-{
-    [JsonPropertyName("columns")]
-    public JsonElement Columns { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for lldb.connection_config action.</summary>
-public class LldbConnectionConfigRequest
-{
-    [JsonPropertyName("namespace")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Namespace { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for lldb.connection_config action.</summary>
-public class LldbConnectionConfigResponse
-{
-    [JsonPropertyName("driver")]
-    public JsonElement Driver { get; set; } = default!;
-    [JsonPropertyName("url")]
-    public string Url { get; set; } = default!;
-    [JsonPropertyName("pool_size")]
-    public long PoolSize { get; set; } = default!;
-}
-#endif
 
 /// <summary>Response model for lldb.health_check action.</summary>
 public class LldbHealthCheckResponse
@@ -1430,321 +758,12 @@ public class LldbConnectionLostEvent
     public long Timestamp { get; set; } = default!;
 }
 
-/// <summary>Response model for loja_itens.listar_itens action.</summary>
-public class LojaItemDetalhado
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("item_id")]
-    public string ItemId { get; set; } = default!;
-    [JsonPropertyName("nome")]
-    public string Nome { get; set; } = default!;
-    [JsonPropertyName("tipo")]
-    public string Tipo { get; set; } = default!;
-    [JsonPropertyName("preco")]
-    public long Preco { get; set; } = default!;
-}
-
 /// <summary>Request payload for loja_itens.comprar_item action.</summary>
 public class LojaItensComprarItemRequest
 {
     [JsonPropertyName("item_id")]
     public string ItemId { get; set; } = default!;
 }
-
-/// <summary>Response model for loja_itens.comprar_item action.</summary>
-public class InventarioResumo
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("ouro")]
-    public long Ouro { get; set; } = default!;
-    [JsonPropertyName("itens")]
-    public JsonElement Itens { get; set; } = default!;
-}
-
-#if UNITY_EDITOR
-/// <summary>Request payload for metering.usage action.</summary>
-public class MeteringUsageRequest
-{
-    [JsonPropertyName("since")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Since { get; set; } = default!;
-    [JsonPropertyName("plugin_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PluginId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for metering.usage action.</summary>
-public class MeteringUsageResponse
-{
-    [JsonPropertyName("plugins")]
-    public JsonElement Plugins { get; set; } = default!;
-    [JsonPropertyName("studio_id")]
-    public string StudioId { get; set; } = default!;
-    [JsonPropertyName("title_id")]
-    public string TitleId { get; set; } = default!;
-    [JsonPropertyName("totals")]
-    public JsonElement Totals { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.recent_events action.</summary>
-public class ObservabilityRecentEventsRequest
-{
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.recent_events action.</summary>
-public class ObservabilityRecentEventsResponse
-{
-    [JsonPropertyName("events")]
-    public JsonElement Events { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.error_groups action.</summary>
-public class ObservabilityErrorGroupsRequest
-{
-    [JsonPropertyName("caller")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Caller { get; set; } = default!;
-    [JsonPropertyName("action")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Action { get; set; } = default!;
-    [JsonPropertyName("service")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Service { get; set; } = default!;
-    [JsonPropertyName("rid")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Rid { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.error_groups action.</summary>
-public class ObservabilityErrorGroupsResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("groups")]
-    public JsonElement Groups { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.capture action.</summary>
-public class ObservabilityCaptureRequest
-{
-    [JsonPropertyName("seconds")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Seconds { get; set; } = default!;
-    [JsonPropertyName("value")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Value { get; set; } = default!;
-    [JsonPropertyName("kind")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Kind { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.capture action.</summary>
-public class ObservabilityCaptureResponse
-{
-    [JsonPropertyName("capture")]
-    public JsonElement Capture { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.captures action.</summary>
-public class ObservabilityCapturesResponse
-{
-    [JsonPropertyName("captures")]
-    public JsonElement Captures { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.stop_capture action.</summary>
-public class ObservabilityStopCaptureRequest
-{
-    [JsonPropertyName("value")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Value { get; set; } = default!;
-    [JsonPropertyName("kind")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Kind { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.stop_capture action.</summary>
-public class ObservabilityStopCaptureResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.replay action.</summary>
-public class ObservabilityReplayRequest
-{
-    [JsonPropertyName("id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Id { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.replay action.</summary>
-public class ObservabilityReplayResponse
-{
-    [JsonPropertyName("data")]
-    public JsonElement Data { get; set; } = default!;
-    [JsonPropertyName("status")]
-    public JsonElement Status { get; set; } = default!;
-    [JsonPropertyName("rid")]
-    public string Rid { get; set; } = default!;
-    [JsonPropertyName("source_rid")]
-    public string SourceRid { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.health action.</summary>
-public class ObservabilityHealthRequest
-{
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.health action.</summary>
-public class ObservabilityHealthResponse
-{
-    [JsonPropertyName("rows")]
-    public JsonElement Rows { get; set; } = default!;
-    [JsonPropertyName("attention")]
-    public JsonElement Attention { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.events action.</summary>
-public class ObservabilityEventsRequest
-{
-    [JsonPropertyName("offset")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Offset { get; set; } = default!;
-    [JsonPropertyName("status")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Status { get; set; } = default!;
-    [JsonPropertyName("rid")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Rid { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-    [JsonPropertyName("event")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Event { get; set; } = default!;
-    [JsonPropertyName("until_ms")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UntilMs { get; set; } = default!;
-    [JsonPropertyName("player")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("since_ms")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement SinceMs { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.events action.</summary>
-public class ObservabilityEventsResponse
-{
-    [JsonPropertyName("total")]
-    public long Total { get; set; } = default!;
-    [JsonPropertyName("events")]
-    public JsonElement Events { get; set; } = default!;
-    [JsonPropertyName("capped")]
-    public bool Capped { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.timeline action.</summary>
-public class ObservabilityTimelineRequest
-{
-    [JsonPropertyName("rid")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Rid { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-    [JsonPropertyName("player")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Player { get; set; } = default!;
-    [JsonPropertyName("since_ms")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement SinceMs { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.timeline action.</summary>
-public class ObservabilityTimelineResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("nodes")]
-    public JsonElement Nodes { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.clear_events action.</summary>
-public class ObservabilityClearEventsResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for observability.purge_events action.</summary>
-public class ObservabilityPurgeEventsRequest
-{
-    [JsonPropertyName("origin")]
-    public string Origin { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for observability.purge_events action.</summary>
-public class ObservabilityPurgeEventsResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-}
-#endif
 
 /// <summary>Request payload for player_data.get_player action.</summary>
 public class PlayerDataGetPlayerRequest
@@ -1780,71 +799,6 @@ public class PlayerDataCreatePlayerResponse
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
 }
-
-#if UNITY_EDITOR
-/// <summary>Request payload for player_data.delete_player action.</summary>
-public class PlayerDataDeletePlayerRequest
-{
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for player_data.delete_player action.</summary>
-public class PlayerDataDeletePlayerResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for player_data.retain_player action.</summary>
-public class PlayerDataRetainPlayerRequest
-{
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for player_data.retain_player action.</summary>
-public class PlayerDataRetainPlayerResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for player_data.list_players action.</summary>
-public class PlayerDataListPlayersRequest
-{
-    [JsonPropertyName("filter")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Filter { get; set; } = default!;
-    [JsonPropertyName("limit")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Limit { get; set; } = default!;
-    [JsonPropertyName("user_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement UserId { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for player_data.list_players action.</summary>
-public class PlayerDataListPlayersResponse
-{
-    [JsonPropertyName("players")]
-    public JsonElement Players { get; set; } = default!;
-}
-#endif
 
 /// <summary>Request payload for player_data.update_player action.</summary>
 public class PlayerDataUpdatePlayerRequest
@@ -1952,47 +906,6 @@ public class PlayerDataPlayerDeletedEvent
     public string PlayerId { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.migrate action.</summary>
-public class ResourceStoreMigrateRequest
-{
-    [JsonPropertyName("extension")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Extension { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.migrate action.</summary>
-public class ResourceStoreMigrateResponse
-{
-    [JsonPropertyName("migrated")]
-    public long Migrated { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.provision action.</summary>
-public class ResourceStoreProvisionRequest
-{
-    [JsonPropertyName("extension")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Extension { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.provision action.</summary>
-public class ResourceStoreProvisionResponse
-{
-    [JsonPropertyName("provisioned")]
-    public long Provisioned { get; set; } = default!;
-}
-#endif
-
 /// <summary>Request payload for resource_store.list action.</summary>
 public class ResourceStoreListRequest
 {
@@ -2008,11 +921,11 @@ public class ResourceStoreListRequest
     [JsonPropertyName("search")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Search { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    public string Resource { get; set; } = default!;
     [JsonPropertyName("limit")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Limit { get; set; } = default!;
+    [JsonPropertyName("resource")]
+    public string Resource { get; set; } = default!;
 }
 
 /// <summary>Response model for resource_store.list action.</summary>
@@ -2044,121 +957,6 @@ public class ResourceStoreGetResponse
     public JsonElement Row { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.create action.</summary>
-public class ResourceStoreCreateRequest
-{
-    [JsonPropertyName("attributes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Attributes { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    public string Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.create action.</summary>
-public class ResourceStoreCreateResponse
-{
-    [JsonPropertyName("row")]
-    public JsonElement Row { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.update action.</summary>
-public class ResourceStoreUpdateRequest
-{
-    [JsonPropertyName("attributes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Attributes { get; set; } = default!;
-    [JsonPropertyName("id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Id { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    public string Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.update action.</summary>
-public class ResourceStoreUpdateResponse
-{
-    [JsonPropertyName("row")]
-    public JsonElement Row { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.delete action.</summary>
-public class ResourceStoreDeleteRequest
-{
-    [JsonPropertyName("id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Id { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    public string Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.delete action.</summary>
-public class ResourceStoreDeleteResponse
-{
-    [JsonPropertyName("deleted")]
-    public bool Deleted { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.upsert action.</summary>
-public class ResourceStoreUpsertRequest
-{
-    [JsonPropertyName("attributes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Attributes { get; set; } = default!;
-    [JsonPropertyName("resource")]
-    public string Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.upsert action.</summary>
-public class ResourceStoreUpsertResponse
-{
-    [JsonPropertyName("row")]
-    public JsonElement Row { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for resource_store.clear action.</summary>
-public class ResourceStoreClearRequest
-{
-    [JsonPropertyName("resource")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Resource { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for resource_store.clear action.</summary>
-public class ResourceStoreClearResponse
-{
-    [JsonPropertyName("cleared")]
-    public long Cleared { get; set; } = default!;
-}
-#endif
-
-/// <summary>Response model for test.claim_daily_reward action.</summary>
-public class TestReward
-{
-    [JsonPropertyName("kind")]
-    public string Kind { get; set; } = default!;
-    [JsonPropertyName("amount")]
-    public long Amount { get; set; } = default!;
-}
-
 /// <summary>Response model for transport.status action.</summary>
 public class TransportStatusResponse
 {
@@ -2167,105 +965,6 @@ public class TransportStatusResponse
     [JsonPropertyName("layer")]
     public string Layer { get; set; } = default!;
 }
-
-#if UNITY_EDITOR
-/// <summary>Request payload for versioning.register action.</summary>
-public class VersioningRegisterRequest
-{
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-    [JsonPropertyName("locks")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Locks { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for versioning.register action.</summary>
-public class VersioningRegisterResponse
-{
-    [JsonPropertyName("blocked")]
-    public JsonElement Blocked { get; set; } = default!;
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for versioning.set_locks action.</summary>
-public class VersioningSetLocksRequest
-{
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-    [JsonPropertyName("locks")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Locks { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for versioning.set_locks action.</summary>
-public class VersioningSetLocksResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for versioning.promote action.</summary>
-public class VersioningPromoteRequest
-{
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for versioning.promote action.</summary>
-public class VersioningPromoteResponse
-{
-    [JsonPropertyName("blocked")]
-    public JsonElement Blocked { get; set; } = default!;
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Request payload for versioning.block action.</summary>
-public class VersioningBlockRequest
-{
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for versioning.block action.</summary>
-public class VersioningBlockResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("version")]
-    public string Version { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for versioning.list action.</summary>
-public class VersioningListResponse
-{
-    [JsonPropertyName("versions")]
-    public JsonElement Versions { get; set; } = default!;
-}
-#endif
 
 /// <summary>Request payload for versioning.resolve action.</summary>
 public class VersioningResolveRequest
@@ -2285,38 +984,6 @@ public class VersioningResolveResponse
     public JsonElement Locks { get; set; } = default!;
 }
 
-#if UNITY_EDITOR
-/// <summary>Request payload for ws.broadcast action.</summary>
-public class WsBroadcastRequest
-{
-    [JsonPropertyName("event")]
-    public string Event { get; set; } = default!;
-    [JsonPropertyName("topic")]
-    public string Topic { get; set; } = default!;
-    [JsonPropertyName("payload")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Payload { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for ws.broadcast action.</summary>
-public class WsBroadcastResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Response model for ws.connection_count action.</summary>
-public class WsConnectionCountResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-}
-#endif
-
 /// <summary>
 /// Extension methods providing strongly-typed access to Exoforge services from ExoClient.
 /// </summary>
@@ -2327,51 +994,29 @@ public static class ExoClientGeneratedExtensions
     public static ExoforgeServicesHub Services(this ExoClient client) =>
         _hubs.GetValue(client, c => new ExoforgeServicesHub(c));
 
+    /// <summary>Access the Achievements service contract.</summary>
+    public static AchievementsServiceClient Achievements(this ExoClient client) =>
+        client.Services().Achievements;
+
+    /// <summary>Access the AdventureWorld service contract.</summary>
+    public static AdventureWorldServiceClient AdventureWorld(this ExoClient client) =>
+        client.Services().AdventureWorld;
+
     /// <summary>Access the Auth service contract.</summary>
     public static AuthServiceClient Auth(this ExoClient client) =>
         client.Services().Auth;
 
-#if UNITY_EDITOR
-    /// <summary>Access the Cron service contract.</summary>
-    public static CronServiceClient Cron(this ExoClient client) =>
-        client.Services().Cron;
-#endif
+    /// <summary>Access the BrainrotMarket service contract.</summary>
+    public static BrainrotMarketServiceClient BrainrotMarket(this ExoClient client) =>
+        client.Services().BrainrotMarket;
 
-#if UNITY_EDITOR
-    /// <summary>Access the Dashboard service contract.</summary>
-    public static DashboardServiceClient Dashboard(this ExoClient client) =>
-        client.Services().Dashboard;
-#endif
+    /// <summary>Access the DailyRewards service contract.</summary>
+    public static DailyRewardsServiceClient DailyRewards(this ExoClient client) =>
+        client.Services().DailyRewards;
 
-#if UNITY_EDITOR
-    /// <summary>Access the DashboardView service contract.</summary>
-    public static DashboardViewServiceClient DashboardView(this ExoClient client) =>
-        client.Services().DashboardView;
-#endif
-
-#if UNITY_EDITOR
-    /// <summary>Access the Database service contract.</summary>
-    public static DatabaseServiceClient Database(this ExoClient client) =>
-        client.Services().Database;
-#endif
-
-#if UNITY_EDITOR
-    /// <summary>Access the Docs service contract.</summary>
-    public static DocsServiceClient Docs(this ExoClient client) =>
-        client.Services().Docs;
-#endif
-
-#if UNITY_EDITOR
-    /// <summary>Access the ExtensionManager service contract.</summary>
-    public static ExtensionManagerServiceClient ExtensionManager(this ExoClient client) =>
-        client.Services().ExtensionManager;
-#endif
-
-#if UNITY_EDITOR
-    /// <summary>Access the FileBucket service contract.</summary>
-    public static FileBucketServiceClient FileBucket(this ExoClient client) =>
-        client.Services().FileBucket;
-#endif
+    /// <summary>Access the GameMenu service contract.</summary>
+    public static GameMenuServiceClient GameMenu(this ExoClient client) =>
+        client.Services().GameMenu;
 
     /// <summary>Access the Http service contract.</summary>
     public static HttpServiceClient Http(this ExoClient client) =>
@@ -2385,6 +1030,10 @@ public static class ExoClientGeneratedExtensions
     public static ItemsServiceClient Items(this ExoClient client) =>
         client.Services().Items;
 
+    /// <summary>Access the LevelShare service contract.</summary>
+    public static LevelShareServiceClient LevelShare(this ExoClient client) =>
+        client.Services().LevelShare;
+
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb(this ExoClient client) =>
         client.Services().Lldb;
@@ -2392,18 +1041,6 @@ public static class ExoClientGeneratedExtensions
     /// <summary>Access the LojaItens service contract.</summary>
     public static LojaItensServiceClient LojaItens(this ExoClient client) =>
         client.Services().LojaItens;
-
-#if UNITY_EDITOR
-    /// <summary>Access the Metering service contract.</summary>
-    public static MeteringServiceClient Metering(this ExoClient client) =>
-        client.Services().Metering;
-#endif
-
-#if UNITY_EDITOR
-    /// <summary>Access the Observability service contract.</summary>
-    public static ObservabilityServiceClient Observability(this ExoClient client) =>
-        client.Services().Observability;
-#endif
 
     /// <summary>Access the PlayerData service contract.</summary>
     public static PlayerDataServiceClient PlayerData(this ExoClient client) =>
@@ -2413,10 +1050,6 @@ public static class ExoClientGeneratedExtensions
     public static ResourceStoreServiceClient ResourceStore(this ExoClient client) =>
         client.Services().ResourceStore;
 
-    /// <summary>Access the Test service contract.</summary>
-    public static TestServiceClient Test(this ExoClient client) =>
-        client.Services().Test;
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport(this ExoClient client) =>
         client.Services().Transport;
@@ -2425,11 +1058,9 @@ public static class ExoClientGeneratedExtensions
     public static VersioningServiceClient Versioning(this ExoClient client) =>
         client.Services().Versioning;
 
-#if UNITY_EDITOR
-    /// <summary>Access the Ws service contract.</summary>
-    public static WsServiceClient Ws(this ExoClient client) =>
-        client.Services().Ws;
-#endif
+    /// <summary>Access the Wallet service contract.</summary>
+    public static WalletServiceClient Wallet(this ExoClient client) =>
+        client.Services().Wallet;
 
 }
 
@@ -2484,9 +1115,29 @@ public static class ExoServices
     /// <summary>Configures a custom resolver for the active ExoClient.</summary>
     public static void SetClientLocator(Func<ExoClient> locator) => _clientLocator = locator;
 
+    /// <summary>Access the Achievements service contract.</summary>
+    public static AchievementsServiceClient Achievements =>
+        Client.Achievements();
+
+    /// <summary>Access the AdventureWorld service contract.</summary>
+    public static AdventureWorldServiceClient AdventureWorld =>
+        Client.AdventureWorld();
+
     /// <summary>Access the Auth service contract.</summary>
     public static AuthServiceClient Auth =>
         Client.Auth();
+
+    /// <summary>Access the BrainrotMarket service contract.</summary>
+    public static BrainrotMarketServiceClient BrainrotMarket =>
+        Client.BrainrotMarket();
+
+    /// <summary>Access the DailyRewards service contract.</summary>
+    public static DailyRewardsServiceClient DailyRewards =>
+        Client.DailyRewards();
+
+    /// <summary>Access the GameMenu service contract.</summary>
+    public static GameMenuServiceClient GameMenu =>
+        Client.GameMenu();
 
     /// <summary>Access the Http service contract.</summary>
     public static HttpServiceClient Http =>
@@ -2499,6 +1150,10 @@ public static class ExoServices
     /// <summary>Access the Items service contract.</summary>
     public static ItemsServiceClient Items =>
         Client.Items();
+
+    /// <summary>Access the LevelShare service contract.</summary>
+    public static LevelShareServiceClient LevelShare =>
+        Client.LevelShare();
 
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb =>
@@ -2516,10 +1171,6 @@ public static class ExoServices
     public static ResourceStoreServiceClient ResourceStore =>
         Client.ResourceStore();
 
-    /// <summary>Access the Test service contract.</summary>
-    public static TestServiceClient Test =>
-        Client.Test();
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport =>
         Client.Transport();
@@ -2527,6 +1178,10 @@ public static class ExoServices
     /// <summary>Access the Versioning service contract.</summary>
     public static VersioningServiceClient Versioning =>
         Client.Versioning();
+
+    /// <summary>Access the Wallet service contract.</summary>
+    public static WalletServiceClient Wallet =>
+        Client.Wallet();
 
 }
 
@@ -2545,9 +1200,29 @@ public static class Exo
     /// <summary>Configures a custom resolver for the active ExoClient.</summary>
     public static void SetClientLocator(Func<ExoClient> locator) => ExoServices.SetClientLocator(locator);
 
+    /// <summary>Access the Achievements service contract.</summary>
+    public static AchievementsServiceClient Achievements =>
+        ExoServices.Achievements;
+
+    /// <summary>Access the AdventureWorld service contract.</summary>
+    public static AdventureWorldServiceClient AdventureWorld =>
+        ExoServices.AdventureWorld;
+
     /// <summary>Access the Auth service contract.</summary>
     public static AuthServiceClient Auth =>
         ExoServices.Auth;
+
+    /// <summary>Access the BrainrotMarket service contract.</summary>
+    public static BrainrotMarketServiceClient BrainrotMarket =>
+        ExoServices.BrainrotMarket;
+
+    /// <summary>Access the DailyRewards service contract.</summary>
+    public static DailyRewardsServiceClient DailyRewards =>
+        ExoServices.DailyRewards;
+
+    /// <summary>Access the GameMenu service contract.</summary>
+    public static GameMenuServiceClient GameMenu =>
+        ExoServices.GameMenu;
 
     /// <summary>Access the Http service contract.</summary>
     public static HttpServiceClient Http =>
@@ -2560,6 +1235,10 @@ public static class Exo
     /// <summary>Access the Items service contract.</summary>
     public static ItemsServiceClient Items =>
         ExoServices.Items;
+
+    /// <summary>Access the LevelShare service contract.</summary>
+    public static LevelShareServiceClient LevelShare =>
+        ExoServices.LevelShare;
 
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb =>
@@ -2577,10 +1256,6 @@ public static class Exo
     public static ResourceStoreServiceClient ResourceStore =>
         ExoServices.ResourceStore;
 
-    /// <summary>Access the Test service contract.</summary>
-    public static TestServiceClient Test =>
-        ExoServices.Test;
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport =>
         ExoServices.Transport;
@@ -2589,99 +1264,11 @@ public static class Exo
     public static VersioningServiceClient Versioning =>
         ExoServices.Versioning;
 
-}
-
-#if UNITY_EDITOR
-/// <summary>
-/// Static access to Exoforge studio/admin services matching the extension runtime syntax.
-/// Reachable only from Unity Editor assemblies.
-/// </summary>
-public static class ExoStudioServices
-{
-    /// <summary>The active ExoClient used by static studio service calls.</summary>
-    public static ExoClient Client
-    {
-        get => ExoServices.Client;
-        set => ExoServices.Client = value;
-    }
-
-    /// <summary>Configures a custom resolver for the active ExoClient.</summary>
-    public static void SetClientLocator(Func<ExoClient> locator) => ExoServices.SetClientLocator(locator);
-
-    /// <summary>Access the Auth studio service contract.</summary>
-    public static AuthServiceClient Auth =>
-        Client.Auth();
-
-    /// <summary>Access the Cron studio service contract.</summary>
-    public static CronServiceClient Cron =>
-        Client.Cron();
-
-    /// <summary>Access the Dashboard studio service contract.</summary>
-    public static DashboardServiceClient Dashboard =>
-        Client.Dashboard();
-
-    /// <summary>Access the DashboardView studio service contract.</summary>
-    public static DashboardViewServiceClient DashboardView =>
-        Client.DashboardView();
-
-    /// <summary>Access the Database studio service contract.</summary>
-    public static DatabaseServiceClient Database =>
-        Client.Database();
-
-    /// <summary>Access the Docs studio service contract.</summary>
-    public static DocsServiceClient Docs =>
-        Client.Docs();
-
-    /// <summary>Access the ExtensionManager studio service contract.</summary>
-    public static ExtensionManagerServiceClient ExtensionManager =>
-        Client.ExtensionManager();
-
-    /// <summary>Access the FileBucket studio service contract.</summary>
-    public static FileBucketServiceClient FileBucket =>
-        Client.FileBucket();
-
-    /// <summary>Access the Inventario studio service contract.</summary>
-    public static InventarioServiceClient Inventario =>
-        Client.Inventario();
-
-    /// <summary>Access the Items studio service contract.</summary>
-    public static ItemsServiceClient Items =>
-        Client.Items();
-
-    /// <summary>Access the Lldb studio service contract.</summary>
-    public static LldbServiceClient Lldb =>
-        Client.Lldb();
-
-    /// <summary>Access the LojaItens studio service contract.</summary>
-    public static LojaItensServiceClient LojaItens =>
-        Client.LojaItens();
-
-    /// <summary>Access the Metering studio service contract.</summary>
-    public static MeteringServiceClient Metering =>
-        Client.Metering();
-
-    /// <summary>Access the Observability studio service contract.</summary>
-    public static ObservabilityServiceClient Observability =>
-        Client.Observability();
-
-    /// <summary>Access the PlayerData studio service contract.</summary>
-    public static PlayerDataServiceClient PlayerData =>
-        Client.PlayerData();
-
-    /// <summary>Access the ResourceStore studio service contract.</summary>
-    public static ResourceStoreServiceClient ResourceStore =>
-        Client.ResourceStore();
-
-    /// <summary>Access the Versioning studio service contract.</summary>
-    public static VersioningServiceClient Versioning =>
-        Client.Versioning();
-
-    /// <summary>Access the Ws studio service contract.</summary>
-    public static WsServiceClient Ws =>
-        Client.Ws();
+    /// <summary>Access the Wallet service contract.</summary>
+    public static WalletServiceClient Wallet =>
+        ExoServices.Wallet;
 
 }
-#endif
 
 /// <summary>
 /// Central hub managing service client instances per ExoClient.
@@ -2695,43 +1282,23 @@ public class ExoforgeServicesHub
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
+    private AchievementsServiceClient? _achievements;
+    public AchievementsServiceClient Achievements => _achievements ??= new AchievementsServiceClient(_client);
+
+    private AdventureWorldServiceClient? _adventure_world;
+    public AdventureWorldServiceClient AdventureWorld => _adventure_world ??= new AdventureWorldServiceClient(_client);
+
     private AuthServiceClient? _auth;
     public AuthServiceClient Auth => _auth ??= new AuthServiceClient(_client);
 
-#if UNITY_EDITOR
-    private CronServiceClient? _cron;
-    public CronServiceClient Cron => _cron ??= new CronServiceClient(_client);
-#endif
+    private BrainrotMarketServiceClient? _brainrot_market;
+    public BrainrotMarketServiceClient BrainrotMarket => _brainrot_market ??= new BrainrotMarketServiceClient(_client);
 
-#if UNITY_EDITOR
-    private DashboardServiceClient? _dashboard;
-    public DashboardServiceClient Dashboard => _dashboard ??= new DashboardServiceClient(_client);
-#endif
+    private DailyRewardsServiceClient? _daily_rewards;
+    public DailyRewardsServiceClient DailyRewards => _daily_rewards ??= new DailyRewardsServiceClient(_client);
 
-#if UNITY_EDITOR
-    private DashboardViewServiceClient? _dashboard_view;
-    public DashboardViewServiceClient DashboardView => _dashboard_view ??= new DashboardViewServiceClient(_client);
-#endif
-
-#if UNITY_EDITOR
-    private DatabaseServiceClient? _database;
-    public DatabaseServiceClient Database => _database ??= new DatabaseServiceClient(_client);
-#endif
-
-#if UNITY_EDITOR
-    private DocsServiceClient? _docs;
-    public DocsServiceClient Docs => _docs ??= new DocsServiceClient(_client);
-#endif
-
-#if UNITY_EDITOR
-    private ExtensionManagerServiceClient? _extension_manager;
-    public ExtensionManagerServiceClient ExtensionManager => _extension_manager ??= new ExtensionManagerServiceClient(_client);
-#endif
-
-#if UNITY_EDITOR
-    private FileBucketServiceClient? _file_bucket;
-    public FileBucketServiceClient FileBucket => _file_bucket ??= new FileBucketServiceClient(_client);
-#endif
+    private GameMenuServiceClient? _game_menu;
+    public GameMenuServiceClient GameMenu => _game_menu ??= new GameMenuServiceClient(_client);
 
     private HttpServiceClient? _http;
     public HttpServiceClient Http => _http ??= new HttpServiceClient(_client);
@@ -2742,21 +1309,14 @@ public class ExoforgeServicesHub
     private ItemsServiceClient? _items;
     public ItemsServiceClient Items => _items ??= new ItemsServiceClient(_client);
 
+    private LevelShareServiceClient? _level_share;
+    public LevelShareServiceClient LevelShare => _level_share ??= new LevelShareServiceClient(_client);
+
     private LldbServiceClient? _lldb;
     public LldbServiceClient Lldb => _lldb ??= new LldbServiceClient(_client);
 
     private LojaItensServiceClient? _loja_itens;
     public LojaItensServiceClient LojaItens => _loja_itens ??= new LojaItensServiceClient(_client);
-
-#if UNITY_EDITOR
-    private MeteringServiceClient? _metering;
-    public MeteringServiceClient Metering => _metering ??= new MeteringServiceClient(_client);
-#endif
-
-#if UNITY_EDITOR
-    private ObservabilityServiceClient? _observability;
-    public ObservabilityServiceClient Observability => _observability ??= new ObservabilityServiceClient(_client);
-#endif
 
     private PlayerDataServiceClient? _player_data;
     public PlayerDataServiceClient PlayerData => _player_data ??= new PlayerDataServiceClient(_client);
@@ -2764,19 +1324,169 @@ public class ExoforgeServicesHub
     private ResourceStoreServiceClient? _resource_store;
     public ResourceStoreServiceClient ResourceStore => _resource_store ??= new ResourceStoreServiceClient(_client);
 
-    private TestServiceClient? _test;
-    public TestServiceClient Test => _test ??= new TestServiceClient(_client);
-
     private TransportServiceClient? _transport;
     public TransportServiceClient Transport => _transport ??= new TransportServiceClient(_client);
 
     private VersioningServiceClient? _versioning;
     public VersioningServiceClient Versioning => _versioning ??= new VersioningServiceClient(_client);
 
-#if UNITY_EDITOR
-    private WsServiceClient? _ws;
-    public WsServiceClient Ws => _ws ??= new WsServiceClient(_client);
-#endif
+    private WalletServiceClient? _wallet;
+    public WalletServiceClient Wallet => _wallet ??= new WalletServiceClient(_client);
+
+}
+
+/// <summary>Client interface for the achievements service.</summary>
+public class AchievementsServiceClient
+{
+    private readonly ExoClient _client;
+
+    /// <summary>Fired when server emits enemy_slain event.</summary>
+    public event Action<AchievementsEnemySlainEvent>? OnEnemySlain;
+    /// <summary>Fired when server emits chest_opened event.</summary>
+    public event Action<AchievementsChestOpenedEvent>? OnChestOpened;
+    /// <summary>Fired when server emits zone_entered event.</summary>
+    public event Action<AchievementsZoneEnteredEvent>? OnZoneEntered;
+    /// <summary>Fired when server emits trade_made event.</summary>
+    public event Action<AchievementsTradeMadeEvent>? OnTradeMade;
+    /// <summary>Fired when server emits level_published event.</summary>
+    public event Action<AchievementsLevelPublishedEvent>? OnLevelPublished;
+    /// <summary>Fired when server emits achievement_unlocked event.</summary>
+    public event Action<AchievementsAchievementUnlockedEvent>? OnAchievementUnlocked;
+
+    public AchievementsServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _client.OnAnyEvent += HandleIncomingEvent;
+    }
+
+    private void HandleIncomingEvent(ExoEventFrame evt)
+    {
+        if (evt.Event == "enemy_slain" && OnEnemySlain != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsEnemySlainEvent>();
+            if (parsed != null) OnEnemySlain.Invoke(parsed);
+        }
+        if (evt.Event == "chest_opened" && OnChestOpened != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsChestOpenedEvent>();
+            if (parsed != null) OnChestOpened.Invoke(parsed);
+        }
+        if (evt.Event == "zone_entered" && OnZoneEntered != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsZoneEnteredEvent>();
+            if (parsed != null) OnZoneEntered.Invoke(parsed);
+        }
+        if (evt.Event == "trade_made" && OnTradeMade != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsTradeMadeEvent>();
+            if (parsed != null) OnTradeMade.Invoke(parsed);
+        }
+        if (evt.Event == "level_published" && OnLevelPublished != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsLevelPublishedEvent>();
+            if (parsed != null) OnLevelPublished.Invoke(parsed);
+        }
+        if (evt.Event == "achievement_unlocked" && OnAchievementUnlocked != null)
+        {
+            var parsed = evt.DeserializePayload<AchievementsAchievementUnlockedEvent>();
+            if (parsed != null) OnAchievementUnlocked.Invoke(parsed);
+        }
+    }
+
+    /// <summary>Subscribes to all events for achievements on topic 'world:feed'.</summary>
+    public Task SubscribeAsync(string topic = "world:feed", CancellationToken cancellationToken = default) =>
+        _client.SubscribeAsync(topic, cancellationToken);
+
+    /// <summary>Executes list action.</summary>
+    public Task<List<AchievementStatus>> ListAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<List<AchievementStatus>>("achievements", "list", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes list action with callbacks on the Unity main thread.</summary>
+    public void List(Action<List<AchievementStatus>> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ListAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[achievements.list] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+}
+
+/// <summary>Client interface for the adventure_world service.</summary>
+public class AdventureWorldServiceClient
+{
+    private readonly ExoClient _client;
+
+    /// <summary>Fired when server emits enemy_slain event.</summary>
+    public event Action<AdventureWorldEnemySlainEvent>? OnEnemySlain;
+    /// <summary>Fired when server emits chest_opened event.</summary>
+    public event Action<AdventureWorldChestOpenedEvent>? OnChestOpened;
+    /// <summary>Fired when server emits zone_entered event.</summary>
+    public event Action<AdventureWorldZoneEnteredEvent>? OnZoneEntered;
+
+    public AdventureWorldServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _client.OnAnyEvent += HandleIncomingEvent;
+    }
+
+    private void HandleIncomingEvent(ExoEventFrame evt)
+    {
+        if (evt.Event == "enemy_slain" && OnEnemySlain != null)
+        {
+            var parsed = evt.DeserializePayload<AdventureWorldEnemySlainEvent>();
+            if (parsed != null) OnEnemySlain.Invoke(parsed);
+        }
+        if (evt.Event == "chest_opened" && OnChestOpened != null)
+        {
+            var parsed = evt.DeserializePayload<AdventureWorldChestOpenedEvent>();
+            if (parsed != null) OnChestOpened.Invoke(parsed);
+        }
+        if (evt.Event == "zone_entered" && OnZoneEntered != null)
+        {
+            var parsed = evt.DeserializePayload<AdventureWorldZoneEnteredEvent>();
+            if (parsed != null) OnZoneEntered.Invoke(parsed);
+        }
+    }
+
+    /// <summary>Subscribes to all events for adventure_world on topic 'world:feed'.</summary>
+    public Task SubscribeAsync(string topic = "world:feed", CancellationToken cancellationToken = default) =>
+        _client.SubscribeAsync(topic, cancellationToken);
+
+    /// <summary>Executes get_progress action.</summary>
+    public Task<AdventurerProgress> GetProgressAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<AdventurerProgress>("adventure_world", "get_progress", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes get_progress action with callbacks on the Unity main thread.</summary>
+    public void GetProgress(Action<AdventurerProgress> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = GetProgressAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[adventure_world.get_progress] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
 
 }
 
@@ -2901,12 +1611,12 @@ public class AuthServiceClient
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthLoginResponse> LoginAsync(string password, string email, CancellationToken cancellationToken = default)
+    public Task<AuthLoginResponse> LoginAsync(string email, string password, CancellationToken cancellationToken = default)
     {
         var req = new AuthLoginRequest
         {
-            Password = password,
             Email = email,
+            Password = password,
         };
         return LoginAsync(req, cancellationToken);
     }
@@ -2914,9 +1624,9 @@ public class AuthServiceClient
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Login(string password, string email, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Login(string email, string password, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = LoginAsync(password, email).ContinueWith(t =>
+        _ = LoginAsync(email, password).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3016,15 +1726,15 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement password, JsonElement email, JsonElement scopes, JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
+    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
     {
         var req = new AuthRegisterRequest
         {
             Name = name,
-            Password = password,
-            Email = email,
-            Scopes = scopes,
             UserId = userId,
+            Email = email,
+            Password = password,
+            Scopes = scopes,
             PlayerId = playerId,
         };
         return RegisterAsync(req, cancellationToken);
@@ -3033,9 +1743,9 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Register(JsonElement name, JsonElement password, JsonElement email, JsonElement scopes, JsonElement userId, JsonElement playerId, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Register(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = RegisterAsync(name, password, email, scopes, userId, playerId).ContinueWith(t =>
+        _ = RegisterAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3079,24 +1789,24 @@ public class AuthServiceClient
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement password, JsonElement email, JsonElement scopes, JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
+    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
     {
         var req = new AuthCreatePlayerRequest
         {
             Name = name,
-            Password = password,
-            Email = email,
-            Scopes = scopes,
             UserId = userId,
+            Email = email,
+            Password = password,
+            Scopes = scopes,
             PlayerId = playerId,
         };
         return CreatePlayerAsync(req, cancellationToken);
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public void CreatePlayer(JsonElement name, JsonElement password, JsonElement email, JsonElement scopes, JsonElement userId, JsonElement playerId, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void CreatePlayer(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = CreatePlayerAsync(name, password, email, scopes, userId, playerId).ContinueWith(t =>
+        _ = CreatePlayerAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3249,421 +1959,6 @@ public class AuthServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Issues a service token for an existing user or player account. The token carries the account's scopes as they are when it authenticates; the `scopes` parameter is accepted for older callers and ignored.</summary>
-    public Task<AuthIssueTokenResponse> IssueTokenAsync(JsonElement scopes, JsonElement userId, string playerId, JsonElement expiresIn, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthIssueTokenRequest
-        {
-            Scopes = scopes,
-            UserId = userId,
-            PlayerId = playerId,
-            ExpiresIn = expiresIn,
-        };
-        return IssueTokenAsync(req, cancellationToken);
-    }
-
-    /// <summary>Issues a service token for an existing user or player account. The token carries the account's scopes as they are when it authenticates; the `scopes` parameter is accepted for older callers and ignored.</summary>
-    public void IssueToken(JsonElement scopes, JsonElement userId, string playerId, JsonElement expiresIn, Action<AuthIssueTokenResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IssueTokenAsync(scopes, userId, playerId, expiresIn).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.issue_token] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Issues a service token for an existing user or player account. The token carries the account's scopes as they are when it authenticates; the `scopes` parameter is accepted for older callers and ignored.</summary>
-    public Task<AuthIssueTokenResponse> IssueTokenAsync(AuthIssueTokenRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthIssueTokenResponse>("auth", "issue_token", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Issues a service token for an existing user or player account. The token carries the account's scopes as they are when it authenticates; the `scopes` parameter is accepted for older callers and ignored.</summary>
-    public void IssueToken(AuthIssueTokenRequest request, Action<AuthIssueTokenResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IssueTokenAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.issue_token] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Lists the tokens issued for an account: id, kind, creation, last use and expiry.</summary>
-    public Task<AuthListTokensResponse> ListTokensAsync(JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthListTokensRequest
-        {
-            UserId = userId,
-            PlayerId = playerId,
-        };
-        return ListTokensAsync(req, cancellationToken);
-    }
-
-    /// <summary>Lists the tokens issued for an account: id, kind, creation, last use and expiry.</summary>
-    public void ListTokens(JsonElement userId, JsonElement playerId, Action<AuthListTokensResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListTokensAsync(userId, playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.list_tokens] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists the tokens issued for an account: id, kind, creation, last use and expiry.</summary>
-    public Task<AuthListTokensResponse> ListTokensAsync(AuthListTokensRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthListTokensResponse>("auth", "list_tokens", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists the tokens issued for an account: id, kind, creation, last use and expiry.</summary>
-    public void ListTokens(AuthListTokensRequest request, Action<AuthListTokensResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListTokensAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.list_tokens] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Revokes a token (and the session it belongs to).</summary>
-    public Task<AuthRevokeTokenResponse> RevokeTokenAsync(string tokenId, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthRevokeTokenRequest
-        {
-            TokenId = tokenId,
-        };
-        return RevokeTokenAsync(req, cancellationToken);
-    }
-
-    /// <summary>Revokes a token (and the session it belongs to).</summary>
-    public void RevokeToken(string tokenId, Action<AuthRevokeTokenResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RevokeTokenAsync(tokenId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.revoke_token] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Revokes a token (and the session it belongs to).</summary>
-    public Task<AuthRevokeTokenResponse> RevokeTokenAsync(AuthRevokeTokenRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthRevokeTokenResponse>("auth", "revoke_token", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Revokes a token (and the session it belongs to).</summary>
-    public void RevokeToken(AuthRevokeTokenRequest request, Action<AuthRevokeTokenResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RevokeTokenAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.revoke_token] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Deletes expired and revoked token rows. Cron calls this.</summary>
-    public Task<AuthPurgeTokensResponse> PurgeTokensAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthPurgeTokensResponse>("auth", "purge_tokens", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Deletes expired and revoked token rows. Cron calls this.</summary>
-    public void PurgeTokens(Action<AuthPurgeTokensResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PurgeTokensAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.purge_tokens] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Lists all registered user accounts and their assigned authorization scopes.</summary>
-    public Task<AuthListUsersResponse> ListUsersAsync(JsonElement query, JsonElement limit, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthListUsersRequest
-        {
-            Query = query,
-            Limit = limit,
-        };
-        return ListUsersAsync(req, cancellationToken);
-    }
-
-    /// <summary>Lists all registered user accounts and their assigned authorization scopes.</summary>
-    public void ListUsers(JsonElement query, JsonElement limit, Action<AuthListUsersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListUsersAsync(query, limit).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.list_users] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists all registered user accounts and their assigned authorization scopes.</summary>
-    public Task<AuthListUsersResponse> ListUsersAsync(AuthListUsersRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthListUsersResponse>("auth", "list_users", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all registered user accounts and their assigned authorization scopes.</summary>
-    public void ListUsers(AuthListUsersRequest request, Action<AuthListUsersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListUsersAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.list_users] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Resets the password for an existing account.</summary>
-    public Task<AuthResetPasswordResponse> ResetPasswordAsync(string password, JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthResetPasswordRequest
-        {
-            Password = password,
-            UserId = userId,
-            PlayerId = playerId,
-        };
-        return ResetPasswordAsync(req, cancellationToken);
-    }
-
-    /// <summary>Resets the password for an existing account.</summary>
-    public void ResetPassword(string password, JsonElement userId, JsonElement playerId, Action<AuthResetPasswordResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ResetPasswordAsync(password, userId, playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.reset_password] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Resets the password for an existing account.</summary>
-    public Task<AuthResetPasswordResponse> ResetPasswordAsync(AuthResetPasswordRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthResetPasswordResponse>("auth", "reset_password", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Resets the password for an existing account.</summary>
-    public void ResetPassword(AuthResetPasswordRequest request, Action<AuthResetPasswordResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ResetPasswordAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.reset_password] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Updates authorization scopes/roles for a user account.</summary>
-    public Task<AuthUpdateUserRolesResponse> UpdateUserRolesAsync(JsonElement role, JsonElement scopes, JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthUpdateUserRolesRequest
-        {
-            Role = role,
-            Scopes = scopes,
-            UserId = userId,
-            PlayerId = playerId,
-        };
-        return UpdateUserRolesAsync(req, cancellationToken);
-    }
-
-    /// <summary>Updates authorization scopes/roles for a user account.</summary>
-    public void UpdateUserRoles(JsonElement role, JsonElement scopes, JsonElement userId, JsonElement playerId, Action<AuthUpdateUserRolesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateUserRolesAsync(role, scopes, userId, playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.update_user_roles] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Updates authorization scopes/roles for a user account.</summary>
-    public Task<AuthUpdateUserRolesResponse> UpdateUserRolesAsync(AuthUpdateUserRolesRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthUpdateUserRolesResponse>("auth", "update_user_roles", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Updates authorization scopes/roles for a user account.</summary>
-    public void UpdateUserRoles(AuthUpdateUserRolesRequest request, Action<AuthUpdateUserRolesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateUserRolesAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.update_user_roles] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Deletes a user account and associated auth credentials.</summary>
-    public Task<AuthDeleteUserResponse> DeleteUserAsync(JsonElement userId, JsonElement playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new AuthDeleteUserRequest
-        {
-            UserId = userId,
-            PlayerId = playerId,
-        };
-        return DeleteUserAsync(req, cancellationToken);
-    }
-
-    /// <summary>Deletes a user account and associated auth credentials.</summary>
-    public void DeleteUser(JsonElement userId, JsonElement playerId, Action<AuthDeleteUserResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteUserAsync(userId, playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.delete_user] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Deletes a user account and associated auth credentials.</summary>
-    public Task<AuthDeleteUserResponse> DeleteUserAsync(AuthDeleteUserRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<AuthDeleteUserResponse>("auth", "delete_user", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Deletes a user account and associated auth credentials.</summary>
-    public void DeleteUser(AuthDeleteUserRequest request, Action<AuthDeleteUserResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteUserAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[auth.delete_user] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
     /// <summary>Removes every account that was created disposable, and nothing else. A player is disposable because the caller said so when it registered — a test, a demo, a load run. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and leaves the players who signed up.</summary>
     public Task<AuthPurgeDisposableResponse> PurgeDisposableAsync(JsonElement dryRun, CancellationToken cancellationToken = default)
     {
@@ -3718,130 +2013,17 @@ public class AuthServiceClient
 
 }
 
-#if UNITY_EDITOR
-/// <summary>Client interface for the cron service.</summary>
-public class CronServiceClient
+/// <summary>Client interface for the brainrot_market service.</summary>
+public class BrainrotMarketServiceClient
 {
     private readonly ExoClient _client;
 
-    public CronServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
+    /// <summary>Fired when server emits trade_made event.</summary>
+    public event Action<BrainrotMarketTradeMadeEvent>? OnTradeMade;
+    /// <summary>Fired when server emits prices_ticked event.</summary>
+    public event Action<BrainrotMarketPricesTickedEvent>? OnPricesTicked;
 
-    /// <summary>Returns status and count of active cron jobs.</summary>
-    public Task<CronStatusResponse> StatusAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<CronStatusResponse>("cron", "status", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Returns status and count of active cron jobs.</summary>
-    public void Status(Action<CronStatusResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = StatusAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[cron.status] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists all scheduled cron jobs.</summary>
-    public Task<CronListJobsResponse> ListJobsAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<CronListJobsResponse>("cron", "list_jobs", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all scheduled cron jobs.</summary>
-    public void ListJobs(Action<CronListJobsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListJobsAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[cron.list_jobs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Manually triggers a scheduled job by its name or id.</summary>
-    public Task<CronTriggerJobResponse> TriggerJobAsync(string jobId, CancellationToken cancellationToken = default)
-    {
-        var req = new CronTriggerJobRequest
-        {
-            JobId = jobId,
-        };
-        return TriggerJobAsync(req, cancellationToken);
-    }
-
-    /// <summary>Manually triggers a scheduled job by its name or id.</summary>
-    public void TriggerJob(string jobId, Action<CronTriggerJobResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TriggerJobAsync(jobId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[cron.trigger_job] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Manually triggers a scheduled job by its name or id.</summary>
-    public Task<CronTriggerJobResponse> TriggerJobAsync(CronTriggerJobRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<CronTriggerJobResponse>("cron", "trigger_job", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Manually triggers a scheduled job by its name or id.</summary>
-    public void TriggerJob(CronTriggerJobRequest request, Action<CronTriggerJobResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TriggerJobAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[cron.trigger_job] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the dashboard service.</summary>
-public class DashboardServiceClient
-{
-    private readonly ExoClient _client;
-
-    /// <summary>Fired when server emits project_metadata_updated event.</summary>
-    public event Action<DashboardProjectMetadataUpdatedEvent>? OnProjectMetadataUpdated;
-
-    public DashboardServiceClient(ExoClient client)
+    public BrainrotMarketServiceClient(ExoClient client)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
         _client.OnAnyEvent += HandleIncomingEvent;
@@ -3849,36 +2031,114 @@ public class DashboardServiceClient
 
     private void HandleIncomingEvent(ExoEventFrame evt)
     {
-        if (evt.Event == "project_metadata_updated" && OnProjectMetadataUpdated != null)
+        if (evt.Event == "trade_made" && OnTradeMade != null)
         {
-            var parsed = evt.DeserializePayload<DashboardProjectMetadataUpdatedEvent>();
-            if (parsed != null) OnProjectMetadataUpdated.Invoke(parsed);
+            var parsed = evt.DeserializePayload<BrainrotMarketTradeMadeEvent>();
+            if (parsed != null) OnTradeMade.Invoke(parsed);
+        }
+        if (evt.Event == "prices_ticked" && OnPricesTicked != null)
+        {
+            var parsed = evt.DeserializePayload<BrainrotMarketPricesTickedEvent>();
+            if (parsed != null) OnPricesTicked.Invoke(parsed);
         }
     }
 
-    /// <summary>Subscribes to all events for dashboard on topic 'dashboard:*'.</summary>
-    public Task SubscribeAsync(string topic = "dashboard:*", CancellationToken cancellationToken = default) =>
+    /// <summary>Subscribes to all events for brainrot_market on topic 'market:trades'.</summary>
+    public Task SubscribeAsync(string topic = "market:trades", CancellationToken cancellationToken = default) =>
         _client.SubscribeAsync(topic, cancellationToken);
 
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public Task<DashboardGetDashboardMountResponse> GetDashboardMountAsync(JsonElement viewId, CancellationToken cancellationToken = default)
+    /// <summary>Executes get_portfolio action.</summary>
+    public Task<Portfolio> GetPortfolioAsync(CancellationToken cancellationToken = default)
     {
-        var req = new DashboardGetDashboardMountRequest
+        return _client.SendActionAsync<Portfolio>("brainrot_market", "get_portfolio", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes get_portfolio action with callbacks on the Unity main thread.</summary>
+    public void GetPortfolio(Action<Portfolio> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = GetPortfolioAsync().ContinueWith(t =>
         {
-            ViewId = viewId,
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.get_portfolio] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes collect_idle action.</summary>
+    public Task<IdleCollected> CollectIdleAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<IdleCollected>("brainrot_market", "collect_idle", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes collect_idle action with callbacks on the Unity main thread.</summary>
+    public void CollectIdle(Action<IdleCollected> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = CollectIdleAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.collect_idle] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes buy_farm action.</summary>
+    public Task<Portfolio> BuyFarmAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<Portfolio>("brainrot_market", "buy_farm", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes buy_farm action with callbacks on the Unity main thread.</summary>
+    public void BuyFarm(Action<Portfolio> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = BuyFarmAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.buy_farm] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes buy_shares action with typed arguments.</summary>
+    public Task<Trade> BuySharesAsync(string symbol, long shares, CancellationToken cancellationToken = default)
+    {
+        var req = new BrainrotMarketBuySharesRequest
+        {
+            Symbol = symbol,
+            Shares = shares,
         };
-        return GetDashboardMountAsync(req, cancellationToken);
+        return BuySharesAsync(req, cancellationToken);
     }
 
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public void GetDashboardMount(JsonElement viewId, Action<DashboardGetDashboardMountResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes buy_shares action with callbacks on the Unity main thread.</summary>
+    public void BuyShares(string symbol, long shares, Action<Trade> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = GetDashboardMountAsync(viewId).ContinueWith(t =>
+        _ = BuySharesAsync(symbol, shares).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.get_dashboard_mount] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.buy_shares] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3888,21 +2148,21 @@ public class DashboardServiceClient
         });
     }
 
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public Task<DashboardGetDashboardMountResponse> GetDashboardMountAsync(DashboardGetDashboardMountRequest request, CancellationToken cancellationToken = default)
+    /// <summary>Executes buy_shares action with a typed request DTO.</summary>
+    public Task<Trade> BuySharesAsync(BrainrotMarketBuySharesRequest request, CancellationToken cancellationToken = default)
     {
-        return _client.SendActionAsync<DashboardGetDashboardMountResponse>("dashboard", "get_dashboard_mount", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+        return _client.SendActionAsync<Trade>("brainrot_market", "buy_shares", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public void GetDashboardMount(DashboardGetDashboardMountRequest request, Action<DashboardGetDashboardMountResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes buy_shares action with a typed request DTO and callbacks.</summary>
+    public void BuyShares(BrainrotMarketBuySharesRequest request, Action<Trade> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = GetDashboardMountAsync(request).ContinueWith(t =>
+        _ = BuySharesAsync(request).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.get_dashboard_mount] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.buy_shares] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3912,25 +2172,26 @@ public class DashboardServiceClient
         });
     }
 
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public Task<DashboardGetDashboardDataResponse> GetDashboardDataAsync(JsonElement viewId, CancellationToken cancellationToken = default)
+    /// <summary>Executes sell_shares action with typed arguments.</summary>
+    public Task<Trade> SellSharesAsync(string symbol, long shares, CancellationToken cancellationToken = default)
     {
-        var req = new DashboardGetDashboardDataRequest
+        var req = new BrainrotMarketSellSharesRequest
         {
-            ViewId = viewId,
+            Symbol = symbol,
+            Shares = shares,
         };
-        return GetDashboardDataAsync(req, cancellationToken);
+        return SellSharesAsync(req, cancellationToken);
     }
 
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public void GetDashboardData(JsonElement viewId, Action<DashboardGetDashboardDataResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes sell_shares action with callbacks on the Unity main thread.</summary>
+    public void SellShares(string symbol, long shares, Action<Trade> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = GetDashboardDataAsync(viewId).ContinueWith(t =>
+        _ = SellSharesAsync(symbol, shares).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.get_dashboard_data] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.sell_shares] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3940,101 +2201,21 @@ public class DashboardServiceClient
         });
     }
 
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public Task<DashboardGetDashboardDataResponse> GetDashboardDataAsync(DashboardGetDashboardDataRequest request, CancellationToken cancellationToken = default)
+    /// <summary>Executes sell_shares action with a typed request DTO.</summary>
+    public Task<Trade> SellSharesAsync(BrainrotMarketSellSharesRequest request, CancellationToken cancellationToken = default)
     {
-        return _client.SendActionAsync<DashboardGetDashboardDataResponse>("dashboard", "get_dashboard_data", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+        return _client.SendActionAsync<Trade>("brainrot_market", "sell_shares", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public void GetDashboardData(DashboardGetDashboardDataRequest request, Action<DashboardGetDashboardDataResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes sell_shares action with a typed request DTO and callbacks.</summary>
+    public void SellShares(BrainrotMarketSellSharesRequest request, Action<Trade> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = GetDashboardDataAsync(request).ContinueWith(t =>
+        _ = SellSharesAsync(request).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.get_dashboard_data] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves global project metadata.</summary>
-    public Task<DashboardGetProjectMetadataResponse> GetProjectMetadataAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DashboardGetProjectMetadataResponse>("dashboard", "get_project_metadata", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves global project metadata.</summary>
-    public void GetProjectMetadata(Action<DashboardGetProjectMetadataResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetProjectMetadataAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.get_project_metadata] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Updates global project metadata.</summary>
-    public Task<DashboardUpdateProjectMetadataResponse> UpdateProjectMetadataAsync(JsonElement description, JsonElement custom, JsonElement projectName, JsonElement studioName, JsonElement websiteUrl, CancellationToken cancellationToken = default)
-    {
-        var req = new DashboardUpdateProjectMetadataRequest
-        {
-            Description = description,
-            Custom = custom,
-            ProjectName = projectName,
-            StudioName = studioName,
-            WebsiteUrl = websiteUrl,
-        };
-        return UpdateProjectMetadataAsync(req, cancellationToken);
-    }
-
-    /// <summary>Updates global project metadata.</summary>
-    public void UpdateProjectMetadata(JsonElement description, JsonElement custom, JsonElement projectName, JsonElement studioName, JsonElement websiteUrl, Action<DashboardUpdateProjectMetadataResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateProjectMetadataAsync(description, custom, projectName, studioName, websiteUrl).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.update_project_metadata] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Updates global project metadata.</summary>
-    public Task<DashboardUpdateProjectMetadataResponse> UpdateProjectMetadataAsync(DashboardUpdateProjectMetadataRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DashboardUpdateProjectMetadataResponse>("dashboard", "update_project_metadata", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Updates global project metadata.</summary>
-    public void UpdateProjectMetadata(DashboardUpdateProjectMetadataRequest request, Action<DashboardUpdateProjectMetadataResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateProjectMetadataAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard.update_project_metadata] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[brainrot_market.sell_shares] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4045,38 +2226,32 @@ public class DashboardServiceClient
     }
 
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Client interface for the dashboard_view service.</summary>
-public class DashboardViewServiceClient
+/// <summary>Client interface for the daily_rewards service.</summary>
+public class DailyRewardsServiceClient
 {
     private readonly ExoClient _client;
 
-    public DashboardViewServiceClient(ExoClient client)
+    public DailyRewardsServiceClient(ExoClient client)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
-    /// <summary>Resolves the LiveView component module for a given service or extension id.</summary>
-    public Task<DashboardViewResolveViewResponse> ResolveViewAsync(JsonElement id, CancellationToken cancellationToken = default)
+    /// <summary>Executes get_status action.</summary>
+    public Task<DailyStatus> GetStatusAsync(CancellationToken cancellationToken = default)
     {
-        var req = new DashboardViewResolveViewRequest
-        {
-            Id = id,
-        };
-        return ResolveViewAsync(req, cancellationToken);
+        return _client.SendActionAsync<DailyStatus>("daily_rewards", "get_status", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Resolves the LiveView component module for a given service or extension id.</summary>
-    public void ResolveView(JsonElement id, Action<DashboardViewResolveViewResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes get_status action with callbacks on the Unity main thread.</summary>
+    public void GetStatus(Action<DailyStatus> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ResolveViewAsync(id).ContinueWith(t =>
+        _ = GetStatusAsync().ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.resolve_view] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[daily_rewards.get_status] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4086,149 +2261,21 @@ public class DashboardViewServiceClient
         });
     }
 
-    /// <summary>Resolves the LiveView component module for a given service or extension id.</summary>
-    public Task<DashboardViewResolveViewResponse> ResolveViewAsync(DashboardViewResolveViewRequest request, CancellationToken cancellationToken = default)
+    /// <summary>Executes claim action.</summary>
+    public Task<DailyClaimResult> ClaimAsync(CancellationToken cancellationToken = default)
     {
-        return _client.SendActionAsync<DashboardViewResolveViewResponse>("dashboard_view", "resolve_view", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+        return _client.SendActionAsync<DailyClaimResult>("daily_rewards", "claim", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Resolves the LiveView component module for a given service or extension id.</summary>
-    public void ResolveView(DashboardViewResolveViewRequest request, Action<DashboardViewResolveViewResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes claim action with callbacks on the Unity main thread.</summary>
+    public void Claim(Action<DailyClaimResult> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ResolveViewAsync(request).ContinueWith(t =>
+        _ = ClaimAsync().ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.resolve_view] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists all registered custom dashboard view modules.</summary>
-    public Task<DashboardViewListViewsResponse> ListViewsAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DashboardViewListViewsResponse>("dashboard_view", "list_views", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all registered custom dashboard view modules.</summary>
-    public void ListViews(Action<DashboardViewListViewsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListViewsAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.list_views] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public Task<DashboardViewGetDashboardMountResponse> GetDashboardMountAsync(JsonElement viewId, CancellationToken cancellationToken = default)
-    {
-        var req = new DashboardViewGetDashboardMountRequest
-        {
-            ViewId = viewId,
-        };
-        return GetDashboardMountAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public void GetDashboardMount(JsonElement viewId, Action<DashboardViewGetDashboardMountResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetDashboardMountAsync(viewId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.get_dashboard_mount] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public Task<DashboardViewGetDashboardMountResponse> GetDashboardMountAsync(DashboardViewGetDashboardMountRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DashboardViewGetDashboardMountResponse>("dashboard_view", "get_dashboard_mount", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}</summary>
-    public void GetDashboardMount(DashboardViewGetDashboardMountRequest request, Action<DashboardViewGetDashboardMountResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetDashboardMountAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.get_dashboard_mount] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public Task<DashboardViewGetDashboardDataResponse> GetDashboardDataAsync(JsonElement viewId, CancellationToken cancellationToken = default)
-    {
-        var req = new DashboardViewGetDashboardDataRequest
-        {
-            ViewId = viewId,
-        };
-        return GetDashboardDataAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public void GetDashboardData(JsonElement viewId, Action<DashboardViewGetDashboardDataResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetDashboardDataAsync(viewId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.get_dashboard_data] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public Task<DashboardViewGetDashboardDataResponse> GetDashboardDataAsync(DashboardViewGetDashboardDataRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DashboardViewGetDashboardDataResponse>("dashboard_view", "get_dashboard_data", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves data payload for hydrating the dashboard view.</summary>
-    public void GetDashboardData(DashboardViewGetDashboardDataRequest request, Action<DashboardViewGetDashboardDataResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetDashboardDataAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[dashboard_view.get_dashboard_data] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[daily_rewards.claim] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4239,40 +2286,61 @@ public class DashboardViewServiceClient
     }
 
 }
-#endif
 
-#if UNITY_EDITOR
-/// <summary>Client interface for the database service.</summary>
-public class DatabaseServiceClient
+/// <summary>Client interface for the game_menu service.</summary>
+public class GameMenuServiceClient
 {
     private readonly ExoClient _client;
 
-    public DatabaseServiceClient(ExoClient client)
+    public GameMenuServiceClient(ExoClient client)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
-    /// <summary>Executes a driver-agnostic query or data operation.</summary>
-    public Task<DatabaseExecuteResponse> ExecuteAsync(JsonElement arguments, JsonElement operation, JsonElement plugin, CancellationToken cancellationToken = default)
+    /// <summary>Executes get_settings action.</summary>
+    public Task<PlayerSettings> GetSettingsAsync(CancellationToken cancellationToken = default)
     {
-        var req = new DatabaseExecuteRequest
+        return _client.SendActionAsync<PlayerSettings>("game_menu", "get_settings", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes get_settings action with callbacks on the Unity main thread.</summary>
+    public void GetSettings(Action<PlayerSettings> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = GetSettingsAsync().ContinueWith(t =>
         {
-            Arguments = arguments,
-            Operation = operation,
-            Plugin = plugin,
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[game_menu.get_settings] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes save_settings action with typed arguments.</summary>
+    public Task<PlayerSettings> SaveSettingsAsync(long volume, bool colorBlind, CancellationToken cancellationToken = default)
+    {
+        var req = new GameMenuSaveSettingsRequest
+        {
+            Volume = volume,
+            ColorBlind = colorBlind,
         };
-        return ExecuteAsync(req, cancellationToken);
+        return SaveSettingsAsync(req, cancellationToken);
     }
 
-    /// <summary>Executes a driver-agnostic query or data operation.</summary>
-    public void Execute(JsonElement arguments, JsonElement operation, JsonElement plugin, Action<DatabaseExecuteResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes save_settings action with callbacks on the Unity main thread.</summary>
+    public void SaveSettings(long volume, bool colorBlind, Action<PlayerSettings> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ExecuteAsync(arguments, operation, plugin).ContinueWith(t =>
+        _ = SaveSettingsAsync(volume, colorBlind).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[database.execute] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[game_menu.save_settings] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4282,21 +2350,21 @@ public class DatabaseServiceClient
         });
     }
 
-    /// <summary>Executes a driver-agnostic query or data operation.</summary>
-    public Task<DatabaseExecuteResponse> ExecuteAsync(DatabaseExecuteRequest request, CancellationToken cancellationToken = default)
+    /// <summary>Executes save_settings action with a typed request DTO.</summary>
+    public Task<PlayerSettings> SaveSettingsAsync(GameMenuSaveSettingsRequest request, CancellationToken cancellationToken = default)
     {
-        return _client.SendActionAsync<DatabaseExecuteResponse>("database", "execute", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+        return _client.SendActionAsync<PlayerSettings>("game_menu", "save_settings", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Executes a driver-agnostic query or data operation.</summary>
-    public void Execute(DatabaseExecuteRequest request, Action<DatabaseExecuteResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes save_settings action with a typed request DTO and callbacks.</summary>
+    public void SaveSettings(GameMenuSaveSettingsRequest request, Action<PlayerSettings> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ExecuteAsync(request).ContinueWith(t =>
+        _ = SaveSettingsAsync(request).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[database.execute] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[game_menu.save_settings] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4306,50 +2374,21 @@ public class DatabaseServiceClient
         });
     }
 
-    /// <summary>Lists the columns of a table in an extension's isolated database.</summary>
-    public Task<DatabaseTableColumnsResponse> TableColumnsAsync(string table, JsonElement plugin, CancellationToken cancellationToken = default)
+    /// <summary>Executes claim_gift action.</summary>
+    public Task<GiftReceipt> ClaimGiftAsync(CancellationToken cancellationToken = default)
     {
-        var req = new DatabaseTableColumnsRequest
-        {
-            Table = table,
-            Plugin = plugin,
-        };
-        return TableColumnsAsync(req, cancellationToken);
+        return _client.SendActionAsync<GiftReceipt>("game_menu", "claim_gift", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Lists the columns of a table in an extension's isolated database.</summary>
-    public void TableColumns(string table, JsonElement plugin, Action<DatabaseTableColumnsResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes claim_gift action with callbacks on the Unity main thread.</summary>
+    public void ClaimGift(Action<GiftReceipt> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = TableColumnsAsync(table, plugin).ContinueWith(t =>
+        _ = ClaimGiftAsync().ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[database.table_columns] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists the columns of a table in an extension's isolated database.</summary>
-    public Task<DatabaseTableColumnsResponse> TableColumnsAsync(DatabaseTableColumnsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DatabaseTableColumnsResponse>("database", "table_columns", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists the columns of a table in an extension's isolated database.</summary>
-    public void TableColumns(DatabaseTableColumnsRequest request, Action<DatabaseTableColumnsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TableColumnsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[database.table_columns] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[game_menu.claim_gift] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -4360,1072 +2399,6 @@ public class DatabaseServiceClient
     }
 
 }
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the docs service.</summary>
-public class DocsServiceClient
-{
-    private readonly ExoClient _client;
-
-    public DocsServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Lists all available documentation chapters.</summary>
-    public Task<DocsListChaptersResponse> ListChaptersAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsListChaptersResponse>("docs", "list_chapters", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all available documentation chapters.</summary>
-    public void ListChapters(Action<DocsListChaptersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListChaptersAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.list_chapters] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public Task<DocsGetChapterResponse> GetChapterAsync(string id, CancellationToken cancellationToken = default)
-    {
-        var req = new DocsGetChapterRequest
-        {
-            Id = id,
-        };
-        return GetChapterAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public void GetChapter(string id, Action<DocsGetChapterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetChapterAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.get_chapter] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public Task<DocsGetChapterResponse> GetChapterAsync(DocsGetChapterRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsGetChapterResponse>("docs", "get_chapter", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public void GetChapter(DocsGetChapterRequest request, Action<DocsGetChapterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetChapterAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.get_chapter] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public Task<DocsExportDocsResponse> ExportDocsAsync(JsonElement format, CancellationToken cancellationToken = default)
-    {
-        var req = new DocsExportDocsRequest
-        {
-            Format = format,
-        };
-        return ExportDocsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public void ExportDocs(JsonElement format, Action<DocsExportDocsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExportDocsAsync(format).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.export_docs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public Task<DocsExportDocsResponse> ExportDocsAsync(DocsExportDocsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsExportDocsResponse>("docs", "export_docs", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public void ExportDocs(DocsExportDocsRequest request, Action<DocsExportDocsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExportDocsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.export_docs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the extension_manager service.</summary>
-public class ExtensionManagerServiceClient
-{
-    private readonly ExoClient _client;
-
-    public ExtensionManagerServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Lists all registered extensions with their metadata and contracts.</summary>
-    public Task<ExtensionManagerListExtensionsResponse> ListExtensionsAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerListExtensionsResponse>("extension_manager", "list_extensions", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all registered extensions with their metadata and contracts.</summary>
-    public void ListExtensions(Action<ExtensionManagerListExtensionsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListExtensionsAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.list_extensions] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves details and contract metadata for a single extension.</summary>
-    public Task<ExtensionManagerGetExtensionResponse> GetExtensionAsync(string id, CancellationToken cancellationToken = default)
-    {
-        var req = new ExtensionManagerGetExtensionRequest
-        {
-            Id = id,
-        };
-        return GetExtensionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves details and contract metadata for a single extension.</summary>
-    public void GetExtension(string id, Action<ExtensionManagerGetExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetExtensionAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.get_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves details and contract metadata for a single extension.</summary>
-    public Task<ExtensionManagerGetExtensionResponse> GetExtensionAsync(ExtensionManagerGetExtensionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerGetExtensionResponse>("extension_manager", "get_extension", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves details and contract metadata for a single extension.</summary>
-    public void GetExtension(ExtensionManagerGetExtensionRequest request, Action<ExtensionManagerGetExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetExtensionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.get_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves runtime node health, memory, and cluster stats.</summary>
-    public Task<ExtensionManagerGetSystemInfoResponse> GetSystemInfoAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerGetSystemInfoResponse>("extension_manager", "get_system_info", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves runtime node health, memory, and cluster stats.</summary>
-    public void GetSystemInfo(Action<ExtensionManagerGetSystemInfoResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetSystemInfoAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.get_system_info] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Uploads and installs a new extension binary.</summary>
-    public Task<ExtensionManagerUploadExtensionResponse> UploadExtensionAsync(JsonElement binary, string name, JsonElement manifest, CancellationToken cancellationToken = default)
-    {
-        var req = new ExtensionManagerUploadExtensionRequest
-        {
-            Binary = binary,
-            Name = name,
-            Manifest = manifest,
-        };
-        return UploadExtensionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Uploads and installs a new extension binary.</summary>
-    public void UploadExtension(JsonElement binary, string name, JsonElement manifest, Action<ExtensionManagerUploadExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UploadExtensionAsync(binary, name, manifest).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.upload_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Uploads and installs a new extension binary.</summary>
-    public Task<ExtensionManagerUploadExtensionResponse> UploadExtensionAsync(ExtensionManagerUploadExtensionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerUploadExtensionResponse>("extension_manager", "upload_extension", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Uploads and installs a new extension binary.</summary>
-    public void UploadExtension(ExtensionManagerUploadExtensionRequest request, Action<ExtensionManagerUploadExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UploadExtensionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.upload_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Removes an installed extension.</summary>
-    public Task<ExtensionManagerRemoveExtensionResponse> RemoveExtensionAsync(string id, CancellationToken cancellationToken = default)
-    {
-        var req = new ExtensionManagerRemoveExtensionRequest
-        {
-            Id = id,
-        };
-        return RemoveExtensionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Removes an installed extension.</summary>
-    public void RemoveExtension(string id, Action<ExtensionManagerRemoveExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RemoveExtensionAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.remove_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Removes an installed extension.</summary>
-    public Task<ExtensionManagerRemoveExtensionResponse> RemoveExtensionAsync(ExtensionManagerRemoveExtensionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerRemoveExtensionResponse>("extension_manager", "remove_extension", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Removes an installed extension.</summary>
-    public void RemoveExtension(ExtensionManagerRemoveExtensionRequest request, Action<ExtensionManagerRemoveExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RemoveExtensionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.remove_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Triggers a system re-index and reload of all extensions.</summary>
-    public Task<ExtensionManagerRestartSystemResponse> RestartSystemAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerRestartSystemResponse>("extension_manager", "restart_system", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Triggers a system re-index and reload of all extensions.</summary>
-    public void RestartSystem(Action<ExtensionManagerRestartSystemResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RestartSystemAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.restart_system] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Returns the most recent log lines an extension emitted.</summary>
-    public Task<ExtensionManagerLogsResponse> LogsAsync(string id, JsonElement limit, CancellationToken cancellationToken = default)
-    {
-        var req = new ExtensionManagerLogsRequest
-        {
-            Id = id,
-            Limit = limit,
-        };
-        return LogsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Returns the most recent log lines an extension emitted.</summary>
-    public void Logs(string id, JsonElement limit, Action<ExtensionManagerLogsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = LogsAsync(id, limit).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.logs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Returns the most recent log lines an extension emitted.</summary>
-    public Task<ExtensionManagerLogsResponse> LogsAsync(ExtensionManagerLogsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerLogsResponse>("extension_manager", "logs", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Returns the most recent log lines an extension emitted.</summary>
-    public void Logs(ExtensionManagerLogsRequest request, Action<ExtensionManagerLogsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = LogsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.logs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Re-boots an installed extension from its staged files, without re-uploading it.</summary>
-    public Task<ExtensionManagerReloadExtensionResponse> ReloadExtensionAsync(string id, CancellationToken cancellationToken = default)
-    {
-        var req = new ExtensionManagerReloadExtensionRequest
-        {
-            Id = id,
-        };
-        return ReloadExtensionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Re-boots an installed extension from its staged files, without re-uploading it.</summary>
-    public void ReloadExtension(string id, Action<ExtensionManagerReloadExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReloadExtensionAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.reload_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Re-boots an installed extension from its staged files, without re-uploading it.</summary>
-    public Task<ExtensionManagerReloadExtensionResponse> ReloadExtensionAsync(ExtensionManagerReloadExtensionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerReloadExtensionResponse>("extension_manager", "reload_extension", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Re-boots an installed extension from its staged files, without re-uploading it.</summary>
-    public void ReloadExtension(ExtensionManagerReloadExtensionRequest request, Action<ExtensionManagerReloadExtensionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReloadExtensionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.reload_extension] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports the complete catalog of extensions and contracts for external tools (CLI/Unity).</summary>
-    public Task<ExtensionManagerExportExtensionInfoResponse> ExportExtensionInfoAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerExportExtensionInfoResponse>("extension_manager", "export_extension_info", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Exports the complete catalog of extensions and contracts for external tools (CLI/Unity).</summary>
-    public void ExportExtensionInfo(Action<ExtensionManagerExportExtensionInfoResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExportExtensionInfoAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.export_extension_info] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports C# companion attributes and types provided by loaded extensions.</summary>
-    public Task<ExtensionManagerCsharpAttributesResponse> CsharpAttributesAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerCsharpAttributesResponse>("extension_manager", "csharp_attributes", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Exports C# companion attributes and types provided by loaded extensions.</summary>
-    public void CsharpAttributes(Action<ExtensionManagerCsharpAttributesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CsharpAttributesAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.csharp_attributes] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the file_bucket service.</summary>
-public class FileBucketServiceClient
-{
-    private readonly ExoClient _client;
-
-    public FileBucketServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Stores a file in a specified bucket from raw binary or base64 content.</summary>
-    public Task<FileBucketUploadFileResponse> UploadFileAsync(string filename, JsonElement metadata, JsonElement content, JsonElement contentType, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketUploadFileRequest
-        {
-            Filename = filename,
-            Metadata = metadata,
-            Content = content,
-            ContentType = contentType,
-            Bucket = bucket,
-        };
-        return UploadFileAsync(req, cancellationToken);
-    }
-
-    /// <summary>Stores a file in a specified bucket from raw binary or base64 content.</summary>
-    public void UploadFile(string filename, JsonElement metadata, JsonElement content, JsonElement contentType, JsonElement bucket, Action<FileBucketUploadFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UploadFileAsync(filename, metadata, content, contentType, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.upload_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Stores a file in a specified bucket from raw binary or base64 content.</summary>
-    public Task<FileBucketUploadFileResponse> UploadFileAsync(FileBucketUploadFileRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketUploadFileResponse>("file_bucket", "upload_file", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Stores a file in a specified bucket from raw binary or base64 content.</summary>
-    public void UploadFile(FileBucketUploadFileRequest request, Action<FileBucketUploadFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UploadFileAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.upload_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves metadata and local storage path for a file.</summary>
-    public Task<FileBucketGetFileInfoResponse> GetFileInfoAsync(string id, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketGetFileInfoRequest
-        {
-            Id = id,
-            Bucket = bucket,
-        };
-        return GetFileInfoAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves metadata and local storage path for a file.</summary>
-    public void GetFileInfo(string id, JsonElement bucket, Action<FileBucketGetFileInfoResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetFileInfoAsync(id, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.get_file_info] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves metadata and local storage path for a file.</summary>
-    public Task<FileBucketGetFileInfoResponse> GetFileInfoAsync(FileBucketGetFileInfoRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketGetFileInfoResponse>("file_bucket", "get_file_info", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves metadata and local storage path for a file.</summary>
-    public void GetFileInfo(FileBucketGetFileInfoRequest request, Action<FileBucketGetFileInfoResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetFileInfoAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.get_file_info] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Reads raw binary content of a file.</summary>
-    public Task<FileBucketReadFileResponse> ReadFileAsync(string id, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketReadFileRequest
-        {
-            Id = id,
-            Bucket = bucket,
-        };
-        return ReadFileAsync(req, cancellationToken);
-    }
-
-    /// <summary>Reads raw binary content of a file.</summary>
-    public void ReadFile(string id, JsonElement bucket, Action<FileBucketReadFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReadFileAsync(id, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.read_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Reads raw binary content of a file.</summary>
-    public Task<FileBucketReadFileResponse> ReadFileAsync(FileBucketReadFileRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketReadFileResponse>("file_bucket", "read_file", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Reads raw binary content of a file.</summary>
-    public void ReadFile(FileBucketReadFileRequest request, Action<FileBucketReadFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReadFileAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.read_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists stored files within a bucket or across all buckets.</summary>
-    public Task<FileBucketListFilesResponse> ListFilesAsync(JsonElement offset, JsonElement limit, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketListFilesRequest
-        {
-            Offset = offset,
-            Limit = limit,
-            Bucket = bucket,
-        };
-        return ListFilesAsync(req, cancellationToken);
-    }
-
-    /// <summary>Lists stored files within a bucket or across all buckets.</summary>
-    public void ListFiles(JsonElement offset, JsonElement limit, JsonElement bucket, Action<FileBucketListFilesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListFilesAsync(offset, limit, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.list_files] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists stored files within a bucket or across all buckets.</summary>
-    public Task<FileBucketListFilesResponse> ListFilesAsync(FileBucketListFilesRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketListFilesResponse>("file_bucket", "list_files", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists stored files within a bucket or across all buckets.</summary>
-    public void ListFiles(FileBucketListFilesRequest request, Action<FileBucketListFilesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListFilesAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.list_files] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists all storage buckets with their visibility (`public` or `private`).</summary>
-    public Task<FileBucketListBucketsResponse> ListBucketsAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketListBucketsResponse>("file_bucket", "list_buckets", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all storage buckets with their visibility (`public` or `private`).</summary>
-    public void ListBuckets(Action<FileBucketListBucketsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListBucketsAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.list_buckets] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Sets a bucket's visibility. `public` lets anyone download its files by URL; `private` (the default) serves them only to staff or through a `signed_url`. Staff-only; an extension that owns a bucket resolves its own files and marks the bucket public at start.</summary>
-    public Task<FileBucketSetBucketVisibilityResponse> SetBucketVisibilityAsync(string bucket, string visibility, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketSetBucketVisibilityRequest
-        {
-            Bucket = bucket,
-            Visibility = visibility,
-        };
-        return SetBucketVisibilityAsync(req, cancellationToken);
-    }
-
-    /// <summary>Sets a bucket's visibility. `public` lets anyone download its files by URL; `private` (the default) serves them only to staff or through a `signed_url`. Staff-only; an extension that owns a bucket resolves its own files and marks the bucket public at start.</summary>
-    public void SetBucketVisibility(string bucket, string visibility, Action<FileBucketSetBucketVisibilityResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SetBucketVisibilityAsync(bucket, visibility).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.set_bucket_visibility] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Sets a bucket's visibility. `public` lets anyone download its files by URL; `private` (the default) serves them only to staff or through a `signed_url`. Staff-only; an extension that owns a bucket resolves its own files and marks the bucket public at start.</summary>
-    public Task<FileBucketSetBucketVisibilityResponse> SetBucketVisibilityAsync(FileBucketSetBucketVisibilityRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketSetBucketVisibilityResponse>("file_bucket", "set_bucket_visibility", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Sets a bucket's visibility. `public` lets anyone download its files by URL; `private` (the default) serves them only to staff or through a `signed_url`. Staff-only; an extension that owns a bucket resolves its own files and marks the bucket public at start.</summary>
-    public void SetBucketVisibility(FileBucketSetBucketVisibilityRequest request, Action<FileBucketSetBucketVisibilityResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SetBucketVisibilityAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.set_bucket_visibility] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Modifies an existing file's name, metadata, or content.</summary>
-    public Task<FileBucketUpdateFileResponse> UpdateFileAsync(string id, JsonElement filename, JsonElement metadata, JsonElement content, JsonElement contentType, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketUpdateFileRequest
-        {
-            Id = id,
-            Filename = filename,
-            Metadata = metadata,
-            Content = content,
-            ContentType = contentType,
-            Bucket = bucket,
-        };
-        return UpdateFileAsync(req, cancellationToken);
-    }
-
-    /// <summary>Modifies an existing file's name, metadata, or content.</summary>
-    public void UpdateFile(string id, JsonElement filename, JsonElement metadata, JsonElement content, JsonElement contentType, JsonElement bucket, Action<FileBucketUpdateFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateFileAsync(id, filename, metadata, content, contentType, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.update_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Modifies an existing file's name, metadata, or content.</summary>
-    public Task<FileBucketUpdateFileResponse> UpdateFileAsync(FileBucketUpdateFileRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketUpdateFileResponse>("file_bucket", "update_file", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Modifies an existing file's name, metadata, or content.</summary>
-    public void UpdateFile(FileBucketUpdateFileRequest request, Action<FileBucketUpdateFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateFileAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.update_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Returns a time-limited download URL for one file. Server-only: an extension decides who may read a file and mints the link; the HTTP file route accepts it without a token until it expires.</summary>
-    public Task<FileBucketSignedUrlResponse> SignedUrlAsync(string id, JsonElement bucket, JsonElement ttlSeconds, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketSignedUrlRequest
-        {
-            Id = id,
-            Bucket = bucket,
-            TtlSeconds = ttlSeconds,
-        };
-        return SignedUrlAsync(req, cancellationToken);
-    }
-
-    /// <summary>Returns a time-limited download URL for one file. Server-only: an extension decides who may read a file and mints the link; the HTTP file route accepts it without a token until it expires.</summary>
-    public void SignedUrl(string id, JsonElement bucket, JsonElement ttlSeconds, Action<FileBucketSignedUrlResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SignedUrlAsync(id, bucket, ttlSeconds).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.signed_url] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Returns a time-limited download URL for one file. Server-only: an extension decides who may read a file and mints the link; the HTTP file route accepts it without a token until it expires.</summary>
-    public Task<FileBucketSignedUrlResponse> SignedUrlAsync(FileBucketSignedUrlRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketSignedUrlResponse>("file_bucket", "signed_url", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Returns a time-limited download URL for one file. Server-only: an extension decides who may read a file and mints the link; the HTTP file route accepts it without a token until it expires.</summary>
-    public void SignedUrl(FileBucketSignedUrlRequest request, Action<FileBucketSignedUrlResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SignedUrlAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.signed_url] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Whether an unauthenticated download may be served: a public bucket, or a valid signed URL.</summary>
-    public Task<FileBucketAuthorizeDownloadResponse> AuthorizeDownloadAsync(string id, JsonElement exp, JsonElement sig, string bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketAuthorizeDownloadRequest
-        {
-            Id = id,
-            Exp = exp,
-            Sig = sig,
-            Bucket = bucket,
-        };
-        return AuthorizeDownloadAsync(req, cancellationToken);
-    }
-
-    /// <summary>Whether an unauthenticated download may be served: a public bucket, or a valid signed URL.</summary>
-    public void AuthorizeDownload(string id, JsonElement exp, JsonElement sig, string bucket, Action<FileBucketAuthorizeDownloadResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AuthorizeDownloadAsync(id, exp, sig, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.authorize_download] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Whether an unauthenticated download may be served: a public bucket, or a valid signed URL.</summary>
-    public Task<FileBucketAuthorizeDownloadResponse> AuthorizeDownloadAsync(FileBucketAuthorizeDownloadRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketAuthorizeDownloadResponse>("file_bucket", "authorize_download", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Whether an unauthenticated download may be served: a public bucket, or a valid signed URL.</summary>
-    public void AuthorizeDownload(FileBucketAuthorizeDownloadRequest request, Action<FileBucketAuthorizeDownloadResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AuthorizeDownloadAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.authorize_download] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Deletes a stored file.</summary>
-    public Task<FileBucketDeleteFileResponse> DeleteFileAsync(string id, JsonElement bucket, CancellationToken cancellationToken = default)
-    {
-        var req = new FileBucketDeleteFileRequest
-        {
-            Id = id,
-            Bucket = bucket,
-        };
-        return DeleteFileAsync(req, cancellationToken);
-    }
-
-    /// <summary>Deletes a stored file.</summary>
-    public void DeleteFile(string id, JsonElement bucket, Action<FileBucketDeleteFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteFileAsync(id, bucket).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.delete_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Deletes a stored file.</summary>
-    public Task<FileBucketDeleteFileResponse> DeleteFileAsync(FileBucketDeleteFileRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<FileBucketDeleteFileResponse>("file_bucket", "delete_file", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Deletes a stored file.</summary>
-    public void DeleteFile(FileBucketDeleteFileRequest request, Action<FileBucketDeleteFileResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteFileAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[file_bucket.delete_file] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
 
 /// <summary>Client interface for the http service.</summary>
 public class HttpServiceClient
@@ -5497,117 +2470,6 @@ public class InventarioServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Executes add_item action with typed arguments.</summary>
-    public Task<InventarioDetalhado> AddItemAsync(string playerId, string itemId, long cost, CancellationToken cancellationToken = default)
-    {
-        var req = new InventarioAddItemRequest
-        {
-            PlayerId = playerId,
-            ItemId = itemId,
-            Cost = cost,
-        };
-        return AddItemAsync(req, cancellationToken);
-    }
-
-    /// <summary>Executes add_item action with callbacks on the Unity main thread.</summary>
-    public void AddItem(string playerId, string itemId, long cost, Action<InventarioDetalhado> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AddItemAsync(playerId, itemId, cost).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[inventario.add_item] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes add_item action with a typed request DTO.</summary>
-    public Task<InventarioDetalhado> AddItemAsync(InventarioAddItemRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<InventarioDetalhado>("inventario", "add_item", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes add_item action with a typed request DTO and callbacks.</summary>
-    public void AddItem(InventarioAddItemRequest request, Action<InventarioDetalhado> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AddItemAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[inventario.add_item] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Executes add_gold action with typed arguments.</summary>
-    public Task<InventarioDetalhado> AddGoldAsync(string playerId, long amount, CancellationToken cancellationToken = default)
-    {
-        var req = new InventarioAddGoldRequest
-        {
-            PlayerId = playerId,
-            Amount = amount,
-        };
-        return AddGoldAsync(req, cancellationToken);
-    }
-
-    /// <summary>Executes add_gold action with callbacks on the Unity main thread.</summary>
-    public void AddGold(string playerId, long amount, Action<InventarioDetalhado> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AddGoldAsync(playerId, amount).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[inventario.add_gold] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes add_gold action with a typed request DTO.</summary>
-    public Task<InventarioDetalhado> AddGoldAsync(InventarioAddGoldRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<InventarioDetalhado>("inventario", "add_gold", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes add_gold action with a typed request DTO and callbacks.</summary>
-    public void AddGold(InventarioAddGoldRequest request, Action<InventarioDetalhado> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = AddGoldAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[inventario.add_gold] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
 }
 
 /// <summary>Client interface for the items service.</summary>
@@ -5696,22 +2558,54 @@ public class ItemsServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Executes seed_itens action.</summary>
-    public Task<long> SeedItensAsync(CancellationToken cancellationToken = default)
+}
+
+/// <summary>Client interface for the level_share service.</summary>
+public class LevelShareServiceClient
+{
+    private readonly ExoClient _client;
+
+    /// <summary>Fired when server emits level_published event.</summary>
+    public event Action<LevelShareLevelPublishedEvent>? OnLevelPublished;
+
+    public LevelShareServiceClient(ExoClient client)
     {
-        return _client.SendActionAsync<long>("items", "seed_itens", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+        _client.OnAnyEvent += HandleIncomingEvent;
     }
 
-    /// <summary>Executes seed_itens action with callbacks on the Unity main thread.</summary>
-    public void SeedItens(Action<long> onComplete, Action<ExoActionException>? onError = null)
+    private void HandleIncomingEvent(ExoEventFrame evt)
     {
-        _ = SeedItensAsync().ContinueWith(t =>
+        if (evt.Event == "level_published" && OnLevelPublished != null)
+        {
+            var parsed = evt.DeserializePayload<LevelShareLevelPublishedEvent>();
+            if (parsed != null) OnLevelPublished.Invoke(parsed);
+        }
+    }
+
+    /// <summary>Subscribes to all events for level_share on topic 'level_share:feed'.</summary>
+    public Task SubscribeAsync(string topic = "level_share:feed", CancellationToken cancellationToken = default) =>
+        _client.SubscribeAsync(topic, cancellationToken);
+
+    /// <summary>Executes upload_level action with typed arguments.</summary>
+    public Task<LevelUploadResult> UploadLevelAsync(string pngBase64, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelShareUploadLevelRequest
+        {
+            PngBase64 = pngBase64,
+        };
+        return UploadLevelAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes upload_level action with callbacks on the Unity main thread.</summary>
+    public void UploadLevel(string pngBase64, Action<LevelUploadResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = UploadLevelAsync(pngBase64).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[items.seed_itens] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.upload_level] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -5721,7 +2615,295 @@ public class ItemsServiceClient
         });
     }
 
-#endif
+    /// <summary>Executes upload_level action with a typed request DTO.</summary>
+    public Task<LevelUploadResult> UploadLevelAsync(LevelShareUploadLevelRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<LevelUploadResult>("level_share", "upload_level", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes upload_level action with a typed request DTO and callbacks.</summary>
+    public void UploadLevel(LevelShareUploadLevelRequest request, Action<LevelUploadResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = UploadLevelAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.upload_level] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes publish action with typed arguments.</summary>
+    public Task<LevelPublishResult> PublishAsync(string title, string difficulty, string fileId, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelSharePublishRequest
+        {
+            Title = title,
+            Difficulty = difficulty,
+            FileId = fileId,
+        };
+        return PublishAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes publish action with callbacks on the Unity main thread.</summary>
+    public void Publish(string title, string difficulty, string fileId, Action<LevelPublishResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = PublishAsync(title, difficulty, fileId).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.publish] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes publish action with a typed request DTO.</summary>
+    public Task<LevelPublishResult> PublishAsync(LevelSharePublishRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<LevelPublishResult>("level_share", "publish", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes publish action with a typed request DTO and callbacks.</summary>
+    public void Publish(LevelSharePublishRequest request, Action<LevelPublishResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = PublishAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.publish] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes get_level_url action with typed arguments.</summary>
+    public Task<LevelUrlResult> GetLevelUrlAsync(string levelId, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelShareGetLevelUrlRequest
+        {
+            LevelId = levelId,
+        };
+        return GetLevelUrlAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes get_level_url action with callbacks on the Unity main thread.</summary>
+    public void GetLevelUrl(string levelId, Action<LevelUrlResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = GetLevelUrlAsync(levelId).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.get_level_url] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes get_level_url action with a typed request DTO.</summary>
+    public Task<LevelUrlResult> GetLevelUrlAsync(LevelShareGetLevelUrlRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<LevelUrlResult>("level_share", "get_level_url", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes get_level_url action with a typed request DTO and callbacks.</summary>
+    public void GetLevelUrl(LevelShareGetLevelUrlRequest request, Action<LevelUrlResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = GetLevelUrlAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.get_level_url] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes browse action with typed arguments.</summary>
+    public Task<List<LevelSummary>> BrowseAsync(string tag, string sort, long limit, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelShareBrowseRequest
+        {
+            Tag = tag,
+            Sort = sort,
+            Limit = limit,
+        };
+        return BrowseAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes browse action with callbacks on the Unity main thread.</summary>
+    public void Browse(string tag, string sort, long limit, Action<List<LevelSummary>> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = BrowseAsync(tag, sort, limit).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.browse] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes browse action with a typed request DTO.</summary>
+    public Task<List<LevelSummary>> BrowseAsync(LevelShareBrowseRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<List<LevelSummary>>("level_share", "browse", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes browse action with a typed request DTO and callbacks.</summary>
+    public void Browse(LevelShareBrowseRequest request, Action<List<LevelSummary>> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = BrowseAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.browse] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes rate action with typed arguments.</summary>
+    public Task<LevelRateResult> RateAsync(string levelId, long stars, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelShareRateRequest
+        {
+            LevelId = levelId,
+            Stars = stars,
+        };
+        return RateAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes rate action with callbacks on the Unity main thread.</summary>
+    public void Rate(string levelId, long stars, Action<LevelRateResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RateAsync(levelId, stars).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.rate] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes rate action with a typed request DTO.</summary>
+    public Task<LevelRateResult> RateAsync(LevelShareRateRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<LevelRateResult>("level_share", "rate", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes rate action with a typed request DTO and callbacks.</summary>
+    public void Rate(LevelShareRateRequest request, Action<LevelRateResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RateAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.rate] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes record_clear action with typed arguments.</summary>
+    public Task<LevelClearResult> RecordClearAsync(string key, CancellationToken cancellationToken = default)
+    {
+        var req = new LevelShareRecordClearRequest
+        {
+            Key = key,
+        };
+        return RecordClearAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes record_clear action with callbacks on the Unity main thread.</summary>
+    public void RecordClear(string key, Action<LevelClearResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RecordClearAsync(key).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.record_clear] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes record_clear action with a typed request DTO.</summary>
+    public Task<LevelClearResult> RecordClearAsync(LevelShareRecordClearRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<LevelClearResult>("level_share", "record_clear", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes record_clear action with a typed request DTO and callbacks.</summary>
+    public void RecordClear(LevelShareRecordClearRequest request, Action<LevelClearResult> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = RecordClearAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[level_share.record_clear] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
 }
 
 /// <summary>Client interface for the lldb service.</summary>
@@ -5751,582 +2933,6 @@ public class LldbServiceClient
     public Task SubscribeAsync(string topic = "lldb:*", CancellationToken cancellationToken = default) =>
         _client.SubscribeAsync(topic, cancellationToken);
 
-#if UNITY_EDITOR
-    /// <summary>Runs an operation inside a namespace: a SQL statement with arguments, or a key-value command.</summary>
-    public Task<LldbExecResponse> ExecAsync(JsonElement arguments, JsonElement operation, JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbExecRequest
-        {
-            Arguments = arguments,
-            Operation = operation,
-            Namespace = @namespace,
-        };
-        return ExecAsync(req, cancellationToken);
-    }
-
-    /// <summary>Runs an operation inside a namespace: a SQL statement with arguments, or a key-value command.</summary>
-    public void Exec(JsonElement arguments, JsonElement operation, JsonElement @namespace, Action<LldbExecResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExecAsync(arguments, operation, @namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.exec] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Runs an operation inside a namespace: a SQL statement with arguments, or a key-value command.</summary>
-    public Task<LldbExecResponse> ExecAsync(LldbExecRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbExecResponse>("lldb", "exec", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Runs an operation inside a namespace: a SQL statement with arguments, or a key-value command.</summary>
-    public void Exec(LldbExecRequest request, Action<LldbExecResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExecAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.exec] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Creates, or refreshes, the isolated namespace (and its access rules) for an extension.</summary>
-    public Task<LldbProvisionNamespaceResponse> ProvisionNamespaceAsync(JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbProvisionNamespaceRequest
-        {
-            Namespace = @namespace,
-        };
-        return ProvisionNamespaceAsync(req, cancellationToken);
-    }
-
-    /// <summary>Creates, or refreshes, the isolated namespace (and its access rules) for an extension.</summary>
-    public void ProvisionNamespace(JsonElement @namespace, Action<LldbProvisionNamespaceResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ProvisionNamespaceAsync(@namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.provision_namespace] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Creates, or refreshes, the isolated namespace (and its access rules) for an extension.</summary>
-    public Task<LldbProvisionNamespaceResponse> ProvisionNamespaceAsync(LldbProvisionNamespaceRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbProvisionNamespaceResponse>("lldb", "provision_namespace", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Creates, or refreshes, the isolated namespace (and its access rules) for an extension.</summary>
-    public void ProvisionNamespace(LldbProvisionNamespaceRequest request, Action<LldbProvisionNamespaceResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ProvisionNamespaceAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.provision_namespace] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Removes an extension's namespace and everything in it.</summary>
-    public Task<LldbDropNamespaceResponse> DropNamespaceAsync(JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbDropNamespaceRequest
-        {
-            Namespace = @namespace,
-        };
-        return DropNamespaceAsync(req, cancellationToken);
-    }
-
-    /// <summary>Removes an extension's namespace and everything in it.</summary>
-    public void DropNamespace(JsonElement @namespace, Action<LldbDropNamespaceResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DropNamespaceAsync(@namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.drop_namespace] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Removes an extension's namespace and everything in it.</summary>
-    public Task<LldbDropNamespaceResponse> DropNamespaceAsync(LldbDropNamespaceRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbDropNamespaceResponse>("lldb", "drop_namespace", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Removes an extension's namespace and everything in it.</summary>
-    public void DropNamespace(LldbDropNamespaceRequest request, Action<LldbDropNamespaceResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DropNamespaceAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.drop_namespace] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Runs statements (SQL with positional arguments) in order in one transaction, all or nothing; a failure names the statement index.</summary>
-    public Task<LldbTransactionResponse> TransactionAsync(JsonElement @namespace, JsonElement statements, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbTransactionRequest
-        {
-            Namespace = @namespace,
-            Statements = statements,
-        };
-        return TransactionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Runs statements (SQL with positional arguments) in order in one transaction, all or nothing; a failure names the statement index.</summary>
-    public void Transaction(JsonElement @namespace, JsonElement statements, Action<LldbTransactionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TransactionAsync(@namespace, statements).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.transaction] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Runs statements (SQL with positional arguments) in order in one transaction, all or nothing; a failure names the statement index.</summary>
-    public Task<LldbTransactionResponse> TransactionAsync(LldbTransactionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbTransactionResponse>("lldb", "transaction", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Runs statements (SQL with positional arguments) in order in one transaction, all or nothing; a failure names the statement index.</summary>
-    public void Transaction(LldbTransactionRequest request, Action<LldbTransactionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TransactionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.transaction] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Describes a table in engine-neutral terms: columns with logical types, nullability and the primary key.</summary>
-    public Task<LldbIntrospectResponse> IntrospectAsync(string table, JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbIntrospectRequest
-        {
-            Table = table,
-            Namespace = @namespace,
-        };
-        return IntrospectAsync(req, cancellationToken);
-    }
-
-    /// <summary>Describes a table in engine-neutral terms: columns with logical types, nullability and the primary key.</summary>
-    public void Introspect(string table, JsonElement @namespace, Action<LldbIntrospectResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IntrospectAsync(table, @namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.introspect] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Describes a table in engine-neutral terms: columns with logical types, nullability and the primary key.</summary>
-    public Task<LldbIntrospectResponse> IntrospectAsync(LldbIntrospectRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbIntrospectResponse>("lldb", "introspect", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Describes a table in engine-neutral terms: columns with logical types, nullability and the primary key.</summary>
-    public void Introspect(LldbIntrospectRequest request, Action<LldbIntrospectResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IntrospectAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.introspect] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>How to write SQL for this engine: placeholder and quoting style, upsert strategy and type names.</summary>
-    public Task<LldbDialectResponse> DialectAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbDialectResponse>("lldb", "dialect", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>How to write SQL for this engine: placeholder and quoting style, upsert strategy and type names.</summary>
-    public void Dialect(Action<LldbDialectResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DialectAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.dialect] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Applies the safe changes that bring a namespace's tables in line with declared resources (logical `storage` types); an unsafe change applies nothing and is reported.</summary>
-    public Task<LldbApplySchemaResponse> ApplySchemaAsync(JsonElement version, JsonElement @namespace, JsonElement migrations, JsonElement resources, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbApplySchemaRequest
-        {
-            Version = version,
-            Namespace = @namespace,
-            Migrations = migrations,
-            Resources = resources,
-        };
-        return ApplySchemaAsync(req, cancellationToken);
-    }
-
-    /// <summary>Applies the safe changes that bring a namespace's tables in line with declared resources (logical `storage` types); an unsafe change applies nothing and is reported.</summary>
-    public void ApplySchema(JsonElement version, JsonElement @namespace, JsonElement migrations, JsonElement resources, Action<LldbApplySchemaResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ApplySchemaAsync(version, @namespace, migrations, resources).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.apply_schema] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Applies the safe changes that bring a namespace's tables in line with declared resources (logical `storage` types); an unsafe change applies nothing and is reported.</summary>
-    public Task<LldbApplySchemaResponse> ApplySchemaAsync(LldbApplySchemaRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbApplySchemaResponse>("lldb", "apply_schema", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Applies the safe changes that bring a namespace's tables in line with declared resources (logical `storage` types); an unsafe change applies nothing and is reported.</summary>
-    public void ApplySchema(LldbApplySchemaRequest request, Action<LldbApplySchemaResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ApplySchemaAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.apply_schema] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Applies an extension's hand-written SQL migrations in version order.</summary>
-    public Task<LldbRunMigrationsResponse> RunMigrationsAsync(JsonElement @namespace, JsonElement migrations, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbRunMigrationsRequest
-        {
-            Namespace = @namespace,
-            Migrations = migrations,
-        };
-        return RunMigrationsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Applies an extension's hand-written SQL migrations in version order.</summary>
-    public void RunMigrations(JsonElement @namespace, JsonElement migrations, Action<LldbRunMigrationsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RunMigrationsAsync(@namespace, migrations).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.run_migrations] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Applies an extension's hand-written SQL migrations in version order.</summary>
-    public Task<LldbRunMigrationsResponse> RunMigrationsAsync(LldbRunMigrationsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbRunMigrationsResponse>("lldb", "run_migrations", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Applies an extension's hand-written SQL migrations in version order.</summary>
-    public void RunMigrations(LldbRunMigrationsRequest request, Action<LldbRunMigrationsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RunMigrationsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.run_migrations] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Drops a table of a namespace, and its schema history.</summary>
-    public Task<LldbResetTableResponse> ResetTableAsync(string table, JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbResetTableRequest
-        {
-            Table = table,
-            Namespace = @namespace,
-        };
-        return ResetTableAsync(req, cancellationToken);
-    }
-
-    /// <summary>Drops a table of a namespace, and its schema history.</summary>
-    public void ResetTable(string table, JsonElement @namespace, Action<LldbResetTableResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ResetTableAsync(table, @namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.reset_table] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Drops a table of a namespace, and its schema history.</summary>
-    public Task<LldbResetTableResponse> ResetTableAsync(LldbResetTableRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbResetTableResponse>("lldb", "reset_table", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Drops a table of a namespace, and its schema history.</summary>
-    public void ResetTable(LldbResetTableRequest request, Action<LldbResetTableResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ResetTableAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.reset_table] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Lists the columns of a table in a namespace.</summary>
-    public Task<LldbTableColumnsResponse> TableColumnsAsync(string table, JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbTableColumnsRequest
-        {
-            Table = table,
-            Namespace = @namespace,
-        };
-        return TableColumnsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Lists the columns of a table in a namespace.</summary>
-    public void TableColumns(string table, JsonElement @namespace, Action<LldbTableColumnsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TableColumnsAsync(table, @namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.table_columns] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists the columns of a table in a namespace.</summary>
-    public Task<LldbTableColumnsResponse> TableColumnsAsync(LldbTableColumnsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbTableColumnsResponse>("lldb", "table_columns", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists the columns of a table in a namespace.</summary>
-    public void TableColumns(LldbTableColumnsRequest request, Action<LldbTableColumnsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TableColumnsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.table_columns] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Retrieves namespaced database connection details.</summary>
-    public Task<LldbConnectionConfigResponse> ConnectionConfigAsync(JsonElement @namespace, CancellationToken cancellationToken = default)
-    {
-        var req = new LldbConnectionConfigRequest
-        {
-            Namespace = @namespace,
-        };
-        return ConnectionConfigAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves namespaced database connection details.</summary>
-    public void ConnectionConfig(JsonElement @namespace, Action<LldbConnectionConfigResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ConnectionConfigAsync(@namespace).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.connection_config] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves namespaced database connection details.</summary>
-    public Task<LldbConnectionConfigResponse> ConnectionConfigAsync(LldbConnectionConfigRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<LldbConnectionConfigResponse>("lldb", "connection_config", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves namespaced database connection details.</summary>
-    public void ConnectionConfig(LldbConnectionConfigRequest request, Action<LldbConnectionConfigResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ConnectionConfigAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.connection_config] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
     /// <summary>Performs a low-level ping to verify the database is reachable.</summary>
     public Task<LldbHealthCheckResponse> HealthCheckAsync(CancellationToken cancellationToken = default)
     {
@@ -6439,647 +3045,7 @@ public class LojaItensServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Executes seed_loja action.</summary>
-    public Task<long> SeedLojaAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<long>("loja_itens", "seed_loja", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes seed_loja action with callbacks on the Unity main thread.</summary>
-    public void SeedLoja(Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SeedLojaAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[loja_itens.seed_loja] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
 }
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the metering service.</summary>
-public class MeteringServiceClient
-{
-    private readonly ExoClient _client;
-
-    public MeteringServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Rolls up persisted usage per extension and action for this title.</summary>
-    public Task<MeteringUsageResponse> UsageAsync(JsonElement since, JsonElement pluginId, CancellationToken cancellationToken = default)
-    {
-        var req = new MeteringUsageRequest
-        {
-            Since = since,
-            PluginId = pluginId,
-        };
-        return UsageAsync(req, cancellationToken);
-    }
-
-    /// <summary>Rolls up persisted usage per extension and action for this title.</summary>
-    public void Usage(JsonElement since, JsonElement pluginId, Action<MeteringUsageResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UsageAsync(since, pluginId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[metering.usage] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Rolls up persisted usage per extension and action for this title.</summary>
-    public Task<MeteringUsageResponse> UsageAsync(MeteringUsageRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<MeteringUsageResponse>("metering", "usage", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Rolls up persisted usage per extension and action for this title.</summary>
-    public void Usage(MeteringUsageRequest request, Action<MeteringUsageResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UsageAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[metering.usage] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
-
-#if UNITY_EDITOR
-/// <summary>Client interface for the observability service.</summary>
-public class ObservabilityServiceClient
-{
-    private readonly ExoClient _client;
-
-    public ObservabilityServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>The most recent cluster events, newest first.</summary>
-    public Task<ObservabilityRecentEventsResponse> RecentEventsAsync(JsonElement limit, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityRecentEventsRequest
-        {
-            Limit = limit,
-        };
-        return RecentEventsAsync(req, cancellationToken);
-    }
-
-    /// <summary>The most recent cluster events, newest first.</summary>
-    public void RecentEvents(JsonElement limit, Action<ObservabilityRecentEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RecentEventsAsync(limit).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.recent_events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>The most recent cluster events, newest first.</summary>
-    public Task<ObservabilityRecentEventsResponse> RecentEventsAsync(ObservabilityRecentEventsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityRecentEventsResponse>("observability", "recent_events", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>The most recent cluster events, newest first.</summary>
-    public void RecentEvents(ObservabilityRecentEventsRequest request, Action<ObservabilityRecentEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RecentEventsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.recent_events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Failures grouped by fingerprint: counts, first/last seen, callers, and a sample request.</summary>
-    public Task<ObservabilityErrorGroupsResponse> ErrorGroupsAsync(JsonElement caller, JsonElement action, JsonElement service, JsonElement rid, JsonElement limit, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityErrorGroupsRequest
-        {
-            Caller = caller,
-            Action = action,
-            Service = service,
-            Rid = rid,
-            Limit = limit,
-        };
-        return ErrorGroupsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Failures grouped by fingerprint: counts, first/last seen, callers, and a sample request.</summary>
-    public void ErrorGroups(JsonElement caller, JsonElement action, JsonElement service, JsonElement rid, JsonElement limit, Action<ObservabilityErrorGroupsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ErrorGroupsAsync(caller, action, service, rid, limit).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.error_groups] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Failures grouped by fingerprint: counts, first/last seen, callers, and a sample request.</summary>
-    public Task<ObservabilityErrorGroupsResponse> ErrorGroupsAsync(ObservabilityErrorGroupsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityErrorGroupsResponse>("observability", "error_groups", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Failures grouped by fingerprint: counts, first/last seen, callers, and a sample request.</summary>
-    public void ErrorGroups(ObservabilityErrorGroupsRequest request, Action<ObservabilityErrorGroupsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ErrorGroupsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.error_groups] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Starts a deep capture for one player, one action, or the whole cluster, for a few minutes.</summary>
-    public Task<ObservabilityCaptureResponse> CaptureAsync(JsonElement seconds, JsonElement value, JsonElement kind, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityCaptureRequest
-        {
-            Seconds = seconds,
-            Value = value,
-            Kind = kind,
-        };
-        return CaptureAsync(req, cancellationToken);
-    }
-
-    /// <summary>Starts a deep capture for one player, one action, or the whole cluster, for a few minutes.</summary>
-    public void Capture(JsonElement seconds, JsonElement value, JsonElement kind, Action<ObservabilityCaptureResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CaptureAsync(seconds, value, kind).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.capture] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Starts a deep capture for one player, one action, or the whole cluster, for a few minutes.</summary>
-    public Task<ObservabilityCaptureResponse> CaptureAsync(ObservabilityCaptureRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityCaptureResponse>("observability", "capture", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Starts a deep capture for one player, one action, or the whole cluster, for a few minutes.</summary>
-    public void Capture(ObservabilityCaptureRequest request, Action<ObservabilityCaptureResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CaptureAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.capture] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>The active deep captures, with their remaining seconds.</summary>
-    public Task<ObservabilityCapturesResponse> CapturesAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityCapturesResponse>("observability", "captures", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>The active deep captures, with their remaining seconds.</summary>
-    public void Captures(Action<ObservabilityCapturesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CapturesAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.captures] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Stops one capture (or every capture when kind is global and the value is blank).</summary>
-    public Task<ObservabilityStopCaptureResponse> StopCaptureAsync(JsonElement value, JsonElement kind, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityStopCaptureRequest
-        {
-            Value = value,
-            Kind = kind,
-        };
-        return StopCaptureAsync(req, cancellationToken);
-    }
-
-    /// <summary>Stops one capture (or every capture when kind is global and the value is blank).</summary>
-    public void StopCapture(JsonElement value, JsonElement kind, Action<ObservabilityStopCaptureResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = StopCaptureAsync(value, kind).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.stop_capture] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Stops one capture (or every capture when kind is global and the value is blank).</summary>
-    public Task<ObservabilityStopCaptureResponse> StopCaptureAsync(ObservabilityStopCaptureRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityStopCaptureResponse>("observability", "stop_capture", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Stops one capture (or every capture when kind is global and the value is blank).</summary>
-    public void StopCapture(ObservabilityStopCaptureRequest request, Action<ObservabilityStopCaptureResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = StopCaptureAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.stop_capture] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Replays a captured invocation's full request as the caller who made it.</summary>
-    public Task<ObservabilityReplayResponse> ReplayAsync(JsonElement id, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityReplayRequest
-        {
-            Id = id,
-        };
-        return ReplayAsync(req, cancellationToken);
-    }
-
-    /// <summary>Replays a captured invocation's full request as the caller who made it.</summary>
-    public void Replay(JsonElement id, Action<ObservabilityReplayResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReplayAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.replay] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Replays a captured invocation's full request as the caller who made it.</summary>
-    public Task<ObservabilityReplayResponse> ReplayAsync(ObservabilityReplayRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityReplayResponse>("observability", "replay", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Replays a captured invocation's full request as the caller who made it.</summary>
-    public void Replay(ObservabilityReplayRequest request, Action<ObservabilityReplayResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ReplayAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.replay] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Per-action health: 30-minute rates, lifetime p50/p95, and what needs attention.</summary>
-    public Task<ObservabilityHealthResponse> HealthAsync(JsonElement limit, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityHealthRequest
-        {
-            Limit = limit,
-        };
-        return HealthAsync(req, cancellationToken);
-    }
-
-    /// <summary>Per-action health: 30-minute rates, lifetime p50/p95, and what needs attention.</summary>
-    public void Health(JsonElement limit, Action<ObservabilityHealthResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = HealthAsync(limit).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.health] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Per-action health: 30-minute rates, lifetime p50/p95, and what needs attention.</summary>
-    public Task<ObservabilityHealthResponse> HealthAsync(ObservabilityHealthRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityHealthResponse>("observability", "health", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Per-action health: 30-minute rates, lifetime p50/p95, and what needs attention.</summary>
-    public void Health(ObservabilityHealthRequest request, Action<ObservabilityHealthResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = HealthAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.health] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>One page of stored events, filtered; ranges older than the hot window come from the archive.</summary>
-    public Task<ObservabilityEventsResponse> EventsAsync(JsonElement offset, JsonElement status, JsonElement rid, JsonElement limit, JsonElement @event, JsonElement untilMs, JsonElement player, JsonElement sinceMs, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityEventsRequest
-        {
-            Offset = offset,
-            Status = status,
-            Rid = rid,
-            Limit = limit,
-            Event = @event,
-            UntilMs = untilMs,
-            Player = player,
-            SinceMs = sinceMs,
-        };
-        return EventsAsync(req, cancellationToken);
-    }
-
-    /// <summary>One page of stored events, filtered; ranges older than the hot window come from the archive.</summary>
-    public void Events(JsonElement offset, JsonElement status, JsonElement rid, JsonElement limit, JsonElement @event, JsonElement untilMs, JsonElement player, JsonElement sinceMs, Action<ObservabilityEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = EventsAsync(offset, status, rid, limit, @event, untilMs, player, sinceMs).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>One page of stored events, filtered; ranges older than the hot window come from the archive.</summary>
-    public Task<ObservabilityEventsResponse> EventsAsync(ObservabilityEventsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityEventsResponse>("observability", "events", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>One page of stored events, filtered; ranges older than the hot window come from the archive.</summary>
-    public void Events(ObservabilityEventsRequest request, Action<ObservabilityEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = EventsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>One request's timeline (or one caller's recent activity): calls, events, logs and failures.</summary>
-    public Task<ObservabilityTimelineResponse> TimelineAsync(JsonElement rid, JsonElement limit, JsonElement player, JsonElement sinceMs, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityTimelineRequest
-        {
-            Rid = rid,
-            Limit = limit,
-            Player = player,
-            SinceMs = sinceMs,
-        };
-        return TimelineAsync(req, cancellationToken);
-    }
-
-    /// <summary>One request's timeline (or one caller's recent activity): calls, events, logs and failures.</summary>
-    public void Timeline(JsonElement rid, JsonElement limit, JsonElement player, JsonElement sinceMs, Action<ObservabilityTimelineResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TimelineAsync(rid, limit, player, sinceMs).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.timeline] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>One request's timeline (or one caller's recent activity): calls, events, logs and failures.</summary>
-    public Task<ObservabilityTimelineResponse> TimelineAsync(ObservabilityTimelineRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityTimelineResponse>("observability", "timeline", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>One request's timeline (or one caller's recent activity): calls, events, logs and failures.</summary>
-    public void Timeline(ObservabilityTimelineRequest request, Action<ObservabilityTimelineResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = TimelineAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.timeline] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Drops the in-memory ring and the persisted event history.</summary>
-    public Task<ObservabilityClearEventsResponse> ClearEventsAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityClearEventsResponse>("observability", "clear_events", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Drops the in-memory ring and the persisted event history.</summary>
-    public void ClearEvents(Action<ObservabilityClearEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ClearEventsAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.clear_events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Drops one caller's hot events (account deletion); archived files are left untouched.</summary>
-    public Task<ObservabilityPurgeEventsResponse> PurgeEventsAsync(string origin, CancellationToken cancellationToken = default)
-    {
-        var req = new ObservabilityPurgeEventsRequest
-        {
-            Origin = origin,
-        };
-        return PurgeEventsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Drops one caller's hot events (account deletion); archived files are left untouched.</summary>
-    public void PurgeEvents(string origin, Action<ObservabilityPurgeEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PurgeEventsAsync(origin).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.purge_events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Drops one caller's hot events (account deletion); archived files are left untouched.</summary>
-    public Task<ObservabilityPurgeEventsResponse> PurgeEventsAsync(ObservabilityPurgeEventsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ObservabilityPurgeEventsResponse>("observability", "purge_events", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Drops one caller's hot events (account deletion); archived files are left untouched.</summary>
-    public void PurgeEvents(ObservabilityPurgeEventsRequest request, Action<ObservabilityPurgeEventsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PurgeEventsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[observability.purge_events] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-#endif
 
 /// <summary>Client interface for the player_data service.</summary>
 public class PlayerDataServiceClient
@@ -7221,170 +3187,6 @@ public class PlayerDataServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Deletes a player profile record.</summary>
-    public Task<PlayerDataDeletePlayerResponse> DeletePlayerAsync(string playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new PlayerDataDeletePlayerRequest
-        {
-            PlayerId = playerId,
-        };
-        return DeletePlayerAsync(req, cancellationToken);
-    }
-
-    /// <summary>Deletes a player profile record.</summary>
-    public void DeletePlayer(string playerId, Action<PlayerDataDeletePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeletePlayerAsync(playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.delete_player] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Deletes a player profile record.</summary>
-    public Task<PlayerDataDeletePlayerResponse> DeletePlayerAsync(PlayerDataDeletePlayerRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<PlayerDataDeletePlayerResponse>("player_data", "delete_player", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Deletes a player profile record.</summary>
-    public void DeletePlayer(PlayerDataDeletePlayerRequest request, Action<PlayerDataDeletePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeletePlayerAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.delete_player] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Unlinks user and marks player record as retained/orphaned for data retention policies.</summary>
-    public Task<PlayerDataRetainPlayerResponse> RetainPlayerAsync(string playerId, CancellationToken cancellationToken = default)
-    {
-        var req = new PlayerDataRetainPlayerRequest
-        {
-            PlayerId = playerId,
-        };
-        return RetainPlayerAsync(req, cancellationToken);
-    }
-
-    /// <summary>Unlinks user and marks player record as retained/orphaned for data retention policies.</summary>
-    public void RetainPlayer(string playerId, Action<PlayerDataRetainPlayerResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RetainPlayerAsync(playerId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.retain_player] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Unlinks user and marks player record as retained/orphaned for data retention policies.</summary>
-    public Task<PlayerDataRetainPlayerResponse> RetainPlayerAsync(PlayerDataRetainPlayerRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<PlayerDataRetainPlayerResponse>("player_data", "retain_player", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Unlinks user and marks player record as retained/orphaned for data retention policies.</summary>
-    public void RetainPlayer(PlayerDataRetainPlayerRequest request, Action<PlayerDataRetainPlayerResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RetainPlayerAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.retain_player] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Lists all registered player profiles with optional filtering (all, valid, orphaned).</summary>
-    public Task<PlayerDataListPlayersResponse> ListPlayersAsync(JsonElement filter, JsonElement limit, JsonElement userId, CancellationToken cancellationToken = default)
-    {
-        var req = new PlayerDataListPlayersRequest
-        {
-            Filter = filter,
-            Limit = limit,
-            UserId = userId,
-        };
-        return ListPlayersAsync(req, cancellationToken);
-    }
-
-    /// <summary>Lists all registered player profiles with optional filtering (all, valid, orphaned).</summary>
-    public void ListPlayers(JsonElement filter, JsonElement limit, JsonElement userId, Action<PlayerDataListPlayersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListPlayersAsync(filter, limit, userId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.list_players] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Lists all registered player profiles with optional filtering (all, valid, orphaned).</summary>
-    public Task<PlayerDataListPlayersResponse> ListPlayersAsync(PlayerDataListPlayersRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<PlayerDataListPlayersResponse>("player_data", "list_players", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all registered player profiles with optional filtering (all, valid, orphaned).</summary>
-    public void ListPlayers(PlayerDataListPlayersRequest request, Action<PlayerDataListPlayersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListPlayersAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[player_data.list_players] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
     /// <summary>Updates player profile record.</summary>
     public Task<PlayerDataUpdatePlayerResponse> UpdatePlayerAsync(JsonElement data, string playerId, CancellationToken cancellationToken = default)
     {
@@ -7662,117 +3464,8 @@ public class ResourceStoreServiceClient
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
-#if UNITY_EDITOR
-    /// <summary>Creates/updates the tables backing all declared resources (additive migrations).</summary>
-    public Task<ResourceStoreMigrateResponse> MigrateAsync(JsonElement extension, JsonElement resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreMigrateRequest
-        {
-            Extension = extension,
-            Resource = resource,
-        };
-        return MigrateAsync(req, cancellationToken);
-    }
-
-    /// <summary>Creates/updates the tables backing all declared resources (additive migrations).</summary>
-    public void Migrate(JsonElement extension, JsonElement resource, Action<ResourceStoreMigrateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = MigrateAsync(extension, resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.migrate] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Creates/updates the tables backing all declared resources (additive migrations).</summary>
-    public Task<ResourceStoreMigrateResponse> MigrateAsync(ResourceStoreMigrateRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreMigrateResponse>("resource_store", "migrate", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Creates/updates the tables backing all declared resources (additive migrations).</summary>
-    public void Migrate(ResourceStoreMigrateRequest request, Action<ResourceStoreMigrateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = MigrateAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.migrate] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Provisioning step before an extension starts: makes the tables of its typed resources (those that declare column storage types).</summary>
-    public Task<ResourceStoreProvisionResponse> ProvisionAsync(JsonElement extension, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreProvisionRequest
-        {
-            Extension = extension,
-        };
-        return ProvisionAsync(req, cancellationToken);
-    }
-
-    /// <summary>Provisioning step before an extension starts: makes the tables of its typed resources (those that declare column storage types).</summary>
-    public void Provision(JsonElement extension, Action<ResourceStoreProvisionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ProvisionAsync(extension).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.provision] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Provisioning step before an extension starts: makes the tables of its typed resources (those that declare column storage types).</summary>
-    public Task<ResourceStoreProvisionResponse> ProvisionAsync(ResourceStoreProvisionRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreProvisionResponse>("resource_store", "provision", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Provisioning step before an extension starts: makes the tables of its typed resources (those that declare column storage types).</summary>
-    public void Provision(ResourceStoreProvisionRequest request, Action<ResourceStoreProvisionResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ProvisionAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.provision] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, string resource, JsonElement limit, CancellationToken cancellationToken = default)
+    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, CancellationToken cancellationToken = default)
     {
         var req = new ResourceStoreListRequest
         {
@@ -7780,16 +3473,16 @@ public class ResourceStoreServiceClient
             Sort = sort,
             Filter = filter,
             Search = search,
-            Resource = resource,
             Limit = limit,
+            Resource = resource,
         };
         return ListAsync(req, cancellationToken);
     }
 
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public void List(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, string resource, JsonElement limit, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void List(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ListAsync(offset, sort, filter, search, resource, limit).ContinueWith(t =>
+        _ = ListAsync(offset, sort, filter, search, limit, resource).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -7882,317 +3575,6 @@ public class ResourceStoreServiceClient
         });
     }
 
-#if UNITY_EDITOR
-    /// <summary>Creates a row.</summary>
-    public Task<ResourceStoreCreateResponse> CreateAsync(JsonElement attributes, string resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreCreateRequest
-        {
-            Attributes = attributes,
-            Resource = resource,
-        };
-        return CreateAsync(req, cancellationToken);
-    }
-
-    /// <summary>Creates a row.</summary>
-    public void Create(JsonElement attributes, string resource, Action<ResourceStoreCreateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CreateAsync(attributes, resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.create] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Creates a row.</summary>
-    public Task<ResourceStoreCreateResponse> CreateAsync(ResourceStoreCreateRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreCreateResponse>("resource_store", "create", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Creates a row.</summary>
-    public void Create(ResourceStoreCreateRequest request, Action<ResourceStoreCreateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CreateAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.create] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Updates a row by primary key.</summary>
-    public Task<ResourceStoreUpdateResponse> UpdateAsync(JsonElement attributes, JsonElement id, string resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreUpdateRequest
-        {
-            Attributes = attributes,
-            Id = id,
-            Resource = resource,
-        };
-        return UpdateAsync(req, cancellationToken);
-    }
-
-    /// <summary>Updates a row by primary key.</summary>
-    public void Update(JsonElement attributes, JsonElement id, string resource, Action<ResourceStoreUpdateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateAsync(attributes, id, resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.update] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Updates a row by primary key.</summary>
-    public Task<ResourceStoreUpdateResponse> UpdateAsync(ResourceStoreUpdateRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreUpdateResponse>("resource_store", "update", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Updates a row by primary key.</summary>
-    public void Update(ResourceStoreUpdateRequest request, Action<ResourceStoreUpdateResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpdateAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.update] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Deletes a row by primary key.</summary>
-    public Task<ResourceStoreDeleteResponse> DeleteAsync(JsonElement id, string resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreDeleteRequest
-        {
-            Id = id,
-            Resource = resource,
-        };
-        return DeleteAsync(req, cancellationToken);
-    }
-
-    /// <summary>Deletes a row by primary key.</summary>
-    public void Delete(JsonElement id, string resource, Action<ResourceStoreDeleteResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteAsync(id, resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.delete] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Deletes a row by primary key.</summary>
-    public Task<ResourceStoreDeleteResponse> DeleteAsync(ResourceStoreDeleteRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreDeleteResponse>("resource_store", "delete", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Deletes a row by primary key.</summary>
-    public void Delete(ResourceStoreDeleteRequest request, Action<ResourceStoreDeleteResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = DeleteAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.delete] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Inserts or updates a row on conflict.</summary>
-    public Task<ResourceStoreUpsertResponse> UpsertAsync(JsonElement attributes, string resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreUpsertRequest
-        {
-            Attributes = attributes,
-            Resource = resource,
-        };
-        return UpsertAsync(req, cancellationToken);
-    }
-
-    /// <summary>Inserts or updates a row on conflict.</summary>
-    public void Upsert(JsonElement attributes, string resource, Action<ResourceStoreUpsertResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpsertAsync(attributes, resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.upsert] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Inserts or updates a row on conflict.</summary>
-    public Task<ResourceStoreUpsertResponse> UpsertAsync(ResourceStoreUpsertRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreUpsertResponse>("resource_store", "upsert", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Inserts or updates a row on conflict.</summary>
-    public void Upsert(ResourceStoreUpsertRequest request, Action<ResourceStoreUpsertResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = UpsertAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.upsert] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Removes every row of a resource, table-backed or KV-backed, without dropping the table.</summary>
-    public Task<ResourceStoreClearResponse> ClearAsync(JsonElement resource, CancellationToken cancellationToken = default)
-    {
-        var req = new ResourceStoreClearRequest
-        {
-            Resource = resource,
-        };
-        return ClearAsync(req, cancellationToken);
-    }
-
-    /// <summary>Removes every row of a resource, table-backed or KV-backed, without dropping the table.</summary>
-    public void Clear(JsonElement resource, Action<ResourceStoreClearResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ClearAsync(resource).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.clear] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Removes every row of a resource, table-backed or KV-backed, without dropping the table.</summary>
-    public Task<ResourceStoreClearResponse> ClearAsync(ResourceStoreClearRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ResourceStoreClearResponse>("resource_store", "clear", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Removes every row of a resource, table-backed or KV-backed, without dropping the table.</summary>
-    public void Clear(ResourceStoreClearRequest request, Action<ResourceStoreClearResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ClearAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[resource_store.clear] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-}
-
-/// <summary>Client interface for the test service.</summary>
-public class TestServiceClient
-{
-    private readonly ExoClient _client;
-
-    public TestServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Executes claim_daily_reward action.</summary>
-    public Task<TestReward> ClaimDailyRewardAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<TestReward>("test", "claim_daily_reward", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes claim_daily_reward action with callbacks on the Unity main thread.</summary>
-    public void ClaimDailyReward(Action<TestReward> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ClaimDailyRewardAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[test.claim_daily_reward] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
 }
 
 /// <summary>Client interface for the transport service.</summary>
@@ -8241,250 +3623,6 @@ public class VersioningServiceClient
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
-#if UNITY_EDITOR
-    /// <summary>Registers a game version in `dev`, with the extension versions it locks.</summary>
-    public Task<VersioningRegisterResponse> RegisterAsync(string version, JsonElement locks, CancellationToken cancellationToken = default)
-    {
-        var req = new VersioningRegisterRequest
-        {
-            Version = version,
-            Locks = locks,
-        };
-        return RegisterAsync(req, cancellationToken);
-    }
-
-    /// <summary>Registers a game version in `dev`, with the extension versions it locks.</summary>
-    public void Register(string version, JsonElement locks, Action<VersioningRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RegisterAsync(version, locks).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.register] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Registers a game version in `dev`, with the extension versions it locks.</summary>
-    public Task<VersioningRegisterResponse> RegisterAsync(VersioningRegisterRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<VersioningRegisterResponse>("versioning", "register", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Registers a game version in `dev`, with the extension versions it locks.</summary>
-    public void Register(VersioningRegisterRequest request, Action<VersioningRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = RegisterAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.register] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Changes the locks of a `dev` game version. Live, outdated and blocked versions are immutable.</summary>
-    public Task<VersioningSetLocksResponse> SetLocksAsync(string version, JsonElement locks, CancellationToken cancellationToken = default)
-    {
-        var req = new VersioningSetLocksRequest
-        {
-            Version = version,
-            Locks = locks,
-        };
-        return SetLocksAsync(req, cancellationToken);
-    }
-
-    /// <summary>Changes the locks of a `dev` game version. Live, outdated and blocked versions are immutable.</summary>
-    public void SetLocks(string version, JsonElement locks, Action<VersioningSetLocksResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SetLocksAsync(version, locks).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.set_locks] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Changes the locks of a `dev` game version. Live, outdated and blocked versions are immutable.</summary>
-    public Task<VersioningSetLocksResponse> SetLocksAsync(VersioningSetLocksRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<VersioningSetLocksResponse>("versioning", "set_locks", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Changes the locks of a `dev` game version. Live, outdated and blocked versions are immutable.</summary>
-    public void SetLocks(VersioningSetLocksRequest request, Action<VersioningSetLocksResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = SetLocksAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.set_locks] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Makes a `dev` game version live. The previous live one becomes `outdated`.</summary>
-    public Task<VersioningPromoteResponse> PromoteAsync(string version, CancellationToken cancellationToken = default)
-    {
-        var req = new VersioningPromoteRequest
-        {
-            Version = version,
-        };
-        return PromoteAsync(req, cancellationToken);
-    }
-
-    /// <summary>Makes a `dev` game version live. The previous live one becomes `outdated`.</summary>
-    public void Promote(string version, Action<VersioningPromoteResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PromoteAsync(version).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.promote] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Makes a `dev` game version live. The previous live one becomes `outdated`.</summary>
-    public Task<VersioningPromoteResponse> PromoteAsync(VersioningPromoteRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<VersioningPromoteResponse>("versioning", "promote", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Makes a `dev` game version live. The previous live one becomes `outdated`.</summary>
-    public void Promote(VersioningPromoteRequest request, Action<VersioningPromoteResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PromoteAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.promote] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Blocks a game version: its clients are told to upgrade.</summary>
-    public Task<VersioningBlockResponse> BlockAsync(string version, CancellationToken cancellationToken = default)
-    {
-        var req = new VersioningBlockRequest
-        {
-            Version = version,
-        };
-        return BlockAsync(req, cancellationToken);
-    }
-
-    /// <summary>Blocks a game version: its clients are told to upgrade.</summary>
-    public void Block(string version, Action<VersioningBlockResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = BlockAsync(version).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.block] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Blocks a game version: its clients are told to upgrade.</summary>
-    public Task<VersioningBlockResponse> BlockAsync(VersioningBlockRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<VersioningBlockResponse>("versioning", "block", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Blocks a game version: its clients are told to upgrade.</summary>
-    public void Block(VersioningBlockRequest request, Action<VersioningBlockResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = BlockAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.block] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
-#if UNITY_EDITOR
-    /// <summary>Lists game versions, newest first.</summary>
-    public Task<VersioningListResponse> ListAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<VersioningListResponse>("versioning", "list", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists game versions, newest first.</summary>
-    public void List(Action<VersioningListResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.list] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-#endif
     /// <summary>Status and extension locks of one game version, as a client reports it.</summary>
     public Task<VersioningResolveResponse> ResolveAsync(string version, CancellationToken cancellationToken = default)
     {
@@ -8539,86 +3677,31 @@ public class VersioningServiceClient
 
 }
 
-#if UNITY_EDITOR
-/// <summary>Client interface for the ws service.</summary>
-public class WsServiceClient
+/// <summary>Client interface for the wallet service.</summary>
+public class WalletServiceClient
 {
     private readonly ExoClient _client;
 
-    public WsServiceClient(ExoClient client)
+    public WalletServiceClient(ExoClient client)
     {
         _client = client ?? throw new ArgumentNullException(nameof(client));
     }
 
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public Task<WsBroadcastResponse> BroadcastAsync(string @event, string topic, JsonElement payload, CancellationToken cancellationToken = default)
+    /// <summary>Executes get_balance action.</summary>
+    public Task<WalletBalance> GetBalanceAsync(CancellationToken cancellationToken = default)
     {
-        var req = new WsBroadcastRequest
-        {
-            Event = @event,
-            Topic = topic,
-            Payload = payload,
-        };
-        return BroadcastAsync(req, cancellationToken);
+        return _client.SendActionAsync<WalletBalance>("wallet", "get_balance", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
     }
 
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public void Broadcast(string @event, string topic, JsonElement payload, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
+    /// <summary>Executes get_balance action with callbacks on the Unity main thread.</summary>
+    public void GetBalance(Action<WalletBalance> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = BroadcastAsync(@event, topic, payload).ContinueWith(t =>
+        _ = GetBalanceAsync().ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.broadcast] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public Task<WsBroadcastResponse> BroadcastAsync(WsBroadcastRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<WsBroadcastResponse>("ws", "broadcast", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public void Broadcast(WsBroadcastRequest request, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = BroadcastAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.broadcast] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves current active WebSocket connection count.</summary>
-    public Task<WsConnectionCountResponse> ConnectionCountAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<WsConnectionCountResponse>("ws", "connection_count", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves current active WebSocket connection count.</summary>
-    public void ConnectionCount(Action<WsConnectionCountResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ConnectionCountAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.connection_count] Action error: {ex.Message}", ex); });
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[wallet.get_balance] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -8629,28 +3712,23 @@ public class WsServiceClient
     }
 
 }
-#endif
 
 }
 
-// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"refresh","Doc":"Exchanges a refresh token for a fresh access/refresh pair.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"expires_in","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"refresh_token","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"password","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"email","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"required_scope","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"issue_token","Doc":"Issues a service token for an existing user or player account.\n\nThe token carries the account\u0027s scopes as they are when it authenticates; the \u0060scopes\u0060\nparameter is accepted for older callers and ignored.\n","Scope":"admin","Transport":"auto","Params":[{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"expires_in","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"token_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"expires_in","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"expires_at","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_tokens","Doc":"Lists the tokens issued for an account: id, kind, creation, last use and expiry.","Scope":"admin","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"tokens","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"revoke_token","Doc":"Revokes a token (and the session it belongs to).","Scope":"admin","Transport":"auto","Params":[{"Name":"token_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"token_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_tokens","Doc":"Deletes expired and revoked token rows. Cron calls this.","Scope":"server","Transport":"auto","Params":[],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_users","Doc":"Lists all registered user accounts and their assigned authorization scopes.","Scope":"studio","Transport":"auto","Params":[{"Name":"query","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"users","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"reset_password","Doc":"Resets the password for an existing account.","Scope":"admin","Transport":"auto","Params":[{"Name":"password","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_user_roles","Doc":"Updates authorization scopes/roles for a user account.","Scope":"admin","Transport":"auto","Params":[{"Name":"role","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_user","Doc":"Deletes a user account and associated auth credentials.","Scope":"admin","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"dry_run","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"cron","Doc":null,"Actions":[{"Name":"status","Doc":"Returns status and count of active cron jobs.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"active_jobs","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_jobs","Doc":"Lists all scheduled cron jobs.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"jobs","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"trigger_job","Doc":"Manually triggers a scheduled job by its name or id.","Scope":"studio","Transport":"auto","Params":[{"Name":"job_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"dashboard","Doc":null,"Actions":[{"Name":"get_dashboard_mount","Doc":"Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}","Scope":"server","Transport":"auto","Params":[{"Name":"view_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"mount","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_dashboard_data","Doc":"Retrieves data payload for hydrating the dashboard view.","Scope":"server","Transport":"auto","Params":[{"Name":"view_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_project_metadata","Doc":"Retrieves global project metadata.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"description","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"custom","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"project_name","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"studio_name","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"website_url","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"updated_at","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_project_metadata","Doc":"Updates global project metadata.","Scope":"admin","Transport":"auto","Params":[{"Name":"description","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"custom","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"project_name","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"studio_name","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"website_url","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"metadata","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"project_metadata_updated","Topic":null,"Doc":"Broadcast when project metadata is updated.","PayloadFields":[{"Name":"metadata","Type":"map","Optional":false,"Nullable":false,"Default":null}]}],"Resources":[{"Name":"studio_preference","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"data","Type":"string","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"dashboard_view","Doc":null,"Actions":[{"Name":"resolve_view","Doc":"Resolves the LiveView component module for a given service or extension id.","Scope":"server","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"module","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_views","Doc":"Lists all registered custom dashboard view modules.","Scope":"server","Transport":"auto","Params":[],"ReturnFields":[{"Name":"views","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_dashboard_mount","Doc":"Retrieves dashboard mount specification: {:live, Module} | {:hook, config} | {:iframe, config}","Scope":"server","Transport":"auto","Params":[{"Name":"view_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"mount","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_dashboard_data","Doc":"Retrieves data payload for hydrating the dashboard view.","Scope":"server","Transport":"auto","Params":[{"Name":"view_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"database","Doc":null,"Actions":[{"Name":"execute","Doc":"Executes a driver-agnostic query or data operation.","Scope":"server","Transport":"auto","Params":[{"Name":"arguments","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"operation","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"plugin","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"rows","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"table_columns","Doc":"Lists the columns of a table in an extension\u0027s isolated database.","Scope":"server","Transport":"auto","Params":[{"Name":"table","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"plugin","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"columns","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"docs","Doc":null,"Actions":[{"Name":"list_chapters","Doc":"Lists all available documentation chapters.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"chapters","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_chapter","Doc":"Retrieves the content of a specific documentation chapter.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"chapter","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"export_docs","Doc":"Exports the consolidated documentation and dynamic API reference as Markdown or HTML.","Scope":"studio","Transport":"auto","Params":[{"Name":"format","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"format","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"content","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"extension_manager","Doc":null,"Actions":[{"Name":"list_extensions","Doc":"Lists all registered extensions with their metadata and contracts.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"extensions","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_extension","Doc":"Retrieves details and contract metadata for a single extension.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"extension","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_system_info","Doc":"Retrieves runtime node health, memory, and cluster stats.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"system","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"upload_extension","Doc":"Uploads and installs a new extension binary.","Scope":"admin","Transport":"auto","Params":[{"Name":"binary","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"manifest","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"extension_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"remove_extension","Doc":"Removes an installed extension.","Scope":"admin","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"restart_system","Doc":"Triggers a system re-index and reload of all extensions.","Scope":"admin","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"extensions_count","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"logs","Doc":"Returns the most recent log lines an extension emitted.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"lines","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"extension_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"reload_extension","Doc":"Re-boots an installed extension from its staged files, without re-uploading it.","Scope":"admin","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"extension_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"export_extension_info","Doc":"Exports the complete catalog of extensions and contracts for external tools (CLI/Unity).","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"export","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"csharp_attributes","Doc":"Exports C# companion attributes and types provided by loaded extensions.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"files","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"file_bucket","Doc":null,"Actions":[{"Name":"upload_file","Doc":"Stores a file in a specified bucket from raw binary or base64 content.","Scope":"studio","Transport":"auto","Params":[{"Name":"filename","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"metadata","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"content","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"content_type","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"file","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_file_info","Doc":"Retrieves metadata and local storage path for a file.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"file","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"read_file","Doc":"Reads raw binary content of a file.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"file","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"content","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_files","Doc":"Lists stored files within a bucket or across all buckets.","Scope":"studio","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"files","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_buckets","Doc":"Lists all storage buckets with their visibility (\u0060public\u0060 or \u0060private\u0060).","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"buckets","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_bucket_visibility","Doc":"Sets a bucket\u0027s visibility. \u0060public\u0060 lets anyone download its files by URL; \u0060private\u0060 (the\ndefault) serves them only to staff or through a \u0060signed_url\u0060. Staff-only; an extension that owns\na bucket resolves its own files and marks the bucket public at start.\n","Scope":"studio","Transport":"auto","Params":[{"Name":"bucket","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"visibility","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"bucket","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"visibility","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_file","Doc":"Modifies an existing file\u0027s name, metadata, or content.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"filename","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"metadata","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"content","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"content_type","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"file","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"signed_url","Doc":"Returns a time-limited download URL for one file. Server-only: an extension decides who may\nread a file and mints the link; the HTTP file route accepts it without a token until it expires.\n","Scope":"server","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"ttl_seconds","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"expires_at","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"authorize_download","Doc":"Whether an unauthenticated download may be served: a public bucket, or a valid signed URL.","Scope":"server","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"exp","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"sig","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"allowed","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_file","Doc":"Deletes a stored file.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"bucket","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"deleted","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"http","Doc":null,"Actions":[{"Name":"status","Doc":"Returns HTTP server status and registered route summaries.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"port","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"inventario","Doc":null,"Actions":[{"Name":"obter_inventario","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioDetalhado"},{"Name":"add_item","Doc":null,"Scope":"server","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"cost","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioDetalhado"},{"Name":"add_gold","Doc":null,"Scope":"server","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"amount","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioDetalhado"}],"Events":[],"Resources":[{"Name":"inventario","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"ouro","Type":"integer","Nullable":false}]},{"Name":"inventario_itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"quantidade","Type":"integer","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"items","Doc":null,"Actions":[{"Name":"listar_catalogo","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.Item"},{"Name":"obter_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Item"},{"Name":"seed_itens","Doc":null,"Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[{"Name":"itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"nome","Type":"string","Nullable":false},{"Name":"tipo","Type":"string","Nullable":false},{"Name":"preco","Type":"integer","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"lldb","Doc":null,"Actions":[{"Name":"exec","Doc":"Runs an operation inside a namespace: a SQL statement with arguments, or a key-value command.","Scope":"server","Transport":"auto","Params":[{"Name":"arguments","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"operation","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"provision_namespace","Doc":"Creates, or refreshes, the isolated namespace (and its access rules) for an extension.","Scope":"server","Transport":"auto","Params":[{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"drop_namespace","Doc":"Removes an extension\u0027s namespace and everything in it.","Scope":"server","Transport":"auto","Params":[{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"transaction","Doc":"Runs statements (SQL with positional arguments) in order in one transaction, all or nothing; a failure names the statement index.","Scope":"server","Transport":"auto","Params":[{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"statements","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"introspect","Doc":"Describes a table in engine-neutral terms: columns with logical types, nullability and the primary key.","Scope":"server","Transport":"auto","Params":[{"Name":"table","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"dialect","Doc":"How to write SQL for this engine: placeholder and quoting style, upsert strategy and type names.","Scope":"server","Transport":"auto","Params":[],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"apply_schema","Doc":"Applies the safe changes that bring a namespace\u0027s tables in line with declared resources (logical \u0060storage\u0060 types); an unsafe change applies nothing and is reported.","Scope":"server","Transport":"auto","Params":[{"Name":"version","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"migrations","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resources","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"run_migrations","Doc":"Applies an extension\u0027s hand-written SQL migrations in version order.","Scope":"server","Transport":"auto","Params":[{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"migrations","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"reset_table","Doc":"Drops a table of a namespace, and its schema history.","Scope":"server","Transport":"auto","Params":[{"Name":"table","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"result","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"table_columns","Doc":"Lists the columns of a table in a namespace.","Scope":"server","Transport":"auto","Params":[{"Name":"table","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"columns","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"connection_config","Doc":"Retrieves namespaced database connection details.","Scope":"server","Transport":"auto","Params":[{"Name":"namespace","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"driver","Type":"atom","Optional":false,"Nullable":false,"Default":null},{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"pool_size","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"health_check","Doc":"Performs a low-level ping to verify the database is reachable.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"connection_lost","Topic":null,"Doc":"Fired when the underlying database pool drops connection.","PayloadFields":[{"Name":"reason","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null}]}],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"loja_itens","Doc":null,"Actions":[{"Name":"listar_itens","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LojaItemDetalhado"},{"Name":"comprar_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioResumo"},{"Name":"seed_loja","Doc":null,"Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[{"Name":"loja_ofertas","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"ativo","Type":"boolean","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"metering","Doc":null,"Actions":[{"Name":"usage","Doc":"Rolls up persisted usage per extension and action for this title.","Scope":"studio","Transport":"auto","Params":[{"Name":"since","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"plugin_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"plugins","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"studio_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"title_id","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"totals","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"observability","Doc":null,"Actions":[{"Name":"recent_events","Doc":"The most recent cluster events, newest first.","Scope":"studio","Transport":"auto","Params":[{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"events","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"error_groups","Doc":"Failures grouped by fingerprint: counts, first/last seen, callers, and a sample request.","Scope":"studio","Transport":"auto","Params":[{"Name":"caller","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"action","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"service","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"rid","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"groups","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"capture","Doc":"Starts a deep capture for one player, one action, or the whole cluster, for a few minutes.","Scope":"studio","Transport":"auto","Params":[{"Name":"seconds","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"kind","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"capture","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"captures","Doc":"The active deep captures, with their remaining seconds.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"captures","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"stop_capture","Doc":"Stops one capture (or every capture when kind is global and the value is blank).","Scope":"studio","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"kind","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"replay","Doc":"Replays a captured invocation\u0027s full request as the caller who made it.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"data","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"status","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"rid","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"source_rid","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"health","Doc":"Per-action health: 30-minute rates, lifetime p50/p95, and what needs attention.","Scope":"studio","Transport":"auto","Params":[{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"rows","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"attention","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"events","Doc":"One page of stored events, filtered; ranges older than the hot window come from the archive.","Scope":"studio","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"status","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"rid","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"event","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"until_ms","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"since_ms","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"events","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"capped","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"timeline","Doc":"One request\u0027s timeline (or one caller\u0027s recent activity): calls, events, logs and failures.","Scope":"studio","Transport":"auto","Params":[{"Name":"rid","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"since_ms","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"nodes","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"clear_events","Doc":"Drops the in-memory ring and the persisted event history.","Scope":"admin","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_events","Doc":"Drops one caller\u0027s hot events (account deletion); archived files are left untouched.","Scope":"admin","Transport":"auto","Params":[{"Name":"origin","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"player_data","Doc":null,"Actions":[{"Name":"get_player","Doc":"Retrieves player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a player profile record, optionally linked to a user account.","Scope":"global","Transport":"auto","Params":[{"Name":"profile","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_player","Doc":"Deletes a player profile record.","Scope":"admin","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"retain_player","Doc":"Unlinks user and marks player record as retained/orphaned for data retention policies.","Scope":"admin","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list_players","Doc":"Lists all registered player profiles with optional filtering (all, valid, orphaned).","Scope":"studio","Transport":"auto","Params":[{"Name":"filter","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"players","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_player","Doc":"Updates player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_data","Doc":"Retrieves a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_data","Doc":"Sets a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_data","Doc":"Deletes a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_all_data","Doc":"Retrieves all key-value state entries for a player as a map.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"player_created","Topic":null,"Doc":"Emitted when a new player account is created.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}]},{"Name":"player_deleted","Topic":null,"Doc":"Emitted when a player account is deleted.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null}]}],"Resources":[{"Name":"players","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"user_id","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"level","Type":"integer","Nullable":false},{"Name":"status","Type":"string","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"migrate","Doc":"Creates/updates the tables backing all declared resources (additive migrations).","Scope":"studio","Transport":"auto","Params":[{"Name":"extension","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"migrated","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"provision","Doc":"Provisioning step before an extension starts: makes the tables of its typed resources (those that declare column storage types).","Scope":"studio","Transport":"auto","Params":[{"Name":"extension","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"provisioned","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"sort","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"filter","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"search","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false,"Nullable":false,"Default":null},{"Name":"rows","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"optional","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create","Doc":"Creates a row.","Scope":"studio","Transport":"auto","Params":[{"Name":"attributes","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update","Doc":"Updates a row by primary key.","Scope":"studio","Transport":"auto","Params":[{"Name":"attributes","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete","Doc":"Deletes a row by primary key.","Scope":"studio","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"deleted","Type":"boolean","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"upsert","Doc":"Inserts or updates a row on conflict.","Scope":"studio","Transport":"auto","Params":[{"Name":"attributes","Type":"map","Optional":false,"Nullable":false,"Default":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"clear","Doc":"Removes every row of a resource, table-backed or KV-backed, without dropping the table.","Scope":"studio","Transport":"auto","Params":[{"Name":"resource","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"cleared","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"test","Doc":null,"Actions":[{"Name":"claim_daily_reward","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"kind","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"amount","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.TestReward"}],"Events":[],"Resources":[{"Name":"test_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"claim_date","Type":"string","Nullable":false},{"Name":"amount","Type":"integer","Nullable":false}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"transport","Doc":null,"Actions":[{"Name":"status","Doc":"Returns transport layer status.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"layer","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"versioning","Doc":null,"Actions":[{"Name":"register","Doc":"Registers a game version in \u0060dev\u0060, with the extension versions it locks.","Scope":"studio","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"locks","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"blocked","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_locks","Doc":"Changes the locks of a \u0060dev\u0060 game version. Live, outdated and blocked versions are immutable.","Scope":"studio","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"locks","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"promote","Doc":"Makes a \u0060dev\u0060 game version live. The previous live one becomes \u0060outdated\u0060.","Scope":"studio","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"blocked","Type":"term","Optional":false,"Nullable":false,"Default":null},{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"block","Doc":"Blocks a game version: its clients are told to upgrade.","Scope":"studio","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"list","Doc":"Lists game versions, newest first.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"versions","Type":"term","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"resolve","Doc":"Status and extension locks of one game version, as a client reports it.","Scope":"player","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"locks","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"ws","Doc":null,"Actions":[{"Name":"broadcast","Doc":"Broadcasts a frame to an active WebSocket topic.","Scope":"studio","Transport":"auto","Params":[{"Name":"event","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"topic","Type":"string","Optional":false,"Nullable":false,"Default":null},{"Name":"payload","Type":"map","Optional":false,"Nullable":false,"Default":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"connection_count","Doc":"Retrieves current active WebSocket connection count.","Scope":"studio","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false,"Nullable":false,"Default":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
+// @exoforge-contract: {"Name":"achievements","Doc":null,"Actions":[{"Name":"list","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"description","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"needed","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"progress","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"unlocked","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.AchievementStatus","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"AchievementStatus","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"achievement_unlocked","Topic":"achievements:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"achievement_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"achievement_defs","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"title","Type":"string","Nullable":false},{"Name":"description","Type":"string","Nullable":false},{"Name":"trigger","Type":"string","Nullable":false},{"Name":"count","Type":"integer","Nullable":false}]},{"Name":"achievement_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"trigger","Type":"string","Nullable":false},{"Name":"count","Type":"integer","Nullable":false}]},{"Name":"unlocks","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"achievement_id","Type":"string","Nullable":false},{"Name":"unlocked_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"AchievementStatus":{"Name":"AchievementStatus","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"description","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"needed","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"progress","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"unlocked","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"adventure_world","Doc":null,"Actions":[{"Name":"get_progress","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"kills","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"chests","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zones","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"gold","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"updated_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.AdventurerProgress","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"AdventurerProgress","Choices":null}}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"enemy","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"gold","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"adventurer_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"kills","Type":"integer","Nullable":false},{"Name":"chests","Type":"integer","Nullable":false},{"Name":"zones","Type":"integer","Nullable":false},{"Name":"gold","Type":"integer","Nullable":false},{"Name":"zone","Type":"string","Nullable":false},{"Name":"updated_at","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"AdventurerProgress":{"Name":"AdventurerProgress","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"kills","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"chests","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"zones","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"gold","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"updated_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"refresh","Doc":"Exchanges a refresh token for a fresh access/refresh pair.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"refresh_token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"expires_in","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"email","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"required_scope","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"dry_run","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"brainrot_market","Doc":null,"Actions":[{"Name":"get_portfolio","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"pending_idle_coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Portfolio","Choices":null}},{"Name":"collect_idle","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.IdleCollected","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"IdleCollected","Choices":null}},{"Name":"buy_farm","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"pending_idle_coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Portfolio","Choices":null}},{"Name":"buy_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"price","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Trade","Choices":null}},{"Name":"sell_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"price","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Trade","Choices":null}}],"Events":[{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"prices_ticked","Topic":"market:ticker","Doc":null,"PayloadFields":[{"Name":"quotes","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Quote","Choices":null},"Values":null,"Ref":null,"Choices":null}}]}],"Resources":[{"Name":"meme_stocks","PrimaryKey":"symbol","Columns":[{"Name":"symbol","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"price","Type":"integer","Nullable":false},{"Name":"base_price","Type":"integer","Nullable":false},{"Name":"min_price","Type":"integer","Nullable":false},{"Name":"max_price","Type":"integer","Nullable":false},{"Name":"volatility_percent","Type":"integer","Nullable":false}]},{"Name":"portfolios","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"symbol","Type":"string","Nullable":false},{"Name":"shares","Type":"integer","Nullable":false}]},{"Name":"farms","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"level","Type":"integer","Nullable":false},{"Name":"last_collected_at","Type":"datetime","Nullable":false}]},{"Name":"storefront_config","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"secret","Type":"string","Nullable":false}]},{"Name":"storefront_receipts","PrimaryKey":"receipt_id","Columns":[{"Name":"receipt_id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"Holding":{"Name":"Holding","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"shares","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"IdleCollected":{"Name":"IdleCollected","Fields":[{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Portfolio":{"Name":"Portfolio","Fields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"pending_idle_coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Quote":{"Name":"Quote","Fields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"price","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"previous","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Trade":{"Name":"Trade","Fields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"shares","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"price","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"WebhookPayload":{"Name":"WebhookPayload","Fields":[{"Name":"body","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"raw_body","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"json","Type":"json","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"json","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"headers","Type":"map","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"map","Nullable":true,"Items":null,"Values":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null},"Ref":null,"Choices":null}},{"Name":"method","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"query","Type":"map","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"map","Nullable":true,"Items":null,"Values":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null},"Ref":null,"Choices":null}}]},"WebhookResult":{"Name":"WebhookResult","Fields":[{"Name":"status_code","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"body","Type":"string","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"string","Nullable":true,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"verified","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"daily_rewards","Doc":null,"Actions":[{"Name":"get_status","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"streak","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"next_day","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"can_claim","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyStatus","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"DailyStatus","Choices":null}},{"Name":"claim","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"day","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyClaimResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"DailyClaimResult","Choices":null}}],"Events":[],"Resources":[{"Name":"daily_reward_table","PrimaryKey":"day","Columns":[{"Name":"day","Type":"integer","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false}]},{"Name":"daily_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"streak","Type":"integer","Nullable":false},{"Name":"last_claimed_on","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"DailyClaimResult":{"Name":"DailyClaimResult","Fields":[{"Name":"day","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"DailyStatus":{"Name":"DailyStatus","Fields":[{"Name":"streak","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"next_day","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"can_claim","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"game_menu","Doc":null,"Actions":[{"Name":"get_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"PlayerSettings","Choices":null}},{"Name":"save_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"PlayerSettings","Choices":null}},{"Name":"claim_gift","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.GiftReceipt","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"GiftReceipt","Choices":null}}],"Events":[],"Resources":[{"Name":"menu_news","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"headline","Type":"string","Nullable":false},{"Name":"priority","Type":"integer","Nullable":false}]},{"Name":"menu_gifts","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"note","Type":"string","Nullable":false}]},{"Name":"player_settings","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"volume","Type":"integer","Nullable":false},{"Name":"color_blind","Type":"boolean","Nullable":false}]},{"Name":"gift_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"claimed_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"GiftReceipt":{"Name":"GiftReceipt","Fields":[{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"balance","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"PlayerSettings":{"Name":"PlayerSettings","Fields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"volume","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"http","Doc":null,"Actions":[{"Name":"status","Doc":"Returns HTTP server status and registered route summaries.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"port","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"inventario","Doc":null,"Actions":[{"Name":"obter_inventario","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioDetalhado","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioDetalhado","Choices":null}}],"Events":[],"Resources":[{"Name":"inventario","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"ouro","Type":"integer","Nullable":false}]},{"Name":"inventario_itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"quantidade","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"InventarioDetalhado":{"Name":"InventarioDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"ouro","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}}]},"InventarioItemDetalhado":{"Name":"InventarioItemDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"quantidade","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"items","Doc":null,"Actions":[{"Name":"listar_catalogo","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.Item","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Item","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"obter_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Item","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Item","Choices":null}}],"Events":[],"Resources":[{"Name":"itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"nome","Type":"string","Nullable":false},{"Name":"tipo","Type":"string","Nullable":false},{"Name":"preco","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"Item":{"Name":"Item","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"level_share","Doc":null,"Actions":[{"Name":"upload_level","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"png_base64","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sha256","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUploadResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelUploadResult","Choices":null}},{"Name":"publish","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"difficulty","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelPublishResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelPublishResult","Choices":null}},{"Name":"get_level_url","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"expires_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUrlResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelUrlResult","Choices":null}},{"Name":"browse","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sort","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"limit","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"author_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"author","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"plays","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating_count","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"published_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LevelSummary","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelSummary","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"rate","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"stars","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating_count","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelRateResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelRateResult","Choices":null}},{"Name":"record_clear","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"counted","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelClearResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelClearResult","Choices":null}}],"Events":[{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"levels","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"author_id","Type":"string","Nullable":false},{"Name":"author","Type":"string","Nullable":false},{"Name":"title","Type":"string","Nullable":false},{"Name":"tag","Type":"string","Nullable":false},{"Name":"file_id","Type":"string","Nullable":false},{"Name":"file_sha","Type":"string","Nullable":false},{"Name":"plays","Type":"integer","Nullable":false},{"Name":"rating_sum","Type":"integer","Nullable":false},{"Name":"rating_count","Type":"integer","Nullable":false},{"Name":"published_at","Type":"integer","Nullable":false}]},{"Name":"ratings","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"level_id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"stars","Type":"integer","Nullable":false}]},{"Name":"level_uploads","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"sha256","Type":"string","Nullable":false},{"Name":"size","Type":"integer","Nullable":false},{"Name":"uploaded_at","Type":"integer","Nullable":false}]},{"Name":"level_clears","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"key","Type":"string","Nullable":false},{"Name":"cleared_at","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"LevelClearResult":{"Name":"LevelClearResult","Fields":[{"Name":"counted","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelPublishResult":{"Name":"LevelPublishResult","Fields":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelRateResult":{"Name":"LevelRateResult","Fields":[{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"float","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating_count","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelSummary":{"Name":"LevelSummary","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"author_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"author","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"plays","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"float","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating_count","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"published_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelUploadResult":{"Name":"LevelUploadResult","Fields":[{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"sha256","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelUrlResult":{"Name":"LevelUrlResult","Fields":[{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"expires_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"lldb","Doc":null,"Actions":[{"Name":"health_check","Doc":"Performs a low-level ping to verify the database is reachable.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[{"Name":"connection_lost","Topic":null,"Doc":"Fired when the underlying database pool drops connection.","PayloadFields":[{"Name":"reason","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"loja_itens","Doc":null,"Actions":[{"Name":"listar_itens","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LojaItemDetalhado","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LojaItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"comprar_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemResumo","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioResumo","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioResumo","Choices":null}}],"Events":[],"Resources":[{"Name":"loja_ofertas","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"ativo","Type":"boolean","Nullable":false}]}],"CustomInputs":[],"Types":{"InventarioItemResumo":{"Name":"InventarioItemResumo","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"quantidade","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"InventarioResumo":{"Name":"InventarioResumo","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"ouro","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemResumo","Choices":null},"Values":null,"Ref":null,"Choices":null}}]},"LojaItemDetalhado":{"Name":"LojaItemDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"player_data","Doc":null,"Actions":[{"Name":"get_player","Doc":"Retrieves player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"create_player","Doc":"Creates a player profile record, optionally linked to a user account.","Scope":"global","Transport":"auto","Params":[{"Name":"profile","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"update_player","Doc":"Updates player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get_data","Doc":"Retrieves a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"set_data","Doc":"Sets a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"delete_data","Doc":"Deletes a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get_all_data","Doc":"Retrieves all key-value state entries for a player as a map.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[{"Name":"player_created","Topic":null,"Doc":"Emitted when a new player account is created.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"player_deleted","Topic":null,"Doc":"Emitted when a player account is deleted.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"players","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"user_id","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"level","Type":"integer","Nullable":false},{"Name":"status","Type":"string","Nullable":false}]}],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sort","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"filter","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"search","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rows","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"optional","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"transport","Doc":null,"Actions":[{"Name":"status","Doc":"Returns transport layer status.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"layer","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"versioning","Doc":null,"Actions":[{"Name":"resolve","Doc":"Status and extension locks of one game version, as a client reports it.","Scope":"player","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"locks","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"wallet","Doc":null,"Actions":[{"Name":"get_balance","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"updated_at","Type":"datetime","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.WalletBalance","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"WalletBalance","Choices":null}}],"Events":[],"Resources":[{"Name":"wallet_balances","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"updated_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"WalletBalance":{"Name":"WalletBalance","Fields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"updated_at","Type":"datetime","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"datetime","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}

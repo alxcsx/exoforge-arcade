@@ -3,6 +3,7 @@
 # token come from one workspace project (SMOKE_PROJECT, default 2d-hub: <project>/Exoforge).
 #   tools/smoke.sh            all samples
 #   tools/smoke.sh economy    one sample
+#   EXO_ADMIN_EMAIL=... EXO_ADMIN_PASSWORD=... tools/smoke.sh --reset [sample...]   (the credentials sign each project in again)
 #   tools/smoke.sh --reset [sample...]   first wipe the instance's extensions and push only that sample's
 #                                        (`exo instance reset --yes`, then `exo extension push --all`, which skips
 #                                        the project's "excluded_extensions")
@@ -34,6 +35,11 @@ for s in ${samples[@]}; do
   echo "=== $s"
   if [ "$reset" = 1 ]; then
     p="${forced_project:-$(project_of "$s")}"
+    # One machine is one device to the server and a login replaces that device's session, so projects take
+    # turns: sign in again for this project when the admin credentials are given.
+    if [ -n "${EXO_ADMIN_EMAIL:-}" ] && [ -n "${EXO_ADMIN_PASSWORD:-}" ]; then
+      (cd "$p" && ./exo connect --email "$EXO_ADMIN_EMAIL" --password "$EXO_ADMIN_PASSWORD" --save --dir Exoforge >/dev/null)
+    fi
     if ! (cd "$p" && ./exo instance reset --yes --dir Exoforge && ./exo extension push --all --dir Exoforge); then
       echo "=== $s: reset/push FAILED"; failed+=("$s"); continue
     fi

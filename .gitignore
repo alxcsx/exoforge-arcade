@@ -3,6 +3,8 @@ Temp/
 Logs/
 obj/
 bin/
+# Typed service stubs: made by `exo extension stubs` / `exo extension build`, never committed (also covered by obj/).
+**/obj/exoforge/
 UserSettings/
 *.csproj
 *.sln

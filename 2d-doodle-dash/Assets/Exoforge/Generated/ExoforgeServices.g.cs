@@ -15,7 +15,7 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Exoforge.Client
 {
-/// <summary>Response model for achievements.list action.</summary>
+/// <summary>Record used by the achievements service.</summary>
 public class AchievementStatus
 {
     [JsonPropertyName("id")]
@@ -25,11 +25,292 @@ public class AchievementStatus
     [JsonPropertyName("description")]
     public string Description { get; set; } = default!;
     [JsonPropertyName("needed")]
-    public long Needed { get; set; } = default!;
+    public int Needed { get; set; } = default!;
     [JsonPropertyName("progress")]
-    public long Progress { get; set; } = default!;
+    public int Progress { get; set; } = default!;
     [JsonPropertyName("unlocked")]
     public bool Unlocked { get; set; } = default!;
+}
+
+/// <summary>Record used by the adventure_world service.</summary>
+public class AdventurerProgress
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("name")]
+    public string Name { get; set; } = default!;
+    [JsonPropertyName("kills")]
+    public int Kills { get; set; } = default!;
+    [JsonPropertyName("chests")]
+    public int Chests { get; set; } = default!;
+    [JsonPropertyName("zones")]
+    public int Zones { get; set; } = default!;
+    [JsonPropertyName("gold")]
+    public int Gold { get; set; } = default!;
+    [JsonPropertyName("zone")]
+    public string Zone { get; set; } = default!;
+    [JsonPropertyName("updated_at")]
+    public long UpdatedAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the daily_rewards service.</summary>
+public class DailyClaimResult
+{
+    [JsonPropertyName("day")]
+    public int Day { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("balance")]
+    public long Balance { get; set; } = default!;
+}
+
+/// <summary>Record used by the daily_rewards service.</summary>
+public class DailyStatus
+{
+    [JsonPropertyName("streak")]
+    public int Streak { get; set; } = default!;
+    [JsonPropertyName("next_day")]
+    public int NextDay { get; set; } = default!;
+    [JsonPropertyName("can_claim")]
+    public bool CanClaim { get; set; } = default!;
+}
+
+/// <summary>Record used by the game_menu service.</summary>
+public class GiftReceipt
+{
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("balance")]
+    public int Balance { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Holding
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public int Shares { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class IdleCollected
+{
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("farm_level")]
+    public int FarmLevel { get; set; } = default!;
+}
+
+/// <summary>Record used by the inventario service.</summary>
+public class InventarioDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("ouro")]
+    public int Ouro { get; set; } = default!;
+    [JsonPropertyName("itens")]
+    public List<InventarioItemDetalhado> Itens { get; set; } = default!;
+}
+
+/// <summary>Record used by the inventario service.</summary>
+public class InventarioItemDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("quantidade")]
+    public int Quantidade { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class InventarioItemResumo
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("quantidade")]
+    public int Quantidade { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class InventarioResumo
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("ouro")]
+    public int Ouro { get; set; } = default!;
+    [JsonPropertyName("itens")]
+    public List<InventarioItemResumo> Itens { get; set; } = default!;
+}
+
+/// <summary>Record used by the items service.</summary>
+public class Item
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelClearResult
+{
+    [JsonPropertyName("counted")]
+    public bool Counted { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelPublishResult
+{
+    [JsonPropertyName("level_id")]
+    public string LevelId { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelRateResult
+{
+    [JsonPropertyName("rating")]
+    public double Rating { get; set; } = default!;
+    [JsonPropertyName("rating_count")]
+    public int RatingCount { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelSummary
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("author_id")]
+    public string AuthorId { get; set; } = default!;
+    [JsonPropertyName("author")]
+    public string Author { get; set; } = default!;
+    [JsonPropertyName("title")]
+    public string Title { get; set; } = default!;
+    [JsonPropertyName("tag")]
+    public string Tag { get; set; } = default!;
+    [JsonPropertyName("plays")]
+    public int Plays { get; set; } = default!;
+    [JsonPropertyName("rating")]
+    public double Rating { get; set; } = default!;
+    [JsonPropertyName("rating_count")]
+    public int RatingCount { get; set; } = default!;
+    [JsonPropertyName("published_at")]
+    public long PublishedAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelUploadResult
+{
+    [JsonPropertyName("file_id")]
+    public string FileId { get; set; } = default!;
+    [JsonPropertyName("sha256")]
+    public string Sha256 { get; set; } = default!;
+}
+
+/// <summary>Record used by the level_share service.</summary>
+public class LevelUrlResult
+{
+    [JsonPropertyName("url")]
+    public string Url { get; set; } = default!;
+    [JsonPropertyName("expires_at")]
+    public long ExpiresAt { get; set; } = default!;
+}
+
+/// <summary>Record used by the loja_itens service.</summary>
+public class LojaItemDetalhado
+{
+    [JsonPropertyName("id")]
+    public string Id { get; set; } = default!;
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+    [JsonPropertyName("nome")]
+    public string Nome { get; set; } = default!;
+    [JsonPropertyName("tipo")]
+    public string Tipo { get; set; } = default!;
+    [JsonPropertyName("preco")]
+    public int Preco { get; set; } = default!;
+}
+
+/// <summary>Record used by the game_menu service.</summary>
+public class PlayerSettings
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("volume")]
+    public int Volume { get; set; } = default!;
+    [JsonPropertyName("color_blind")]
+    public bool ColorBlind { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Portfolio
+{
+    [JsonPropertyName("holdings")]
+    public List<Holding> Holdings { get; set; } = default!;
+    [JsonPropertyName("farm_level")]
+    public int FarmLevel { get; set; } = default!;
+    [JsonPropertyName("pending_idle_coins")]
+    public int PendingIdleCoins { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Quote
+{
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("price")]
+    public int Price { get; set; } = default!;
+    [JsonPropertyName("previous")]
+    public int Previous { get; set; } = default!;
+}
+
+/// <summary>Record used by the brainrot_market service.</summary>
+public class Trade
+{
+    [JsonPropertyName("symbol")]
+    public string Symbol { get; set; } = default!;
+    [JsonPropertyName("side")]
+    public string Side { get; set; } = default!;
+    [JsonPropertyName("shares")]
+    public int Shares { get; set; } = default!;
+    [JsonPropertyName("price")]
+    public int Price { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+}
+
+/// <summary>Record used by the wallet service.</summary>
+public class WalletBalance
+{
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
+    [JsonPropertyName("coins")]
+    public int Coins { get; set; } = default!;
+    [JsonPropertyName("updated_at")]
+    public DateTimeOffset UpdatedAt { get; set; } = default!;
 }
 
 /// <summary>Event payload for world:feed -> enemy_slain.</summary>
@@ -76,27 +357,6 @@ public class AchievementsAchievementUnlockedEvent
     public string AchievementId { get; set; } = default!;
     [JsonPropertyName("title")]
     public string Title { get; set; } = default!;
-}
-
-/// <summary>Response model for adventure_world.get_progress action.</summary>
-public class AdventurerProgress
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("name")]
-    public string Name { get; set; } = default!;
-    [JsonPropertyName("kills")]
-    public long Kills { get; set; } = default!;
-    [JsonPropertyName("chests")]
-    public long Chests { get; set; } = default!;
-    [JsonPropertyName("zones")]
-    public long Zones { get; set; } = default!;
-    [JsonPropertyName("gold")]
-    public long Gold { get; set; } = default!;
-    [JsonPropertyName("zone")]
-    public string Zone { get; set; } = default!;
-    [JsonPropertyName("updated_at")]
-    public long UpdatedAt { get; set; } = default!;
 }
 
 /// <summary>Event payload for world:feed -> enemy_slain.</summary>
@@ -152,10 +412,10 @@ public class AuthAuthenticateRequest
 /// <summary>Response model for auth.authenticate action.</summary>
 public class AuthAuthenticateResponse
 {
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
     [JsonPropertyName("scopes")]
     public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.refresh action.</summary>
@@ -181,10 +441,10 @@ public class AuthRefreshResponse
 /// <summary>Request payload for auth.login action.</summary>
 public class AuthLoginRequest
 {
-    [JsonPropertyName("password")]
-    public string Password { get; set; } = default!;
     [JsonPropertyName("email")]
     public string Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    public string Password { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.login action.</summary>
@@ -192,10 +452,10 @@ public class AuthLoginResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
     [JsonPropertyName("scopes")]
     public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.verify_scope action.</summary>
@@ -227,18 +487,18 @@ public class AuthRegisterRequest
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("password")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("email")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Password { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement PlayerId { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.register action.</summary>
@@ -248,12 +508,12 @@ public class AuthRegisterResponse
     public string Token { get; set; } = default!;
     [JsonPropertyName("user_id")]
     public string UserId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.create_player action.</summary>
@@ -265,18 +525,18 @@ public class AuthCreatePlayerRequest
     [JsonPropertyName("user_id")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement UserId { get; set; } = default!;
-    [JsonPropertyName("password")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Password { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement PlayerId { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("email")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Email { get; set; } = default!;
+    [JsonPropertyName("password")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Password { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement PlayerId { get; set; } = default!;
 }
 
 /// <summary>Response model for auth.create_player action.</summary>
@@ -286,12 +546,12 @@ public class AuthCreatePlayerResponse
     public string Token { get; set; } = default!;
     [JsonPropertyName("user_id")]
     public string UserId { get; set; } = default!;
+    [JsonPropertyName("scopes")]
+    public JsonElement Scopes { get; set; } = default!;
     [JsonPropertyName("player")]
     public JsonElement Player { get; set; } = default!;
     [JsonPropertyName("player_id")]
     public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("scopes")]
-    public JsonElement Scopes { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.anonymous action.</summary>
@@ -310,10 +570,10 @@ public class AuthAnonymousResponse
 {
     [JsonPropertyName("token")]
     public string Token { get; set; } = default!;
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
     [JsonPropertyName("scopes")]
     public JsonElement Scopes { get; set; } = default!;
+    [JsonPropertyName("player_id")]
+    public string PlayerId { get; set; } = default!;
 }
 
 /// <summary>Request payload for auth.set_display_name action.</summary>
@@ -352,26 +612,6 @@ public class AuthPurgeDisposableResponse
     public bool DryRun { get; set; } = default!;
 }
 
-/// <summary>Response model for brainrot_market.get_portfolio action.</summary>
-public class Portfolio
-{
-    [JsonPropertyName("holdings")]
-    public JsonElement Holdings { get; set; } = default!;
-    [JsonPropertyName("farm_level")]
-    public long FarmLevel { get; set; } = default!;
-    [JsonPropertyName("pending_idle_coins")]
-    public long PendingIdleCoins { get; set; } = default!;
-}
-
-/// <summary>Response model for brainrot_market.collect_idle action.</summary>
-public class IdleCollected
-{
-    [JsonPropertyName("coins")]
-    public long Coins { get; set; } = default!;
-    [JsonPropertyName("farm_level")]
-    public long FarmLevel { get; set; } = default!;
-}
-
 /// <summary>Request payload for brainrot_market.buy_shares action.</summary>
 public class BrainrotMarketBuySharesRequest
 {
@@ -379,21 +619,6 @@ public class BrainrotMarketBuySharesRequest
     public string Symbol { get; set; } = default!;
     [JsonPropertyName("shares")]
     public long Shares { get; set; } = default!;
-}
-
-/// <summary>Response model for brainrot_market.buy_shares action.</summary>
-public class Trade
-{
-    [JsonPropertyName("symbol")]
-    public string Symbol { get; set; } = default!;
-    [JsonPropertyName("side")]
-    public string Side { get; set; } = default!;
-    [JsonPropertyName("shares")]
-    public long Shares { get; set; } = default!;
-    [JsonPropertyName("price")]
-    public long Price { get; set; } = default!;
-    [JsonPropertyName("coins")]
-    public long Coins { get; set; } = default!;
 }
 
 /// <summary>Request payload for brainrot_market.sell_shares action.</summary>
@@ -422,98 +647,7 @@ public class BrainrotMarketTradeMadeEvent
 public class BrainrotMarketPricesTickedEvent
 {
     [JsonPropertyName("quotes")]
-    public JsonElement Quotes { get; set; } = default!;
-}
-
-/// <summary>Response model for cron.status action.</summary>
-public class CronStatusResponse
-{
-    [JsonPropertyName("status")]
-    public string Status { get; set; } = default!;
-    [JsonPropertyName("active_jobs")]
-    public long ActiveJobs { get; set; } = default!;
-}
-
-/// <summary>Response model for daily_rewards.get_status action.</summary>
-public class DailyStatus
-{
-    [JsonPropertyName("streak")]
-    public long Streak { get; set; } = default!;
-    [JsonPropertyName("next_day")]
-    public long NextDay { get; set; } = default!;
-    [JsonPropertyName("can_claim")]
-    public bool CanClaim { get; set; } = default!;
-}
-
-/// <summary>Response model for daily_rewards.claim action.</summary>
-public class DailyClaimResult
-{
-    [JsonPropertyName("day")]
-    public long Day { get; set; } = default!;
-    [JsonPropertyName("coins")]
-    public long Coins { get; set; } = default!;
-    [JsonPropertyName("balance")]
-    public long Balance { get; set; } = default!;
-}
-
-/// <summary>Response model for docs.list_chapters action.</summary>
-public class DocsListChaptersResponse
-{
-    [JsonPropertyName("chapters")]
-    public JsonElement Chapters { get; set; } = default!;
-}
-
-/// <summary>Request payload for docs.get_chapter action.</summary>
-public class DocsGetChapterRequest
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-}
-
-/// <summary>Response model for docs.get_chapter action.</summary>
-public class DocsGetChapterResponse
-{
-    [JsonPropertyName("chapter")]
-    public JsonElement Chapter { get; set; } = default!;
-}
-
-/// <summary>Request payload for docs.export_docs action.</summary>
-public class DocsExportDocsRequest
-{
-    [JsonPropertyName("format")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Format { get; set; } = default!;
-}
-
-/// <summary>Response model for docs.export_docs action.</summary>
-public class DocsExportDocsResponse
-{
-    [JsonPropertyName("format")]
-    public string Format { get; set; } = default!;
-    [JsonPropertyName("title")]
-    public string Title { get; set; } = default!;
-    [JsonPropertyName("content")]
-    public string Content { get; set; } = default!;
-}
-
-/// <summary>Response model for extension_manager.csharp_attributes action.</summary>
-public class ExtensionManagerCsharpAttributesResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
-    [JsonPropertyName("files")]
-    public JsonElement Files { get; set; } = default!;
-}
-
-/// <summary>Response model for game_menu.get_settings action.</summary>
-public class PlayerSettings
-{
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("volume")]
-    public long Volume { get; set; } = default!;
-    [JsonPropertyName("color_blind")]
-    public bool ColorBlind { get; set; } = default!;
+    public List<Quote> Quotes { get; set; } = default!;
 }
 
 /// <summary>Request payload for game_menu.save_settings action.</summary>
@@ -525,15 +659,6 @@ public class GameMenuSaveSettingsRequest
     public bool ColorBlind { get; set; } = default!;
 }
 
-/// <summary>Response model for game_menu.claim_gift action.</summary>
-public class GiftReceipt
-{
-    [JsonPropertyName("coins")]
-    public long Coins { get; set; } = default!;
-    [JsonPropertyName("balance")]
-    public long Balance { get; set; } = default!;
-}
-
 /// <summary>Response model for http.status action.</summary>
 public class HttpStatusResponse
 {
@@ -543,20 +668,18 @@ public class HttpStatusResponse
     public string Status { get; set; } = default!;
 }
 
+/// <summary>Request payload for items.obter_item action.</summary>
+public class ItemsObterItemRequest
+{
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
+}
+
 /// <summary>Request payload for level_share.upload_level action.</summary>
 public class LevelShareUploadLevelRequest
 {
     [JsonPropertyName("png_base64")]
     public string PngBase64 { get; set; } = default!;
-}
-
-/// <summary>Response model for level_share.upload_level action.</summary>
-public class LevelUploadResult
-{
-    [JsonPropertyName("file_id")]
-    public string FileId { get; set; } = default!;
-    [JsonPropertyName("sha256")]
-    public string Sha256 { get; set; } = default!;
 }
 
 /// <summary>Request payload for level_share.publish action.</summary>
@@ -570,27 +693,11 @@ public class LevelSharePublishRequest
     public string FileId { get; set; } = default!;
 }
 
-/// <summary>Response model for level_share.publish action.</summary>
-public class LevelPublishResult
-{
-    [JsonPropertyName("level_id")]
-    public string LevelId { get; set; } = default!;
-}
-
 /// <summary>Request payload for level_share.get_level_url action.</summary>
 public class LevelShareGetLevelUrlRequest
 {
     [JsonPropertyName("level_id")]
     public string LevelId { get; set; } = default!;
-}
-
-/// <summary>Response model for level_share.get_level_url action.</summary>
-public class LevelUrlResult
-{
-    [JsonPropertyName("url")]
-    public string Url { get; set; } = default!;
-    [JsonPropertyName("expires_at")]
-    public long ExpiresAt { get; set; } = default!;
 }
 
 /// <summary>Request payload for level_share.browse action.</summary>
@@ -604,29 +711,6 @@ public class LevelShareBrowseRequest
     public long Limit { get; set; } = default!;
 }
 
-/// <summary>Response model for level_share.browse action.</summary>
-public class LevelSummary
-{
-    [JsonPropertyName("id")]
-    public string Id { get; set; } = default!;
-    [JsonPropertyName("author_id")]
-    public string AuthorId { get; set; } = default!;
-    [JsonPropertyName("author")]
-    public string Author { get; set; } = default!;
-    [JsonPropertyName("title")]
-    public string Title { get; set; } = default!;
-    [JsonPropertyName("tag")]
-    public string Tag { get; set; } = default!;
-    [JsonPropertyName("plays")]
-    public long Plays { get; set; } = default!;
-    [JsonPropertyName("rating")]
-    public double Rating { get; set; } = default!;
-    [JsonPropertyName("rating_count")]
-    public long RatingCount { get; set; } = default!;
-    [JsonPropertyName("published_at")]
-    public long PublishedAt { get; set; } = default!;
-}
-
 /// <summary>Request payload for level_share.rate action.</summary>
 public class LevelShareRateRequest
 {
@@ -636,27 +720,11 @@ public class LevelShareRateRequest
     public long Stars { get; set; } = default!;
 }
 
-/// <summary>Response model for level_share.rate action.</summary>
-public class LevelRateResult
-{
-    [JsonPropertyName("rating")]
-    public double Rating { get; set; } = default!;
-    [JsonPropertyName("rating_count")]
-    public long RatingCount { get; set; } = default!;
-}
-
 /// <summary>Request payload for level_share.record_clear action.</summary>
 public class LevelShareRecordClearRequest
 {
     [JsonPropertyName("key")]
     public string Key { get; set; } = default!;
-}
-
-/// <summary>Response model for level_share.record_clear action.</summary>
-public class LevelClearResult
-{
-    [JsonPropertyName("counted")]
-    public bool Counted { get; set; } = default!;
 }
 
 /// <summary>Event payload for level_share:feed -> level_published.</summary>
@@ -688,6 +756,13 @@ public class LldbConnectionLostEvent
     public string Reason { get; set; } = default!;
     [JsonPropertyName("timestamp")]
     public long Timestamp { get; set; } = default!;
+}
+
+/// <summary>Request payload for loja_itens.comprar_item action.</summary>
+public class LojaItensComprarItemRequest
+{
+    [JsonPropertyName("item_id")]
+    public string ItemId { get; set; } = default!;
 }
 
 /// <summary>Request payload for player_data.get_player action.</summary>
@@ -840,12 +915,12 @@ public class ResourceStoreListRequest
     [JsonPropertyName("sort")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Sort { get; set; } = default!;
-    [JsonPropertyName("search")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Search { get; set; } = default!;
     [JsonPropertyName("filter")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Filter { get; set; } = default!;
+    [JsonPropertyName("search")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public JsonElement Search { get; set; } = default!;
     [JsonPropertyName("limit")]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public JsonElement Limit { get; set; } = default!;
@@ -882,33 +957,6 @@ public class ResourceStoreGetResponse
     public JsonElement Row { get; set; } = default!;
 }
 
-/// <summary>Request payload for sample_plugin.increment action.</summary>
-public class SamplePluginIncrementRequest
-{
-    [JsonPropertyName("amount")]
-    public long Amount { get; set; } = default!;
-    [JsonPropertyName("counter_id")]
-    public long CounterId { get; set; } = default!;
-}
-
-/// <summary>Request payload for sample_plugin.echo action.</summary>
-public class SamplePluginEchoRequest
-{
-    [JsonPropertyName("value")]
-    public long Value { get; set; } = default!;
-}
-
-/// <summary>Event payload for sample:events -> value_changed.</summary>
-public class SamplePluginValueChangedEvent
-{
-    [JsonPropertyName("new_value")]
-    public long NewValue { get; set; } = default!;
-    [JsonPropertyName("delta")]
-    public long Delta { get; set; } = default!;
-    [JsonPropertyName("counter_id")]
-    public long CounterId { get; set; } = default!;
-}
-
 /// <summary>Response model for transport.status action.</summary>
 public class TransportStatusResponse
 {
@@ -918,41 +966,22 @@ public class TransportStatusResponse
     public string Layer { get; set; } = default!;
 }
 
-/// <summary>Response model for wallet.get_balance action.</summary>
-public class WalletBalance
+/// <summary>Request payload for versioning.resolve action.</summary>
+public class VersioningResolveRequest
 {
-    [JsonPropertyName("player_id")]
-    public string PlayerId { get; set; } = default!;
-    [JsonPropertyName("coins")]
-    public long Coins { get; set; } = default!;
-    [JsonPropertyName("updated_at")]
-    public JsonElement UpdatedAt { get; set; } = default!;
+    [JsonPropertyName("version")]
+    public string Version { get; set; } = default!;
 }
 
-/// <summary>Request payload for ws.broadcast action.</summary>
-public class WsBroadcastRequest
-{
-    [JsonPropertyName("payload")]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-    public JsonElement Payload { get; set; } = default!;
-    [JsonPropertyName("topic")]
-    public string Topic { get; set; } = default!;
-    [JsonPropertyName("event")]
-    public string Event { get; set; } = default!;
-}
-
-/// <summary>Response model for ws.broadcast action.</summary>
-public class WsBroadcastResponse
+/// <summary>Response model for versioning.resolve action.</summary>
+public class VersioningResolveResponse
 {
     [JsonPropertyName("status")]
     public string Status { get; set; } = default!;
-}
-
-/// <summary>Response model for ws.connection_count action.</summary>
-public class WsConnectionCountResponse
-{
-    [JsonPropertyName("count")]
-    public long Count { get; set; } = default!;
+    [JsonPropertyName("version")]
+    public string Version { get; set; } = default!;
+    [JsonPropertyName("locks")]
+    public JsonElement Locks { get; set; } = default!;
 }
 
 /// <summary>
@@ -981,21 +1010,9 @@ public static class ExoClientGeneratedExtensions
     public static BrainrotMarketServiceClient BrainrotMarket(this ExoClient client) =>
         client.Services().BrainrotMarket;
 
-    /// <summary>Access the Cron service contract.</summary>
-    public static CronServiceClient Cron(this ExoClient client) =>
-        client.Services().Cron;
-
     /// <summary>Access the DailyRewards service contract.</summary>
     public static DailyRewardsServiceClient DailyRewards(this ExoClient client) =>
         client.Services().DailyRewards;
-
-    /// <summary>Access the Docs service contract.</summary>
-    public static DocsServiceClient Docs(this ExoClient client) =>
-        client.Services().Docs;
-
-    /// <summary>Access the ExtensionManager service contract.</summary>
-    public static ExtensionManagerServiceClient ExtensionManager(this ExoClient client) =>
-        client.Services().ExtensionManager;
 
     /// <summary>Access the GameMenu service contract.</summary>
     public static GameMenuServiceClient GameMenu(this ExoClient client) =>
@@ -1005,6 +1022,14 @@ public static class ExoClientGeneratedExtensions
     public static HttpServiceClient Http(this ExoClient client) =>
         client.Services().Http;
 
+    /// <summary>Access the Inventario service contract.</summary>
+    public static InventarioServiceClient Inventario(this ExoClient client) =>
+        client.Services().Inventario;
+
+    /// <summary>Access the Items service contract.</summary>
+    public static ItemsServiceClient Items(this ExoClient client) =>
+        client.Services().Items;
+
     /// <summary>Access the LevelShare service contract.</summary>
     public static LevelShareServiceClient LevelShare(this ExoClient client) =>
         client.Services().LevelShare;
@@ -1012,6 +1037,10 @@ public static class ExoClientGeneratedExtensions
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb(this ExoClient client) =>
         client.Services().Lldb;
+
+    /// <summary>Access the LojaItens service contract.</summary>
+    public static LojaItensServiceClient LojaItens(this ExoClient client) =>
+        client.Services().LojaItens;
 
     /// <summary>Access the PlayerData service contract.</summary>
     public static PlayerDataServiceClient PlayerData(this ExoClient client) =>
@@ -1021,21 +1050,17 @@ public static class ExoClientGeneratedExtensions
     public static ResourceStoreServiceClient ResourceStore(this ExoClient client) =>
         client.Services().ResourceStore;
 
-    /// <summary>Access the SamplePlugin service contract.</summary>
-    public static SamplePluginServiceClient SamplePlugin(this ExoClient client) =>
-        client.Services().SamplePlugin;
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport(this ExoClient client) =>
         client.Services().Transport;
 
+    /// <summary>Access the Versioning service contract.</summary>
+    public static VersioningServiceClient Versioning(this ExoClient client) =>
+        client.Services().Versioning;
+
     /// <summary>Access the Wallet service contract.</summary>
     public static WalletServiceClient Wallet(this ExoClient client) =>
         client.Services().Wallet;
-
-    /// <summary>Access the Ws service contract.</summary>
-    public static WsServiceClient Ws(this ExoClient client) =>
-        client.Services().Ws;
 
 }
 
@@ -1106,21 +1131,9 @@ public static class ExoServices
     public static BrainrotMarketServiceClient BrainrotMarket =>
         Client.BrainrotMarket();
 
-    /// <summary>Access the Cron service contract.</summary>
-    public static CronServiceClient Cron =>
-        Client.Cron();
-
     /// <summary>Access the DailyRewards service contract.</summary>
     public static DailyRewardsServiceClient DailyRewards =>
         Client.DailyRewards();
-
-    /// <summary>Access the Docs service contract.</summary>
-    public static DocsServiceClient Docs =>
-        Client.Docs();
-
-    /// <summary>Access the ExtensionManager service contract.</summary>
-    public static ExtensionManagerServiceClient ExtensionManager =>
-        Client.ExtensionManager();
 
     /// <summary>Access the GameMenu service contract.</summary>
     public static GameMenuServiceClient GameMenu =>
@@ -1130,6 +1143,14 @@ public static class ExoServices
     public static HttpServiceClient Http =>
         Client.Http();
 
+    /// <summary>Access the Inventario service contract.</summary>
+    public static InventarioServiceClient Inventario =>
+        Client.Inventario();
+
+    /// <summary>Access the Items service contract.</summary>
+    public static ItemsServiceClient Items =>
+        Client.Items();
+
     /// <summary>Access the LevelShare service contract.</summary>
     public static LevelShareServiceClient LevelShare =>
         Client.LevelShare();
@@ -1137,6 +1158,10 @@ public static class ExoServices
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb =>
         Client.Lldb();
+
+    /// <summary>Access the LojaItens service contract.</summary>
+    public static LojaItensServiceClient LojaItens =>
+        Client.LojaItens();
 
     /// <summary>Access the PlayerData service contract.</summary>
     public static PlayerDataServiceClient PlayerData =>
@@ -1146,21 +1171,17 @@ public static class ExoServices
     public static ResourceStoreServiceClient ResourceStore =>
         Client.ResourceStore();
 
-    /// <summary>Access the SamplePlugin service contract.</summary>
-    public static SamplePluginServiceClient SamplePlugin =>
-        Client.SamplePlugin();
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport =>
         Client.Transport();
 
+    /// <summary>Access the Versioning service contract.</summary>
+    public static VersioningServiceClient Versioning =>
+        Client.Versioning();
+
     /// <summary>Access the Wallet service contract.</summary>
     public static WalletServiceClient Wallet =>
         Client.Wallet();
-
-    /// <summary>Access the Ws service contract.</summary>
-    public static WsServiceClient Ws =>
-        Client.Ws();
 
 }
 
@@ -1195,21 +1216,9 @@ public static class Exo
     public static BrainrotMarketServiceClient BrainrotMarket =>
         ExoServices.BrainrotMarket;
 
-    /// <summary>Access the Cron service contract.</summary>
-    public static CronServiceClient Cron =>
-        ExoServices.Cron;
-
     /// <summary>Access the DailyRewards service contract.</summary>
     public static DailyRewardsServiceClient DailyRewards =>
         ExoServices.DailyRewards;
-
-    /// <summary>Access the Docs service contract.</summary>
-    public static DocsServiceClient Docs =>
-        ExoServices.Docs;
-
-    /// <summary>Access the ExtensionManager service contract.</summary>
-    public static ExtensionManagerServiceClient ExtensionManager =>
-        ExoServices.ExtensionManager;
 
     /// <summary>Access the GameMenu service contract.</summary>
     public static GameMenuServiceClient GameMenu =>
@@ -1219,6 +1228,14 @@ public static class Exo
     public static HttpServiceClient Http =>
         ExoServices.Http;
 
+    /// <summary>Access the Inventario service contract.</summary>
+    public static InventarioServiceClient Inventario =>
+        ExoServices.Inventario;
+
+    /// <summary>Access the Items service contract.</summary>
+    public static ItemsServiceClient Items =>
+        ExoServices.Items;
+
     /// <summary>Access the LevelShare service contract.</summary>
     public static LevelShareServiceClient LevelShare =>
         ExoServices.LevelShare;
@@ -1226,6 +1243,10 @@ public static class Exo
     /// <summary>Access the Lldb service contract.</summary>
     public static LldbServiceClient Lldb =>
         ExoServices.Lldb;
+
+    /// <summary>Access the LojaItens service contract.</summary>
+    public static LojaItensServiceClient LojaItens =>
+        ExoServices.LojaItens;
 
     /// <summary>Access the PlayerData service contract.</summary>
     public static PlayerDataServiceClient PlayerData =>
@@ -1235,21 +1256,17 @@ public static class Exo
     public static ResourceStoreServiceClient ResourceStore =>
         ExoServices.ResourceStore;
 
-    /// <summary>Access the SamplePlugin service contract.</summary>
-    public static SamplePluginServiceClient SamplePlugin =>
-        ExoServices.SamplePlugin;
-
     /// <summary>Access the Transport service contract.</summary>
     public static TransportServiceClient Transport =>
         ExoServices.Transport;
 
+    /// <summary>Access the Versioning service contract.</summary>
+    public static VersioningServiceClient Versioning =>
+        ExoServices.Versioning;
+
     /// <summary>Access the Wallet service contract.</summary>
     public static WalletServiceClient Wallet =>
         ExoServices.Wallet;
-
-    /// <summary>Access the Ws service contract.</summary>
-    public static WsServiceClient Ws =>
-        ExoServices.Ws;
 
 }
 
@@ -1277,17 +1294,8 @@ public class ExoforgeServicesHub
     private BrainrotMarketServiceClient? _brainrot_market;
     public BrainrotMarketServiceClient BrainrotMarket => _brainrot_market ??= new BrainrotMarketServiceClient(_client);
 
-    private CronServiceClient? _cron;
-    public CronServiceClient Cron => _cron ??= new CronServiceClient(_client);
-
     private DailyRewardsServiceClient? _daily_rewards;
     public DailyRewardsServiceClient DailyRewards => _daily_rewards ??= new DailyRewardsServiceClient(_client);
-
-    private DocsServiceClient? _docs;
-    public DocsServiceClient Docs => _docs ??= new DocsServiceClient(_client);
-
-    private ExtensionManagerServiceClient? _extension_manager;
-    public ExtensionManagerServiceClient ExtensionManager => _extension_manager ??= new ExtensionManagerServiceClient(_client);
 
     private GameMenuServiceClient? _game_menu;
     public GameMenuServiceClient GameMenu => _game_menu ??= new GameMenuServiceClient(_client);
@@ -1295,11 +1303,20 @@ public class ExoforgeServicesHub
     private HttpServiceClient? _http;
     public HttpServiceClient Http => _http ??= new HttpServiceClient(_client);
 
+    private InventarioServiceClient? _inventario;
+    public InventarioServiceClient Inventario => _inventario ??= new InventarioServiceClient(_client);
+
+    private ItemsServiceClient? _items;
+    public ItemsServiceClient Items => _items ??= new ItemsServiceClient(_client);
+
     private LevelShareServiceClient? _level_share;
     public LevelShareServiceClient LevelShare => _level_share ??= new LevelShareServiceClient(_client);
 
     private LldbServiceClient? _lldb;
     public LldbServiceClient Lldb => _lldb ??= new LldbServiceClient(_client);
+
+    private LojaItensServiceClient? _loja_itens;
+    public LojaItensServiceClient LojaItens => _loja_itens ??= new LojaItensServiceClient(_client);
 
     private PlayerDataServiceClient? _player_data;
     public PlayerDataServiceClient PlayerData => _player_data ??= new PlayerDataServiceClient(_client);
@@ -1307,17 +1324,14 @@ public class ExoforgeServicesHub
     private ResourceStoreServiceClient? _resource_store;
     public ResourceStoreServiceClient ResourceStore => _resource_store ??= new ResourceStoreServiceClient(_client);
 
-    private SamplePluginServiceClient? _sample_plugin;
-    public SamplePluginServiceClient SamplePlugin => _sample_plugin ??= new SamplePluginServiceClient(_client);
-
     private TransportServiceClient? _transport;
     public TransportServiceClient Transport => _transport ??= new TransportServiceClient(_client);
 
+    private VersioningServiceClient? _versioning;
+    public VersioningServiceClient Versioning => _versioning ??= new VersioningServiceClient(_client);
+
     private WalletServiceClient? _wallet;
     public WalletServiceClient Wallet => _wallet ??= new WalletServiceClient(_client);
-
-    private WsServiceClient? _ws;
-    public WsServiceClient Ws => _ws ??= new WsServiceClient(_client);
 
 }
 
@@ -1597,12 +1611,12 @@ public class AuthServiceClient
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthLoginResponse> LoginAsync(string password, string email, CancellationToken cancellationToken = default)
+    public Task<AuthLoginResponse> LoginAsync(string email, string password, CancellationToken cancellationToken = default)
     {
         var req = new AuthLoginRequest
         {
-            Password = password,
             Email = email,
+            Password = password,
         };
         return LoginAsync(req, cancellationToken);
     }
@@ -1610,9 +1624,9 @@ public class AuthServiceClient
     /// <summary>Authenticates an account with email and password.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Login(string password, string email, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Login(string email, string password, Action<AuthLoginResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = LoginAsync(password, email).ContinueWith(t =>
+        _ = LoginAsync(email, password).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -1712,16 +1726,16 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, CancellationToken cancellationToken = default)
+    public Task<AuthRegisterResponse> RegisterAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
     {
         var req = new AuthRegisterRequest
         {
             Name = name,
             UserId = userId,
-            Password = password,
-            PlayerId = playerId,
-            Scopes = scopes,
             Email = email,
+            Password = password,
+            Scopes = scopes,
+            PlayerId = playerId,
         };
         return RegisterAsync(req, cancellationToken);
     }
@@ -1729,9 +1743,9 @@ public class AuthServiceClient
     /// <summary>Registers a new user account and profile in both auth and player_data.</summary>
     /// <remarks>⚠️ NOTE: In Unity game code, prefer ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) instead.</remarks>
     [Obsolete("In Unity game code, prefer using ExoforgeSDK.Auth (e.g. ExoforgeSDK.Auth.LoginAnonymously()) which automatically persists device IDs and manages session credentials.", false)]
-    public void Register(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void Register(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthRegisterResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = RegisterAsync(name, userId, password, playerId, scopes, email).ContinueWith(t =>
+        _ = RegisterAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -1775,24 +1789,24 @@ public class AuthServiceClient
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, CancellationToken cancellationToken = default)
+    public Task<AuthCreatePlayerResponse> CreatePlayerAsync(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, CancellationToken cancellationToken = default)
     {
         var req = new AuthCreatePlayerRequest
         {
             Name = name,
             UserId = userId,
-            Password = password,
-            PlayerId = playerId,
-            Scopes = scopes,
             Email = email,
+            Password = password,
+            Scopes = scopes,
+            PlayerId = playerId,
         };
         return CreatePlayerAsync(req, cancellationToken);
     }
 
     /// <summary>Creates a new player or user account with authentication credentials.</summary>
-    public void CreatePlayer(JsonElement name, JsonElement userId, JsonElement password, JsonElement playerId, JsonElement scopes, JsonElement email, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void CreatePlayer(JsonElement name, JsonElement userId, JsonElement email, JsonElement password, JsonElement scopes, JsonElement playerId, Action<AuthCreatePlayerResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = CreatePlayerAsync(name, userId, password, playerId, scopes, email).ContinueWith(t =>
+        _ = CreatePlayerAsync(name, userId, email, password, scopes, playerId).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -2213,42 +2227,6 @@ public class BrainrotMarketServiceClient
 
 }
 
-/// <summary>Client interface for the cron service.</summary>
-public class CronServiceClient
-{
-    private readonly ExoClient _client;
-
-    public CronServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Returns status and count of active cron jobs.</summary>
-    public Task<CronStatusResponse> StatusAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<CronStatusResponse>("cron", "status", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Returns status and count of active cron jobs.</summary>
-    public void Status(Action<CronStatusResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = StatusAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[cron.status] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-
 /// <summary>Client interface for the daily_rewards service.</summary>
 public class DailyRewardsServiceClient
 {
@@ -2298,182 +2276,6 @@ public class DailyRewardsServiceClient
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
                 _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[daily_rewards.claim] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-
-/// <summary>Client interface for the docs service.</summary>
-public class DocsServiceClient
-{
-    private readonly ExoClient _client;
-
-    public DocsServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Lists all available documentation chapters.</summary>
-    public Task<DocsListChaptersResponse> ListChaptersAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsListChaptersResponse>("docs", "list_chapters", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Lists all available documentation chapters.</summary>
-    public void ListChapters(Action<DocsListChaptersResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ListChaptersAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.list_chapters] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public Task<DocsGetChapterResponse> GetChapterAsync(string id, CancellationToken cancellationToken = default)
-    {
-        var req = new DocsGetChapterRequest
-        {
-            Id = id,
-        };
-        return GetChapterAsync(req, cancellationToken);
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public void GetChapter(string id, Action<DocsGetChapterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetChapterAsync(id).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.get_chapter] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public Task<DocsGetChapterResponse> GetChapterAsync(DocsGetChapterRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsGetChapterResponse>("docs", "get_chapter", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves the content of a specific documentation chapter.</summary>
-    public void GetChapter(DocsGetChapterRequest request, Action<DocsGetChapterResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = GetChapterAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.get_chapter] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public Task<DocsExportDocsResponse> ExportDocsAsync(JsonElement format, CancellationToken cancellationToken = default)
-    {
-        var req = new DocsExportDocsRequest
-        {
-            Format = format,
-        };
-        return ExportDocsAsync(req, cancellationToken);
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public void ExportDocs(JsonElement format, Action<DocsExportDocsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExportDocsAsync(format).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.export_docs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public Task<DocsExportDocsResponse> ExportDocsAsync(DocsExportDocsRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<DocsExportDocsResponse>("docs", "export_docs", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Exports the consolidated documentation and dynamic API reference as Markdown or HTML.</summary>
-    public void ExportDocs(DocsExportDocsRequest request, Action<DocsExportDocsResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ExportDocsAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[docs.export_docs] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-
-/// <summary>Client interface for the extension_manager service.</summary>
-public class ExtensionManagerServiceClient
-{
-    private readonly ExoClient _client;
-
-    public ExtensionManagerServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Exports C# companion attributes and types provided by loaded extensions.</summary>
-    public Task<ExtensionManagerCsharpAttributesResponse> CsharpAttributesAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<ExtensionManagerCsharpAttributesResponse>("extension_manager", "csharp_attributes", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Exports C# companion attributes and types provided by loaded extensions.</summary>
-    public void CsharpAttributes(Action<ExtensionManagerCsharpAttributesResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = CsharpAttributesAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[extension_manager.csharp_attributes] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -2623,6 +2425,130 @@ public class HttpServiceClient
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
                 _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[http.status] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+}
+
+/// <summary>Client interface for the inventario service.</summary>
+public class InventarioServiceClient
+{
+    private readonly ExoClient _client;
+
+    public InventarioServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+    }
+
+    /// <summary>Executes obter_inventario action.</summary>
+    public Task<InventarioDetalhado> ObterInventarioAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<InventarioDetalhado>("inventario", "obter_inventario", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes obter_inventario action with callbacks on the Unity main thread.</summary>
+    public void ObterInventario(Action<InventarioDetalhado> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ObterInventarioAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[inventario.obter_inventario] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+}
+
+/// <summary>Client interface for the items service.</summary>
+public class ItemsServiceClient
+{
+    private readonly ExoClient _client;
+
+    public ItemsServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+    }
+
+    /// <summary>Executes listar_catalogo action.</summary>
+    public Task<List<Item>> ListarCatalogoAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<List<Item>>("items", "listar_catalogo", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes listar_catalogo action with callbacks on the Unity main thread.</summary>
+    public void ListarCatalogo(Action<List<Item>> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ListarCatalogoAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[items.listar_catalogo] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes obter_item action with typed arguments.</summary>
+    public Task<Item> ObterItemAsync(string itemId, CancellationToken cancellationToken = default)
+    {
+        var req = new ItemsObterItemRequest
+        {
+            ItemId = itemId,
+        };
+        return ObterItemAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes obter_item action with callbacks on the Unity main thread.</summary>
+    public void ObterItem(string itemId, Action<Item> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ObterItemAsync(itemId).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[items.obter_item] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes obter_item action with a typed request DTO.</summary>
+    public Task<Item> ObterItemAsync(ItemsObterItemRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<Item>("items", "obter_item", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes obter_item action with a typed request DTO and callbacks.</summary>
+    public void ObterItem(ItemsObterItemRequest request, Action<Item> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ObterItemAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[items.obter_item] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3022,6 +2948,94 @@ public class LldbServiceClient
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
                 _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[lldb.health_check] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+}
+
+/// <summary>Client interface for the loja_itens service.</summary>
+public class LojaItensServiceClient
+{
+    private readonly ExoClient _client;
+
+    public LojaItensServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+    }
+
+    /// <summary>Executes listar_itens action.</summary>
+    public Task<List<LojaItemDetalhado>> ListarItensAsync(CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<List<LojaItemDetalhado>>("loja_itens", "listar_itens", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes listar_itens action with callbacks on the Unity main thread.</summary>
+    public void ListarItens(Action<List<LojaItemDetalhado>> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ListarItensAsync().ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[loja_itens.listar_itens] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes comprar_item action with typed arguments.</summary>
+    public Task<InventarioResumo> ComprarItemAsync(string itemId, CancellationToken cancellationToken = default)
+    {
+        var req = new LojaItensComprarItemRequest
+        {
+            ItemId = itemId,
+        };
+        return ComprarItemAsync(req, cancellationToken);
+    }
+
+    /// <summary>Executes comprar_item action with callbacks on the Unity main thread.</summary>
+    public void ComprarItem(string itemId, Action<InventarioResumo> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ComprarItemAsync(itemId).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[loja_itens.comprar_item] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Executes comprar_item action with a typed request DTO.</summary>
+    public Task<InventarioResumo> ComprarItemAsync(LojaItensComprarItemRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<InventarioResumo>("loja_itens", "comprar_item", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Executes comprar_item action with a typed request DTO and callbacks.</summary>
+    public void ComprarItem(LojaItensComprarItemRequest request, Action<InventarioResumo> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ComprarItemAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[loja_itens.comprar_item] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3451,14 +3465,14 @@ public class ResourceStoreServiceClient
     }
 
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement search, JsonElement filter, JsonElement limit, string resource, CancellationToken cancellationToken = default)
+    public Task<ResourceStoreListResponse> ListAsync(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, CancellationToken cancellationToken = default)
     {
         var req = new ResourceStoreListRequest
         {
             Offset = offset,
             Sort = sort,
-            Search = search,
             Filter = filter,
+            Search = search,
             Limit = limit,
             Resource = resource,
         };
@@ -3466,9 +3480,9 @@ public class ResourceStoreServiceClient
     }
 
     /// <summary>Lists rows for a resource with filtering, sorting, and pagination.</summary>
-    public void List(JsonElement offset, JsonElement sort, JsonElement search, JsonElement filter, JsonElement limit, string resource, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
+    public void List(JsonElement offset, JsonElement sort, JsonElement filter, JsonElement search, JsonElement limit, string resource, Action<ResourceStoreListResponse> onComplete, Action<ExoActionException>? onError = null)
     {
-        _ = ListAsync(offset, sort, search, filter, limit, resource).ContinueWith(t =>
+        _ = ListAsync(offset, sort, filter, search, limit, resource).ContinueWith(t =>
         {
             if (t.IsFaulted)
             {
@@ -3563,188 +3577,6 @@ public class ResourceStoreServiceClient
 
 }
 
-/// <summary>Client interface for the sample_plugin service.</summary>
-public class SamplePluginServiceClient
-{
-    private readonly ExoClient _client;
-
-    /// <summary>Fired when server emits value_changed event.</summary>
-    public event Action<SamplePluginValueChangedEvent>? OnValueChanged;
-
-    public SamplePluginServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-        _client.OnAnyEvent += HandleIncomingEvent;
-    }
-
-    private void HandleIncomingEvent(ExoEventFrame evt)
-    {
-        if (evt.Event == "value_changed" && OnValueChanged != null)
-        {
-            var parsed = evt.DeserializePayload<SamplePluginValueChangedEvent>();
-            if (parsed != null) OnValueChanged.Invoke(parsed);
-        }
-    }
-
-    /// <summary>Subscribes to all events for sample_plugin on topic 'sample:events'.</summary>
-    public Task SubscribeAsync(string topic = "sample:events", CancellationToken cancellationToken = default) =>
-        _client.SubscribeAsync(topic, cancellationToken);
-
-    /// <summary>Executes ping action.</summary>
-    public Task<long> PingAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<long>("sample_plugin", "ping", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes ping action with callbacks on the Unity main thread.</summary>
-    public void Ping(Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = PingAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.ping] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes increment action with typed arguments.</summary>
-    public Task<long> IncrementAsync(long amount, long counterId, CancellationToken cancellationToken = default)
-    {
-        var req = new SamplePluginIncrementRequest
-        {
-            Amount = amount,
-            CounterId = counterId,
-        };
-        return IncrementAsync(req, cancellationToken);
-    }
-
-    /// <summary>Executes increment action with callbacks on the Unity main thread.</summary>
-    public void Increment(long amount, long counterId, Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IncrementAsync(amount, counterId).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.increment] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes increment action with a typed request DTO.</summary>
-    public Task<long> IncrementAsync(SamplePluginIncrementRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<long>("sample_plugin", "increment", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes increment action with a typed request DTO and callbacks.</summary>
-    public void Increment(SamplePluginIncrementRequest request, Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = IncrementAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.increment] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes injected action.</summary>
-    public Task<string> InjectedAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<string>("sample_plugin", "injected", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes injected action with callbacks on the Unity main thread.</summary>
-    public void Injected(Action<string> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = InjectedAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.injected] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes echo action with typed arguments.</summary>
-    public Task<long> EchoAsync(long value, CancellationToken cancellationToken = default)
-    {
-        var req = new SamplePluginEchoRequest
-        {
-            Value = value,
-        };
-        return EchoAsync(req, cancellationToken);
-    }
-
-    /// <summary>Executes echo action with callbacks on the Unity main thread.</summary>
-    public void Echo(long value, Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = EchoAsync(value).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.echo] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Executes echo action with a typed request DTO.</summary>
-    public Task<long> EchoAsync(SamplePluginEchoRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<long>("sample_plugin", "echo", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Executes echo action with a typed request DTO and callbacks.</summary>
-    public void Echo(SamplePluginEchoRequest request, Action<long> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = EchoAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[sample_plugin.echo] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-}
-
 /// <summary>Client interface for the transport service.</summary>
 public class TransportServiceClient
 {
@@ -3770,6 +3602,70 @@ public class TransportServiceClient
             {
                 var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
                 _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[transport.status] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+}
+
+/// <summary>Client interface for the versioning service.</summary>
+public class VersioningServiceClient
+{
+    private readonly ExoClient _client;
+
+    public VersioningServiceClient(ExoClient client)
+    {
+        _client = client ?? throw new ArgumentNullException(nameof(client));
+    }
+
+    /// <summary>Status and extension locks of one game version, as a client reports it.</summary>
+    public Task<VersioningResolveResponse> ResolveAsync(string version, CancellationToken cancellationToken = default)
+    {
+        var req = new VersioningResolveRequest
+        {
+            Version = version,
+        };
+        return ResolveAsync(req, cancellationToken);
+    }
+
+    /// <summary>Status and extension locks of one game version, as a client reports it.</summary>
+    public void Resolve(string version, Action<VersioningResolveResponse> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ResolveAsync(version).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.resolve] Action error: {ex.Message}", ex); });
+            }
+            else
+            {
+                var res = t.Result;
+                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
+            }
+        });
+    }
+
+    /// <summary>Status and extension locks of one game version, as a client reports it.</summary>
+    public Task<VersioningResolveResponse> ResolveAsync(VersioningResolveRequest request, CancellationToken cancellationToken = default)
+    {
+        return _client.SendActionAsync<VersioningResolveResponse>("versioning", "resolve", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>Status and extension locks of one game version, as a client reports it.</summary>
+    public void Resolve(VersioningResolveRequest request, Action<VersioningResolveResponse> onComplete, Action<ExoActionException>? onError = null)
+    {
+        _ = ResolveAsync(request).ContinueWith(t =>
+        {
+            if (t.IsFaulted)
+            {
+                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
+                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[versioning.resolve] Action error: {ex.Message}", ex); });
             }
             else
             {
@@ -3817,113 +3713,22 @@ public class WalletServiceClient
 
 }
 
-/// <summary>Client interface for the ws service.</summary>
-public class WsServiceClient
-{
-    private readonly ExoClient _client;
-
-    public WsServiceClient(ExoClient client)
-    {
-        _client = client ?? throw new ArgumentNullException(nameof(client));
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public Task<WsBroadcastResponse> BroadcastAsync(JsonElement payload, string topic, string @event, CancellationToken cancellationToken = default)
-    {
-        var req = new WsBroadcastRequest
-        {
-            Payload = payload,
-            Topic = topic,
-            Event = @event,
-        };
-        return BroadcastAsync(req, cancellationToken);
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public void Broadcast(JsonElement payload, string topic, string @event, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = BroadcastAsync(payload, topic, @event).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.broadcast] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public Task<WsBroadcastResponse> BroadcastAsync(WsBroadcastRequest request, CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<WsBroadcastResponse>("ws", "broadcast", request, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Broadcasts a frame to an active WebSocket topic.</summary>
-    public void Broadcast(WsBroadcastRequest request, Action<WsBroadcastResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = BroadcastAsync(request).ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.broadcast] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
-    /// <summary>Retrieves current active WebSocket connection count.</summary>
-    public Task<WsConnectionCountResponse> ConnectionCountAsync(CancellationToken cancellationToken = default)
-    {
-        return _client.SendActionAsync<WsConnectionCountResponse>("ws", "connection_count", null, ExoTransportPreference.Auto, cancellationToken: cancellationToken);
-    }
-
-    /// <summary>Retrieves current active WebSocket connection count.</summary>
-    public void ConnectionCount(Action<WsConnectionCountResponse> onComplete, Action<ExoActionException>? onError = null)
-    {
-        _ = ConnectionCountAsync().ContinueWith(t =>
-        {
-            if (t.IsFaulted)
-            {
-                var ex = t.Exception?.InnerException as ExoActionException ?? new ExoActionException("action_failed", t.Exception?.InnerException?.Message ?? "Action failed");
-                _client.Dispatcher.Post(() => { if (onError != null) onError(ex); else ExoClient.OnError?.Invoke($"[ws.connection_count] Action error: {ex.Message}", ex); });
-            }
-            else
-            {
-                var res = t.Result;
-                _client.Dispatcher.Post(() => onComplete?.Invoke(res));
-            }
-        });
-    }
-
 }
 
-}
-
-// @exoforge-contract: {"Name":"achievements","Doc":null,"Actions":[{"Name":"list","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"description","Type":"string","Optional":false},{"Name":"needed","Type":"integer","Optional":false},{"Name":"progress","Type":"integer","Optional":false},{"Name":"unlocked","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.AchievementStatus"}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"achievement_unlocked","Topic":"achievements:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"achievement_id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false}]}],"Resources":[{"Name":"achievement_defs","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"title","Type":"string"},{"Name":"description","Type":"string"},{"Name":"trigger","Type":"string"},{"Name":"count","Type":"integer"}]},{"Name":"achievement_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"trigger","Type":"string"},{"Name":"count","Type":"integer"}]},{"Name":"unlocks","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"achievement_id","Type":"string"},{"Name":"unlocked_at","Type":"datetime"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"adventure_world","Doc":null,"Actions":[{"Name":"get_progress","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"kills","Type":"integer","Optional":false},{"Name":"chests","Type":"integer","Optional":false},{"Name":"zones","Type":"integer","Optional":false},{"Name":"gold","Type":"integer","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"updated_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.AdventurerProgress"}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"enemy","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"gold","Type":"integer","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"name","Type":"string","Optional":false},{"Name":"zone","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[{"Name":"adventurer_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"name","Type":"string"},{"Name":"kills","Type":"integer"},{"Name":"chests","Type":"integer"},{"Name":"zones","Type":"integer"},{"Name":"gold","Type":"integer"},{"Name":"zone","Type":"string"},{"Name":"updated_at","Type":"integer"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"refresh","Doc":"Exchanges a refresh token for a fresh access/refresh pair.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"refresh_token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"expires_in","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"password","Type":"string","Optional":false},{"Name":"email","Type":"string","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"required_scope","Type":"string","Optional":false}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"password","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false},{"Name":"scopes","Type":"term","Optional":false},{"Name":"email","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"user_id","Type":"string","Optional":false},{"Name":"player","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false},{"Name":"scopes","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false},{"Name":"dry_run","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"brainrot_market","Doc":null,"Actions":[{"Name":"get_portfolio","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"map","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false},{"Name":"pending_idle_coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio"},{"Name":"collect_idle","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.IdleCollected"},{"Name":"buy_farm","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"map","Optional":false},{"Name":"farm_level","Type":"integer","Optional":false},{"Name":"pending_idle_coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio"},{"Name":"buy_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false},{"Name":"price","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade"},{"Name":"sell_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false},{"Name":"price","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade"}],"Events":[{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"symbol","Type":"string","Optional":false},{"Name":"side","Type":"string","Optional":false},{"Name":"shares","Type":"integer","Optional":false}]},{"Name":"prices_ticked","Topic":"market:ticker","Doc":null,"PayloadFields":[{"Name":"quotes","Type":"map","Optional":false}]}],"Resources":[{"Name":"meme_stocks","PrimaryKey":"symbol","Columns":[{"Name":"symbol","Type":"string"},{"Name":"name","Type":"string"},{"Name":"price","Type":"integer"},{"Name":"base_price","Type":"integer"},{"Name":"min_price","Type":"integer"},{"Name":"max_price","Type":"integer"},{"Name":"volatility_percent","Type":"integer"}]},{"Name":"portfolios","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"symbol","Type":"string"},{"Name":"shares","Type":"integer"}]},{"Name":"farms","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"level","Type":"integer"},{"Name":"last_collected_at","Type":"datetime"}]},{"Name":"storefront_config","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"secret","Type":"string"}]},{"Name":"storefront_receipts","PrimaryKey":"receipt_id","Columns":[{"Name":"receipt_id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"coins","Type":"integer"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"cron","Doc":null,"Actions":[{"Name":"status","Doc":"Returns status and count of active cron jobs.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"active_jobs","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"daily_rewards","Doc":null,"Actions":[{"Name":"get_status","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"streak","Type":"integer","Optional":false},{"Name":"next_day","Type":"integer","Optional":false},{"Name":"can_claim","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyStatus"},{"Name":"claim","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"day","Type":"integer","Optional":false},{"Name":"coins","Type":"integer","Optional":false},{"Name":"balance","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyClaimResult"}],"Events":[],"Resources":[{"Name":"daily_reward_table","PrimaryKey":"day","Columns":[{"Name":"day","Type":"integer"},{"Name":"coins","Type":"integer"}]},{"Name":"daily_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"streak","Type":"integer"},{"Name":"last_claimed_on","Type":"datetime"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"docs","Doc":null,"Actions":[{"Name":"list_chapters","Doc":"Lists all available documentation chapters.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"chapters","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_chapter","Doc":"Retrieves the content of a specific documentation chapter.","Scope":"global","Transport":"auto","Params":[{"Name":"id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"chapter","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"export_docs","Doc":"Exports the consolidated documentation and dynamic API reference as Markdown or HTML.","Scope":"global","Transport":"auto","Params":[{"Name":"format","Type":"term","Optional":false}],"ReturnFields":[{"Name":"format","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"content","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"extension_manager","Doc":null,"Actions":[{"Name":"csharp_attributes","Doc":"Exports C# companion attributes and types provided by loaded extensions.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false},{"Name":"files","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"game_menu","Doc":null,"Actions":[{"Name":"get_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"volume","Type":"integer","Optional":false},{"Name":"color_blind","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings"},{"Name":"save_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"volume","Type":"integer","Optional":false},{"Name":"color_blind","Type":"boolean","Optional":false}],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"volume","Type":"integer","Optional":false},{"Name":"color_blind","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings"},{"Name":"claim_gift","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false},{"Name":"balance","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.GiftReceipt"}],"Events":[],"Resources":[{"Name":"menu_news","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"headline","Type":"string"},{"Name":"priority","Type":"integer"}]},{"Name":"menu_gifts","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"coins","Type":"integer"},{"Name":"note","Type":"string"}]},{"Name":"player_settings","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"volume","Type":"integer"},{"Name":"color_blind","Type":"boolean"}]},{"Name":"gift_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"coins","Type":"integer"},{"Name":"claimed_at","Type":"datetime"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"http","Doc":null,"Actions":[{"Name":"status","Doc":"Returns HTTP server status and registered route summaries.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"port","Type":"integer","Optional":false},{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"level_share","Doc":null,"Actions":[{"Name":"upload_level","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"png_base64","Type":"string","Optional":false}],"ReturnFields":[{"Name":"file_id","Type":"string","Optional":false},{"Name":"sha256","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUploadResult"},{"Name":"publish","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"title","Type":"string","Optional":false},{"Name":"difficulty","Type":"string","Optional":false},{"Name":"file_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"level_id","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelPublishResult"},{"Name":"get_level_url","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"url","Type":"string","Optional":false},{"Name":"expires_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUrlResult"},{"Name":"browse","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"tag","Type":"string","Optional":false},{"Name":"sort","Type":"string","Optional":false},{"Name":"limit","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false},{"Name":"author_id","Type":"string","Optional":false},{"Name":"author","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"tag","Type":"string","Optional":false},{"Name":"plays","Type":"integer","Optional":false},{"Name":"rating","Type":"float","Optional":false},{"Name":"rating_count","Type":"integer","Optional":false},{"Name":"published_at","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LevelSummary"},{"Name":"rate","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false},{"Name":"stars","Type":"integer","Optional":false}],"ReturnFields":[{"Name":"rating","Type":"float","Optional":false},{"Name":"rating_count","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelRateResult"},{"Name":"record_clear","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false}],"ReturnFields":[{"Name":"counted","Type":"boolean","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelClearResult"}],"Events":[{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"level_id","Type":"string","Optional":false},{"Name":"title","Type":"string","Optional":false},{"Name":"tag","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[{"Name":"levels","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"author_id","Type":"string"},{"Name":"author","Type":"string"},{"Name":"title","Type":"string"},{"Name":"tag","Type":"string"},{"Name":"file_id","Type":"string"},{"Name":"file_sha","Type":"string"},{"Name":"plays","Type":"integer"},{"Name":"rating_sum","Type":"integer"},{"Name":"rating_count","Type":"integer"},{"Name":"published_at","Type":"integer"}]},{"Name":"ratings","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"level_id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"stars","Type":"integer"}]},{"Name":"level_uploads","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"sha256","Type":"string"},{"Name":"size","Type":"integer"},{"Name":"uploaded_at","Type":"integer"}]},{"Name":"level_clears","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string"},{"Name":"player_id","Type":"string"},{"Name":"key","Type":"string"},{"Name":"cleared_at","Type":"integer"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"lldb","Doc":null,"Actions":[{"Name":"health_check","Doc":"Performs a low-level ping to verify the database is reachable.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"connection_lost","Topic":null,"Doc":"Fired when the underlying database pool drops connection.","PayloadFields":[{"Name":"reason","Type":"string","Optional":false},{"Name":"timestamp","Type":"integer","Optional":false}]}],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"player_data","Doc":null,"Actions":[{"Name":"get_player","Doc":"Retrieves player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"create_player","Doc":"Creates a player profile record, optionally linked to a user account.","Scope":"global","Transport":"auto","Params":[{"Name":"profile","Type":"term","Optional":false},{"Name":"user_id","Type":"term","Optional":false},{"Name":"player_id","Type":"term","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"update_player","Doc":"Updates player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"data","Type":"map","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_data","Doc":"Retrieves a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"set_data","Doc":"Sets a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"delete_data","Doc":"Deletes a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false},{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"key","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get_all_data","Doc":"Retrieves all key-value state entries for a player as a map.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"player_created","Topic":null,"Doc":"Emitted when a new player account is created.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false},{"Name":"player_id","Type":"string","Optional":false}]},{"Name":"player_deleted","Topic":null,"Doc":"Emitted when a player account is deleted.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false},{"Name":"player_id","Type":"string","Optional":false}]}],"Resources":[{"Name":"players","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"user_id","Type":"string"},{"Name":"name","Type":"string"},{"Name":"level","Type":"integer"},{"Name":"status","Type":"string"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false},{"Name":"sort","Type":"term","Optional":false},{"Name":"search","Type":"term","Optional":false},{"Name":"filter","Type":"term","Optional":false},{"Name":"limit","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false},{"Name":"rows","Type":"term","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false},{"Name":"resource","Type":"string","Optional":false},{"Name":"optional","Type":"term","Optional":false}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"sample_plugin","Doc":null,"Actions":[{"Name":"ping","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null},{"Name":"increment","Doc":null,"Scope":"global","Transport":"auto","Params":[{"Name":"amount","Type":"integer","Optional":false},{"Name":"counter_id","Type":"integer","Optional":false}],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null},{"Name":"injected","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[],"ReturnType":"string","ReturnsList":false,"ReturnTypeName":null},{"Name":"echo","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"value","Type":"integer","Optional":false}],"ReturnFields":[],"ReturnType":"integer","ReturnsList":false,"ReturnTypeName":null}],"Events":[{"Name":"value_changed","Topic":"sample:events","Doc":null,"PayloadFields":[{"Name":"new_value","Type":"integer","Optional":false},{"Name":"delta","Type":"integer","Optional":false},{"Name":"counter_id","Type":"integer","Optional":false}]}],"Resources":[{"Name":"counters","PrimaryKey":"counter_id","Columns":[{"Name":"counter_id","Type":"integer"},{"Name":"value","Type":"integer"},{"Name":"status","Type":"string"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"transport","Doc":null,"Actions":[{"Name":"status","Doc":"Returns transport layer status.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false},{"Name":"layer","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"wallet","Doc":null,"Actions":[{"Name":"get_balance","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false},{"Name":"coins","Type":"integer","Optional":false},{"Name":"updated_at","Type":"datetime","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.WalletBalance"}],"Events":[],"Resources":[{"Name":"wallet_balances","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string"},{"Name":"coins","Type":"integer"},{"Name":"updated_at","Type":"datetime"}]}],"CustomInputs":[]}
-// @exoforge-contract: {"Name":"ws","Doc":null,"Actions":[{"Name":"broadcast","Doc":"Broadcasts a frame to an active WebSocket topic.","Scope":"global","Transport":"auto","Params":[{"Name":"payload","Type":"map","Optional":false},{"Name":"topic","Type":"string","Optional":false},{"Name":"event","Type":"string","Optional":false}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null},{"Name":"connection_count","Doc":"Retrieves current active WebSocket connection count.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"count","Type":"integer","Optional":false}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null}],"Events":[],"Resources":[],"CustomInputs":[]}
+// @exoforge-contract: {"Name":"achievements","Doc":null,"Actions":[{"Name":"list","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"description","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"needed","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"progress","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"unlocked","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.AchievementStatus","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"AchievementStatus","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"achievement_unlocked","Topic":"achievements:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"achievement_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"achievement_defs","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"title","Type":"string","Nullable":false},{"Name":"description","Type":"string","Nullable":false},{"Name":"trigger","Type":"string","Nullable":false},{"Name":"count","Type":"integer","Nullable":false}]},{"Name":"achievement_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"trigger","Type":"string","Nullable":false},{"Name":"count","Type":"integer","Nullable":false}]},{"Name":"unlocks","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"achievement_id","Type":"string","Nullable":false},{"Name":"unlocked_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"AchievementStatus":{"Name":"AchievementStatus","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"description","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"needed","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"progress","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"unlocked","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"adventure_world","Doc":null,"Actions":[{"Name":"get_progress","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"kills","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"chests","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zones","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"gold","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"updated_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.AdventurerProgress","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"AdventurerProgress","Choices":null}}],"Events":[{"Name":"enemy_slain","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"enemy","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"chest_opened","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"gold","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"zone_entered","Topic":"world:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"adventurer_progress","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"kills","Type":"integer","Nullable":false},{"Name":"chests","Type":"integer","Nullable":false},{"Name":"zones","Type":"integer","Nullable":false},{"Name":"gold","Type":"integer","Nullable":false},{"Name":"zone","Type":"string","Nullable":false},{"Name":"updated_at","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"AdventurerProgress":{"Name":"AdventurerProgress","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"kills","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"chests","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"zones","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"gold","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"zone","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"updated_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"auth","Doc":null,"Actions":[{"Name":"authenticate","Doc":"Authenticates a client credential or token.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"refresh","Doc":"Exchanges a refresh token for a fresh access/refresh pair.","Scope":"global","Transport":"auto","Params":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"refresh_token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"expires_in","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"login","Doc":"Authenticates an account with email and password.","Scope":"global","Transport":"auto","Params":[{"Name":"email","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"verify_scope","Doc":"Verifies whether a player or user has the required authorization scope.","Scope":"global","Transport":"auto","Params":[{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"required_scope","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"authorized","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"register","Doc":"Registers a new user account and profile in both auth and player_data.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"create_player","Doc":"Creates a new player or user account with authentication credentials.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"email","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"password","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"anonymous","Doc":"Creates or resumes an anonymous player session.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"token","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"scopes","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"set_display_name","Doc":"Sets the signed-in player\u0027s display name.","Scope":"global","Transport":"auto","Params":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"name","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"purge_disposable","Doc":"Removes every account that was created disposable, and nothing else.\n\nA player is disposable because the caller said so when it registered \u2014 a test, a demo, a load\nrun. Nothing is inferred, so this is safe to call on a live cluster: it removes the guests and\nleaves the players who signed up.\n","Scope":"global","Transport":"auto","Params":[{"Name":"dry_run","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"purged","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"dry_run","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"brainrot_market","Doc":null,"Actions":[{"Name":"get_portfolio","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"pending_idle_coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Portfolio","Choices":null}},{"Name":"collect_idle","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.IdleCollected","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"IdleCollected","Choices":null}},{"Name":"buy_farm","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"pending_idle_coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Portfolio","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Portfolio","Choices":null}},{"Name":"buy_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"price","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Trade","Choices":null}},{"Name":"sell_shares","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"price","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Trade","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Trade","Choices":null}}],"Events":[{"Name":"trade_made","Topic":"market:trades","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"shares","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"prices_ticked","Topic":"market:ticker","Doc":null,"PayloadFields":[{"Name":"quotes","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Quote","Choices":null},"Values":null,"Ref":null,"Choices":null}}]}],"Resources":[{"Name":"meme_stocks","PrimaryKey":"symbol","Columns":[{"Name":"symbol","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"price","Type":"integer","Nullable":false},{"Name":"base_price","Type":"integer","Nullable":false},{"Name":"min_price","Type":"integer","Nullable":false},{"Name":"max_price","Type":"integer","Nullable":false},{"Name":"volatility_percent","Type":"integer","Nullable":false}]},{"Name":"portfolios","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"symbol","Type":"string","Nullable":false},{"Name":"shares","Type":"integer","Nullable":false}]},{"Name":"farms","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"level","Type":"integer","Nullable":false},{"Name":"last_collected_at","Type":"datetime","Nullable":false}]},{"Name":"storefront_config","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"secret","Type":"string","Nullable":false}]},{"Name":"storefront_receipts","PrimaryKey":"receipt_id","Columns":[{"Name":"receipt_id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"Holding":{"Name":"Holding","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"shares","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"IdleCollected":{"Name":"IdleCollected","Fields":[{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Portfolio":{"Name":"Portfolio","Fields":[{"Name":"holdings","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Holding","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"farm_level","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"pending_idle_coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Quote":{"Name":"Quote","Fields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"price","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"previous","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"Trade":{"Name":"Trade","Fields":[{"Name":"symbol","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"side","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"shares","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"price","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"WebhookPayload":{"Name":"WebhookPayload","Fields":[{"Name":"body","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"raw_body","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"json","Type":"json","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"json","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"headers","Type":"map","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"map","Nullable":true,"Items":null,"Values":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null},"Ref":null,"Choices":null}},{"Name":"method","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"query","Type":"map","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"map","Nullable":true,"Items":null,"Values":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null},"Ref":null,"Choices":null}}]},"WebhookResult":{"Name":"WebhookResult","Fields":[{"Name":"status_code","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"body","Type":"string","Optional":false,"Nullable":true,"Default":null,"Shape":{"Type":"string","Nullable":true,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"verified","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"daily_rewards","Doc":null,"Actions":[{"Name":"get_status","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"streak","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"next_day","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"can_claim","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyStatus","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"DailyStatus","Choices":null}},{"Name":"claim","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"day","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.DailyClaimResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"DailyClaimResult","Choices":null}}],"Events":[],"Resources":[{"Name":"daily_reward_table","PrimaryKey":"day","Columns":[{"Name":"day","Type":"integer","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false}]},{"Name":"daily_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"streak","Type":"integer","Nullable":false},{"Name":"last_claimed_on","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"DailyClaimResult":{"Name":"DailyClaimResult","Fields":[{"Name":"day","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"DailyStatus":{"Name":"DailyStatus","Fields":[{"Name":"streak","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"next_day","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"can_claim","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"game_menu","Doc":null,"Actions":[{"Name":"get_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"PlayerSettings","Choices":null}},{"Name":"save_settings","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"volume","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.PlayerSettings","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"PlayerSettings","Choices":null}},{"Name":"claim_gift","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"balance","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.GiftReceipt","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"GiftReceipt","Choices":null}}],"Events":[],"Resources":[{"Name":"menu_news","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"headline","Type":"string","Nullable":false},{"Name":"priority","Type":"integer","Nullable":false}]},{"Name":"menu_gifts","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"note","Type":"string","Nullable":false}]},{"Name":"player_settings","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"volume","Type":"integer","Nullable":false},{"Name":"color_blind","Type":"boolean","Nullable":false}]},{"Name":"gift_claims","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"claimed_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"GiftReceipt":{"Name":"GiftReceipt","Fields":[{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"balance","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"PlayerSettings":{"Name":"PlayerSettings","Fields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"volume","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"color_blind","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"http","Doc":null,"Actions":[{"Name":"status","Doc":"Returns HTTP server status and registered route summaries.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"port","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"inventario","Doc":null,"Actions":[{"Name":"obter_inventario","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioDetalhado","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioDetalhado","Choices":null}}],"Events":[],"Resources":[{"Name":"inventario","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"ouro","Type":"integer","Nullable":false}]},{"Name":"inventario_itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"quantidade","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"InventarioDetalhado":{"Name":"InventarioDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"ouro","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}}]},"InventarioItemDetalhado":{"Name":"InventarioItemDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"quantidade","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"items","Doc":null,"Actions":[{"Name":"listar_catalogo","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.Item","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Item","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"obter_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.Item","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"Item","Choices":null}}],"Events":[],"Resources":[{"Name":"itens","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"nome","Type":"string","Nullable":false},{"Name":"tipo","Type":"string","Nullable":false},{"Name":"preco","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"Item":{"Name":"Item","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"level_share","Doc":null,"Actions":[{"Name":"upload_level","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"png_base64","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sha256","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUploadResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelUploadResult","Choices":null}},{"Name":"publish","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"difficulty","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelPublishResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelPublishResult","Choices":null}},{"Name":"get_level_url","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"expires_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelUrlResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelUrlResult","Choices":null}},{"Name":"browse","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sort","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"limit","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"author_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"author","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"plays","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating_count","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"published_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LevelSummary","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelSummary","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"rate","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"stars","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rating_count","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelRateResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelRateResult","Choices":null}},{"Name":"record_clear","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"counted","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.LevelClearResult","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LevelClearResult","Choices":null}}],"Events":[{"Name":"level_published","Topic":"level_share:feed","Doc":null,"PayloadFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"levels","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"author_id","Type":"string","Nullable":false},{"Name":"author","Type":"string","Nullable":false},{"Name":"title","Type":"string","Nullable":false},{"Name":"tag","Type":"string","Nullable":false},{"Name":"file_id","Type":"string","Nullable":false},{"Name":"file_sha","Type":"string","Nullable":false},{"Name":"plays","Type":"integer","Nullable":false},{"Name":"rating_sum","Type":"integer","Nullable":false},{"Name":"rating_count","Type":"integer","Nullable":false},{"Name":"published_at","Type":"integer","Nullable":false}]},{"Name":"ratings","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"level_id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"stars","Type":"integer","Nullable":false}]},{"Name":"level_uploads","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"sha256","Type":"string","Nullable":false},{"Name":"size","Type":"integer","Nullable":false},{"Name":"uploaded_at","Type":"integer","Nullable":false}]},{"Name":"level_clears","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"player_id","Type":"string","Nullable":false},{"Name":"key","Type":"string","Nullable":false},{"Name":"cleared_at","Type":"integer","Nullable":false}]}],"CustomInputs":[],"Types":{"LevelClearResult":{"Name":"LevelClearResult","Fields":[{"Name":"counted","Type":"boolean","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"boolean","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelPublishResult":{"Name":"LevelPublishResult","Fields":[{"Name":"level_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelRateResult":{"Name":"LevelRateResult","Fields":[{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"float","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating_count","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelSummary":{"Name":"LevelSummary","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"author_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"author","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"title","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tag","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"plays","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating","Type":"float","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"float","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"rating_count","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"published_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelUploadResult":{"Name":"LevelUploadResult","Fields":[{"Name":"file_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"sha256","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"LevelUrlResult":{"Name":"LevelUrlResult","Fields":[{"Name":"url","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"expires_at","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"integer","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"lldb","Doc":null,"Actions":[{"Name":"health_check","Doc":"Performs a low-level ping to verify the database is reachable.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[{"Name":"connection_lost","Topic":null,"Doc":"Fired when the underlying database pool drops connection.","PayloadFields":[{"Name":"reason","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"loja_itens","Doc":null,"Actions":[{"Name":"listar_itens","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"preco","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":true,"ReturnTypeName":"global::Exoforge.Extensions.LojaItemDetalhado","ReturnShape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"LojaItemDetalhado","Choices":null},"Values":null,"Ref":null,"Choices":null}},{"Name":"comprar_item","Doc":null,"Scope":"player","Transport":"auto","Params":[{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"ouro","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemResumo","Choices":null},"Values":null,"Ref":null,"Choices":null}}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.InventarioResumo","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioResumo","Choices":null}}],"Events":[],"Resources":[{"Name":"loja_ofertas","PrimaryKey":"id","Columns":[{"Name":"id","Type":"string","Nullable":false},{"Name":"item_id","Type":"string","Nullable":false},{"Name":"ativo","Type":"boolean","Nullable":false}]}],"CustomInputs":[],"Types":{"InventarioItemResumo":{"Name":"InventarioItemResumo","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"quantidade","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]},"InventarioResumo":{"Name":"InventarioResumo","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"ouro","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"itens","Type":"list","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"list","Nullable":false,"Items":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"InventarioItemResumo","Choices":null},"Values":null,"Ref":null,"Choices":null}}]},"LojaItemDetalhado":{"Name":"LojaItemDetalhado","Fields":[{"Name":"id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"item_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"nome","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"tipo","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"preco","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
+// @exoforge-contract: {"Name":"player_data","Doc":null,"Actions":[{"Name":"get_player","Doc":"Retrieves player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"create_player","Doc":"Creates a player profile record, optionally linked to a user account.","Scope":"global","Transport":"auto","Params":[{"Name":"profile","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"user_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"update_player","Doc":"Updates player profile record.","Scope":"global","Transport":"auto","Params":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"player","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get_data","Doc":"Retrieves a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"set_data","Doc":"Sets a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"value","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"delete_data","Doc":"Deletes a fine-grained key-value JSON state entry for a player.","Scope":"global","Transport":"auto","Params":[{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"key","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get_all_data","Doc":"Retrieves all key-value state entries for a player as a map.","Scope":"global","Transport":"auto","Params":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"data","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[{"Name":"player_created","Topic":null,"Doc":"Emitted when a new player account is created.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]},{"Name":"player_deleted","Topic":null,"Doc":"Emitted when a player account is deleted.","PayloadFields":[{"Name":"timestamp","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}]}],"Resources":[{"Name":"players","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"user_id","Type":"string","Nullable":false},{"Name":"name","Type":"string","Nullable":false},{"Name":"level","Type":"integer","Nullable":false},{"Name":"status","Type":"string","Nullable":false}]}],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"resource_store","Doc":null,"Actions":[{"Name":"list","Doc":"Lists rows for a resource with filtering, sorting, and pagination.","Scope":"player","Transport":"auto","Params":[{"Name":"offset","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"sort","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"filter","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"search","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"limit","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"total","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"rows","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null},{"Name":"get","Doc":"Fetches one row by primary key.","Scope":"player","Transport":"auto","Params":[{"Name":"id","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"resource","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"optional","Type":"term","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"row","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"transport","Doc":null,"Actions":[{"Name":"status","Doc":"Returns transport layer status.","Scope":"global","Transport":"auto","Params":[],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"layer","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"versioning","Doc":null,"Actions":[{"Name":"resolve","Doc":"Status and extension locks of one game version, as a client reports it.","Scope":"player","Transport":"auto","Params":[{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnFields":[{"Name":"status","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"version","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"locks","Type":"map","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":null,"ReturnShape":null}],"Events":[],"Resources":[],"CustomInputs":[],"Types":{}}
+// @exoforge-contract: {"Name":"wallet","Doc":null,"Actions":[{"Name":"get_balance","Doc":null,"Scope":"player","Transport":"auto","Params":[],"ReturnFields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"coins","Type":"integer","Optional":false,"Nullable":false,"Default":null,"Shape":null},{"Name":"updated_at","Type":"datetime","Optional":false,"Nullable":false,"Default":null,"Shape":null}],"ReturnType":null,"ReturnsList":false,"ReturnTypeName":"global::Exoforge.Extensions.WalletBalance","ReturnShape":{"Type":"record","Nullable":false,"Items":null,"Values":null,"Ref":"WalletBalance","Choices":null}}],"Events":[],"Resources":[{"Name":"wallet_balances","PrimaryKey":"player_id","Columns":[{"Name":"player_id","Type":"string","Nullable":false},{"Name":"coins","Type":"integer","Nullable":false},{"Name":"updated_at","Type":"datetime","Nullable":false}]}],"CustomInputs":[],"Types":{"WalletBalance":{"Name":"WalletBalance","Fields":[{"Name":"player_id","Type":"string","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"string","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"coins","Type":"int","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"int","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}},{"Name":"updated_at","Type":"datetime","Optional":false,"Nullable":false,"Default":null,"Shape":{"Type":"datetime","Nullable":false,"Items":null,"Values":null,"Ref":null,"Choices":null}}]}}}
