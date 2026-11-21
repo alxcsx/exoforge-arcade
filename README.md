@@ -226,8 +226,29 @@ done
 ./exo sync --dir Exoforge
 ```
 
+**Switching samples on one instance.** Everything in `extensions/` is deployed
+except what a project lists under `"excluded_extensions"` in `Exoforge/exoforge.json` (the extensions
+its scenes do not need; `./exo extension exclude <name>` / `include <name>` edit the list, and the Unity
+Extensions window has an Include toggle per extension). To try another sample on the same instance, wipe
+the previous one's extensions in Studio (**Settings > Danger zone > Reset extensions**, or *Delete
+everything* to also clear players and config), or from a terminal:
+
+```bash
+./exo instance reset --yes --dir Exoforge        # --everything also wipes players, versions, config
+```
+
+then, from the project you want to play:
+
+```bash
+./exo extension push --all --dir Exoforge        # every extension except the project's excluded ones
+```
+
 `tools/smoke.sh` runs every demo script above against the cluster through `./exo call`, using
-`2d-hub` as the workspace (`SMOKE_PROJECT=<project>` picks another). The game-server token
+`2d-hub` as the workspace (`SMOKE_PROJECT=<project>` picks another). `tools/smoke.sh --reset [sample...]` first runs the reset and
+`push --all` above in each sample's own project (`SMOKE_PROJECT` overrides it), so every sample is
+checked from a clean instance. With `--reset`, `achievements` runs in `2d-echo-dungeon`, which includes
+`adventure_world`, the only source of the events that script sends; events from extensions that project excludes
+(for example `trade_made` from `brainrot_market`) do not fire there and are not checked. The game-server token
 (`<project>/Exoforge/mock-game-server.token`) is local and never committed.
 
 The storefront webhook in Brainrot Exchange checks receipts against `arcade-demo-secret`. It is a
