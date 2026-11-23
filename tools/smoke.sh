@@ -7,7 +7,7 @@ set -uo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$root"
 
-samples=("${@:-economy dungeon achievements doodle menu}")
+samples=("${@:-economy dungeon achievements doodle menu shop}")
 failed=()
 
 for s in ${samples[@]}; do
