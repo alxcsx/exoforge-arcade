@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -18,8 +17,7 @@ namespace Arcade.EchoDungeon.Editor
             AddReference(world.AddComponent<DungeonBridge>(), game);
             AddReference(world.AddComponent<MockGameServer>(), game);
 
-            var toast = Type.GetType("Arcade.Common.AchievementToast, Samples.Common");
-            if (toast != null) world.AddComponent(toast);
+            world.AddComponent<AchievementToast>();
 
             Directory.CreateDirectory("Assets/Scenes");
             EditorSceneManager.SaveScene(scene, "Assets/Scenes/EchoDungeon.unity");

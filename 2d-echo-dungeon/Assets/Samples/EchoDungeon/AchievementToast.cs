@@ -1,10 +1,11 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using Arcade.Common;
 using Exoforge.Client;
 using Exoforge.Client.Unity;
 using UnityEngine;
 
-namespace Arcade.Common
+namespace Arcade.EchoDungeon
 {
     public class AchievementToast : MonoBehaviour
     {

@@ -192,8 +192,10 @@ shared cluster; the extensions are built and pushed once.
 You need only the Exoforge SDK tarball (`com.exoforge.sdk-<version>.tgz`), a running Exoforge
 cluster, the .NET SDK 10 (the extensions target `net10.0`) and Unity 6000.6.
 
-1. Place the tarball in every project (git-ignored). Build it in the exoforge checkout with
-   `just pack-unity`, then:
+1. Get the SDK tarball (`com.exoforge.sdk-<version>.tgz`). It is not in this repo or on nuget.org, so
+   a fresh clone fails to restore the extensions or resolve `com.exoforge.sdk` until you do this.
+   Download it from the Exoforge site (https://exoforge2.alexcs.me), or build it in the exoforge
+   checkout with `just pack-unity`. Then place it in every project (git-ignored):
 
    ```bash
    tools/sync-sdk.sh /path/to/exoforge/dist/com.exoforge.sdk-0.1.52.tgz
