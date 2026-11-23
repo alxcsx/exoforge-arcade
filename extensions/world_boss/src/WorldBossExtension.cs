@@ -7,7 +7,6 @@ using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
-[ExoDependency("wallet")]
 [ExoExtension("world_boss", Version = "0.1.0", Category = "Game", Title = "World Boss", Icon = "❄️", Resources = [typeof(BossState), typeof(BossDamage)])]
 public partial class WorldBossExtension
 {

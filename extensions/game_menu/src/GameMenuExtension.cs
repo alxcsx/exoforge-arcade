@@ -5,7 +5,6 @@ using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
-[ExoDependency("wallet")]
 [ExoExtension("game_menu", Version = "0.1.0", Category = "Game", Title = "Game Menu", Icon = "🎮",
     Resources = [typeof(MenuNews), typeof(MenuGift), typeof(PlayerSettings), typeof(GiftClaim)])]
 public class GameMenuExtension

@@ -133,7 +133,7 @@ public class WorldBossTests : IDisposable
                 _attempts[request.Key] = _attempts.GetValueOrDefault(request.Key) + 1;
                 if (_attempts[request.Key] == 1)
                     _coins[request.PlayerId] = _coins.GetValueOrDefault(request.PlayerId) + request.Amount;
-                return Task.FromResult<WalletBalance?>(new WalletBalance { PlayerId = request.PlayerId, Coins = _coins.GetValueOrDefault(request.PlayerId) });
+                return Task.FromResult<WalletBalance?>(new WalletBalance { PlayerId = request.PlayerId, Coins = (int)_coins.GetValueOrDefault(request.PlayerId) });
             }
         }
 

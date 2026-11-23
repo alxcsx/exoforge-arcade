@@ -1,23 +1,22 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Exoforge.Plugin.SDK;
+using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
 [ExoExtension("loja_itens", Version = "0.2.0", Resources = [typeof(LojaOferta)])]
-[ExoDependency("database")]
-[ExoDependency("items")]
-[ExoDependency("inventario")]
 public class LojaItensExtension
 {
     [ExoAction(Scope = "player")]
-    public IReadOnlyList<LojaItemDetalhado> ListarItens()
+    public async Task<IReadOnlyList<LojaItemDetalhado>> ListarItens()
     {
         var ofertas = ExoServices.Database.Query<LojaOferta>(
             "SELECT id, item_id, ativo FROM loja_ofertas WHERE ativo = true"
         );
 
-        var catalogo = ExoServices.Actions.CallAction<List<ItemCatalogoLoja>>("items", "listar_catalogo", null)
+        var catalogo = (await ExoServices.Items.ListarCatalogoAsync() ?? new List<Item>())
             .ToDictionary(i => i.Id, i => i);
 
         var resultado = new List<LojaItemDetalhado>(ofertas.Count);
@@ -40,7 +39,7 @@ public class LojaItensExtension
     }
 
     [ExoAction(Scope = "player")]
-    public InventarioResumo ComprarItem(string itemId)
+    public async Task<InventarioDetalhado> ComprarItem(string itemId)
     {
         var playerId = ExoServices.Context.CallerPlayerId
             ?? throw new ExoActionException("unauthorized", "Jogador não autenticado.");
@@ -50,17 +49,15 @@ public class LojaItensExtension
             itemId
         ) ?? throw new ExoActionException("item_nao_encontrado", "Item não encontrado na loja!");
 
-        var item = ExoServices.Actions.CallAction<ItemCatalogoLoja>(
-            "items",
-            "obter_item",
-            new { item_id = oferta.ItemId }
-        );
+        var item = await ExoServices.Items.ObterItemAsync(new ItemsObterItemRequest { ItemId = oferta.ItemId })
+            ?? throw new ExoActionException("item_nao_encontrado", "Item não encontrado no catálogo!");
 
-        return ExoServices.Actions.CallAction<InventarioResumo>(
-            "inventario",
-            "add_item",
-            new { player_id = playerId, item_id = item.Id, cost = item.Preco }
-        );
+        return await ExoServices.Inventario.AddItemAsync(new InventarioAddItemRequest
+        {
+            PlayerId = playerId,
+            ItemId = item.Id,
+            Cost = item.Preco
+        }) ?? throw new ExoActionException("inventario_indisponivel", "Inventário indisponível.");
     }
 
     [ExoAction(Scope = "studio")]
@@ -87,35 +84,10 @@ public class LojaItensExtension
     }
 }
 
-public class ItemCatalogoLoja
-{
-    public string Id { get; set; } = "";
-    public string Nome { get; set; } = "";
-    public string Tipo { get; set; } = "";
-    public int Preco { get; set; }
-}
-
 public class LojaItemDetalhado
 {
     public string Id { get; set; } = "";
     public string ItemId { get; set; } = "";
-    public string Nome { get; set; } = "";
-    public string Tipo { get; set; } = "";
-    public int Preco { get; set; }
-}
-
-public class InventarioResumo
-{
-    public string Id { get; set; } = "";
-    public int Ouro { get; set; }
-    public List<InventarioItemResumo> Itens { get; set; } = new();
-}
-
-public class InventarioItemResumo
-{
-    public string Id { get; set; } = "";
-    public string ItemId { get; set; } = "";
-    public int Quantidade { get; set; }
     public string Nome { get; set; } = "";
     public string Tipo { get; set; } = "";
     public int Preco { get; set; }

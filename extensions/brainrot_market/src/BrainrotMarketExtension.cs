@@ -10,7 +10,6 @@ using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
-[ExoDependency("wallet")]
 [ExoExtension("brainrot_market", Version = "0.1.0", Category = "Game", Title = "Brainrot Market", Icon = "📈",
     Resources = [typeof(MemeStock), typeof(Holding), typeof(Farm), typeof(StorefrontConfig), typeof(StorefrontReceipt)])]
 public class BrainrotMarketExtension

@@ -19,6 +19,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Exoforge.Plugin.SDK" Version="0.1.52" />
+    <PackageReference Include="Exoforge.Plugin.SDK" Version="0.1.76" />
   </ItemGroup>
 </Project>

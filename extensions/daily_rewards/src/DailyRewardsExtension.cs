@@ -6,7 +6,6 @@ using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
-[ExoDependency("wallet")]
 [ExoExtension("daily_rewards", Version = "0.1.0", Category = "Game", Title = "Daily Rewards", Icon = "🎁",
     Resources = [typeof(DailyReward), typeof(DailyClaim)])]
 public class DailyRewardsExtension

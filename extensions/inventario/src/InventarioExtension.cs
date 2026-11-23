@@ -1,25 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Exoforge.Plugin.SDK;
+using Exoforge.Plugins.Generated;
 
 namespace Exoforge.Extensions;
 
 [ExoExtension("inventario", Version = "0.2.0", Resources = [typeof(Inventario), typeof(InventarioItem)])]
-[ExoDependency("database")]
-[ExoDependency("items")]
 public class InventarioExtension
 {
     [ExoAction(Scope = "player")]
-    public InventarioDetalhado ObterInventario()
+    public async Task<InventarioDetalhado> ObterInventario()
     {
         var playerId = ExoServices.Context.CallerPlayerId
             ?? throw new ExoActionException("unauthorized", "Jogador não autenticado.");
 
-        return MontarInventarioDetalhado(playerId);
+        return await MontarInventarioDetalhado(playerId);
     }
 
     [ExoAction(Scope = "server")]
-    public InventarioDetalhado AddItem(string playerId, string itemId, int cost)
+    public async Task<InventarioDetalhado> AddItem(string playerId, string itemId, int cost)
     {
         var carteira = ObterOuCriarCarteira(playerId);
 
@@ -48,20 +48,20 @@ public class InventarioExtension
 
         ExoServices.Database.Put(existente.Id, existente);
 
-        return MontarInventarioDetalhado(playerId);
+        return await MontarInventarioDetalhado(playerId);
     }
 
     [ExoAction(Scope = "server")]
-    public InventarioDetalhado AddGold(string playerId, int amount)
+    public async Task<InventarioDetalhado> AddGold(string playerId, int amount)
     {
         var carteira = ObterOuCriarCarteira(playerId);
         carteira.Ouro += amount;
         ExoServices.Database.Put(carteira.Id, carteira);
 
-        return MontarInventarioDetalhado(playerId);
+        return await MontarInventarioDetalhado(playerId);
     }
 
-    private InventarioDetalhado MontarInventarioDetalhado(string playerId)
+    private async Task<InventarioDetalhado> MontarInventarioDetalhado(string playerId)
     {
         var carteira = ObterOuCriarCarteira(playerId);
         var linhas = ExoServices.Database.Query<InventarioItem>(
@@ -69,7 +69,7 @@ public class InventarioExtension
             playerId
         );
 
-        var catalogo = ExoServices.Actions.CallAction<List<ItemCatalogo>>("items", "listar_catalogo", null)
+        var catalogo = (await ExoServices.Items.ListarCatalogoAsync() ?? new List<Item>())
             .ToDictionary(i => i.Id, i => i);
 
         var detalhados = new List<InventarioItemDetalhado>(linhas.Count);
@@ -105,14 +105,6 @@ public class InventarioExtension
         }
         return inv;
     }
-}
-
-public class ItemCatalogo
-{
-    public string Id { get; set; } = "";
-    public string Nome { get; set; } = "";
-    public string Tipo { get; set; } = "";
-    public int Preco { get; set; }
 }
 
 public class InventarioDetalhado
